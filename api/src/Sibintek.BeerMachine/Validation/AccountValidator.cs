@@ -3,11 +3,11 @@ using Sibintek.BeerMachine.DataContracts;
 
 namespace Sibintek.BeerMachine.Validation
 {
-    public class PersonValidator : AbstractValidator<Person>
+    public class AccountValidator : AbstractValidator<Account>
     {
-        public PersonValidator()
+        public AccountValidator()
         {
-            RuleFor(x => x.FullName).NotEmpty();
+            RuleFor(x => x.Id).NotEmpty();
         }
     }
 }

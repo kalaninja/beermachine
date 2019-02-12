@@ -31,7 +31,7 @@ namespace Sibintek.BeerMachine.DataContracts
             new Result
             {
                 Success = false,
-                Error = "Пользователь не найден"
+                Error = "Аккаунт не найден"
             };
     }
 }

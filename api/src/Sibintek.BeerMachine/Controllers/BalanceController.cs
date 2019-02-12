@@ -9,7 +9,7 @@ namespace Sibintek.BeerMachine.Controllers
     public class BalanceController : ControllerBase
     {
         [HttpPost]
-        public ActionResult<Result> Index([FromBody] Person person)
+        public ActionResult<Result> Index([FromBody] Account account)
         {
             return Result.Ok(5);
         }
