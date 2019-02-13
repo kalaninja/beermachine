@@ -9,9 +9,9 @@ namespace Sibintek.BeerMachine.Controllers
     public class PayController : ControllerBase
     {
         [HttpPost]
-        public ActionResult<Result> Index([FromBody] Account account)
+        public ActionResult Index([FromBody] Account account)
         {
-            return Result.Ok(5);
+            return Ok();
         }
     }
 }
