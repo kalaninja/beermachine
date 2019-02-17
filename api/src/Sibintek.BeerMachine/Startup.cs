@@ -68,7 +68,7 @@ namespace Sibintek.BeerMachine
             
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
             
-            services.AddSingleton(Configuration.GetSection(nameof(AppSettings)).Get<AppSettings>());
+            services.AddSingleton(Configuration.GetSection(nameof(ShoppingCartServiceOptions)).Get<ShoppingCartServiceOptions>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

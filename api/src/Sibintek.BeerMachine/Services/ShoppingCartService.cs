@@ -10,17 +10,17 @@ namespace Sibintek.BeerMachine.Services
 {
     public class ShoppingCartService : IShoppingCartService
     {
-        private readonly AppSettings _appSettings;
+        private readonly ShoppingCartServiceOptions _shoppingCartServiceOptions;
 
-        public ShoppingCartService(AppSettings appSettings)
+        public ShoppingCartService(ShoppingCartServiceOptions shoppingCartServiceOptions)
         {
-            _appSettings = appSettings;
+            _shoppingCartServiceOptions = shoppingCartServiceOptions;
         }
 
         public async Task<ShoppingCart> GetCurrentShoppingCart()
         {
             using (var httpClient = new HttpClient())
-            using (var response = await httpClient.GetAsync(_appSettings.ShoppingCartServiceUrl))
+            using (var response = await httpClient.GetAsync(_shoppingCartServiceOptions.ServiceUrl))
             {
                 var responseText = await response
                     .EnsureSuccessStatusCode()
@@ -34,7 +34,7 @@ namespace Sibintek.BeerMachine.Services
         private static ShoppingCart Map(string responseText)
         {
             const short responseArrayLength = 4;
-            
+
             var jsonArray = JArray.Parse(responseText);
             if (jsonArray.Count < responseArrayLength)
             {
@@ -46,7 +46,7 @@ namespace Sibintek.BeerMachine.Services
             var productPrices = jsonArray[2].ToObject<decimal[]>();
             var total = jsonArray[3].ToObject<decimal>();
 
-            if (productNames.Length != productCounts.Length 
+            if (productNames.Length != productCounts.Length
                 || productNames.Length != productPrices.Length)
             {
                 throw new Exception("wrong array length in response from shopping cart service");
@@ -55,13 +55,13 @@ namespace Sibintek.BeerMachine.Services
             return new ShoppingCart
             {
                 Products = productNames
-                    .Select((name, index) =>
-                        new Product
-                        {
-                            Name = name,
-                            Count = productCounts[index],
-                            Price = productPrices[index]
-                        })
+                    .Zip(productCounts, (name, count) => (name, count))
+                    .Zip(productPrices, (x, price) => new Product
+                    {
+                        Name = x.Item1,
+                        Count = x.Item2,
+                        Price = price
+                    })
                     .ToList(),
                 Total = total
             };

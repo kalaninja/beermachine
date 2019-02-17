@@ -4,7 +4,7 @@ namespace Sibintek.BeerMachine.Domain
 {
     public class ShoppingCart
     {
-        public List<Product> Products { get; set; } = new List<Product>();
+        public List<Product> Products { get; set; }
 
         public decimal Total { get; set; }
     }
