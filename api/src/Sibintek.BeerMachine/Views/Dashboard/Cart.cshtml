@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Shopping cart";
+}
+
+
+@section Scripts{
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/dashboardCart.js"></script>
+}
+
+<div id="app" class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+        <cart-header
+            v-bind:count="shoppingCart.count">
+        </cart-header>
+        <cart-empty
+            v-bind:isEmpty="shoppingCart.isEmpty" v-if="shoppingCart.isEmpty"></cart-empty>
+        <ul class="list-group mb-3">
+            <cart-product
+                v-for="item in shoppingCart.products"
+                v-bind:product="item"></cart-product>
+            <cart-total v-bind:total="shoppingCart.total" v-if="!shoppingCart.isEmpty"></cart-total>
+        </ul>
+    </div>
+</div>

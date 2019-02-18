@@ -12,6 +12,7 @@ using Sibintek.BeerMachine.DataContracts;
 using Sibintek.BeerMachine.ErrorHandling;
 using Sibintek.BeerMachine.Services;
 using Sibintek.BeerMachine.Settings;
+using Sibintek.BeerMachine.SignalrHubs;
 using Sibintek.BeerMachine.Validation;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -69,6 +70,9 @@ namespace Sibintek.BeerMachine
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
             
             services.AddSingleton(Configuration.GetSection(nameof(ShoppingCartServiceOptions)).Get<ShoppingCartServiceOptions>());
+            
+            //signalR
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -89,6 +93,11 @@ namespace Sibintek.BeerMachine
 //            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<CartHub>("/cartHub");
+            });
 
             app.UseMvc(routes =>
             {
