@@ -13,5 +13,11 @@ namespace Sibintek.BeerMachine.Controllers
         {
             return Result.Ok(5);
         }
+
+        [HttpPost("mock")]
+        public ActionResult<Result> Mock([FromBody] Account account)
+        {
+            return Result.Ok(5);
+        }
     }
 }

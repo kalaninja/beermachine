@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Shouldly;
 using Sibintek.BeerMachine.Services;
 using Sibintek.BeerMachine.Settings;
 using Xunit;
@@ -20,11 +21,12 @@ namespace Sibintek.BeerMachine.Tests
             var shoppingCartService = new ShoppingCartService(options);
 
             var shoppingCart = await shoppingCartService.GetCurrentShoppingCart();
-            
-            Assert.NotNull(shoppingCart);
-            Assert.True(
-                shoppingCart.Total  == (shoppingCart?.Products.Sum(x=>x.Total) ?? 0),
-                "Total of shopping cart not equal to products total");
+
+            shoppingCart.ShouldNotBeNull();
+            shoppingCart.Items.ShouldNotBeNull();
+            shoppingCart.Items.Count.ShouldBe(4);
+            shoppingCart.Items.Distinct().Count().ShouldBe(4);
+            shoppingCart.Items.All(x => x.Count > 0 && x.Total > 0 && !string.IsNullOrEmpty(x.Name)).ShouldBeTrue();
         }
     }
 }

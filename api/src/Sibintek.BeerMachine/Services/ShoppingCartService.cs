@@ -27,11 +27,11 @@ namespace Sibintek.BeerMachine.Services
                     .Content
                     .ReadAsStringAsync();
 
-                return Map(responseText);
+                return Parse(responseText);
             }
         }
 
-        private static ShoppingCart Map(string responseText)
+        private static ShoppingCart Parse(string responseText)
         {
             const short responseArrayLength = 4;
 
@@ -44,27 +44,21 @@ namespace Sibintek.BeerMachine.Services
             var productNames = jsonArray[0].ToObject<string[]>();
             var productCounts = jsonArray[1].ToObject<int[]>();
             var productPrices = jsonArray[2].ToObject<decimal[]>();
-            var total = jsonArray[3].ToObject<decimal>();
+            // Лучше сами посчитаем
+            // var total = jsonArray[3].ToObject<decimal>();
 
-            if (productNames.Length != productCounts.Length
-                || productNames.Length != productPrices.Length)
+            if (productNames.Length != productCounts.Length || productNames.Length != productPrices.Length)
             {
                 throw new Exception("wrong array length in response from shopping cart service");
             }
 
-            return new ShoppingCart
-            {
-                Products = productNames
-                    .Zip(productCounts, (name, count) => (name, count))
-                    .Zip(productPrices, (x, price) => new Product
-                    {
-                        Name = x.Item1,
-                        Count = x.Item2,
-                        Price = price
-                    })
-                    .ToList(),
-                Total = total
-            };
+            var items = productNames
+                .Zip(productCounts, (name, count) => (name, count))
+                .Zip(productPrices,
+                    ((string name, int count) x, decimal price) => new ShoppingCart.Item(x.name, price, x.count))
+                .ToList();
+
+            return new ShoppingCart(items);
         }
     }
 }

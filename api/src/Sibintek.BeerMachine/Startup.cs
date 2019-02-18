@@ -30,6 +30,8 @@ namespace Sibintek.BeerMachine
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IValidator<Account>, AccountValidator>();
+            services.AddSingleton<IValidator<Location>, LocationValidator>();
+            services.AddSingleton<IValidator<Location[]>, LocationArrayValidator>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -65,10 +67,10 @@ namespace Sibintek.BeerMachine
                     Description = "API to work with the BeerMachine blockchain"
                 });
             });
-            
+
+            services.AddSingleton(Configuration.GetSection(nameof(ShoppingCartServiceOptions))
+                .Get<ShoppingCartServiceOptions>());
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
-            
-            services.AddSingleton(Configuration.GetSection(nameof(ShoppingCartServiceOptions)).Get<ShoppingCartServiceOptions>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

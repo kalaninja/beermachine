@@ -1,11 +1,38 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Sibintek.BeerMachine.Domain
 {
     public class ShoppingCart
     {
-        public List<Product> Products { get; set; }
+        public ReadOnlyCollection<Item> Items { get; }
 
-        public decimal Total { get; set; }
+        public decimal Total { get; }
+
+        public ShoppingCart(List<Item> items)
+        {
+            Items = items.AsReadOnly();
+            Total = items.Sum(x => x.Total);
+        }
+
+        public class Item
+        {
+            public string Name { get; }
+
+            public decimal Price { get; }
+
+            public int Count { get; }
+
+            public decimal Total { get; }
+
+            public Item(string name, decimal price, int count)
+            {
+                Name = name;
+                Price = price;
+                Count = count;
+                Total = price * count;
+            }
+        }
     }
 }
