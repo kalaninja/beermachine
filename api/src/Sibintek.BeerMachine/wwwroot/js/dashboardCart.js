@@ -14,13 +14,13 @@ Vue.component('cart-empty',{
 });
 
 Vue.component('cart-product', {
-    props: ['product'],
+    props: ['item'],
     template:'<li class="list-group-item d-flex justify-content-between lh-condensed">\n' +
         '                <div>\n' +
-        '                    <h6 class="my-0">{{ product.name }}</h6>\n' +
-        '                    <small class="text-muted">x {{ product.count }}</small>\n' +
+        '                    <h6 class="my-0">{{ item.name }}</h6>\n' +
+        '                    <small class="text-muted">x {{ item.count }}</small>\n' +
         '                </div>\n' +
-        '                <span class="text-muted">{{ product.price}} ₽</span>\n' +
+        '                <span class="text-muted">{{ item.price}} ₽</span>\n' +
         '</li>'
 });
 
@@ -36,7 +36,7 @@ var app = new Vue({
     el: '#cart',
     data: {
         shoppingCart: {
-            products:[],
+            items:[],
             total: 0,
             isEmpty: true
         }
@@ -46,8 +46,8 @@ var app = new Vue({
 var connection = new signalR.HubConnectionBuilder().withUrl("/cartHub").build();
 
 connection.on("UpdateShoppingCart", function (shoppingCart) {
-    shoppingCart.isEmpty = (!shoppingCart.products || shoppingCart.products === 0);
-    shoppingCart.count = shoppingCart.isEmpty ? 0 : shoppingCart.products.length;
+    shoppingCart.isEmpty = (!shoppingCart.items || shoppingCart.items === 0);
+    shoppingCart.count = shoppingCart.isEmpty ? 0 : shoppingCart.items.length;
     
     app.$data.shoppingCart = shoppingCart
 });

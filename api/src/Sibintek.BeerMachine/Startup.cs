@@ -1,8 +1,13 @@
-﻿using FluentValidation;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +36,8 @@ namespace Sibintek.BeerMachine
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IValidator<Account>, AccountValidator>();
+            services.AddSingleton<IValidator<Location>, LocationValidator>();
+            services.AddSingleton<IValidator<Location[]>, LocationArrayValidator>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -66,10 +73,10 @@ namespace Sibintek.BeerMachine
                     Description = "API to work with the BeerMachine blockchain"
                 });
             });
-            
+
+            services.AddSingleton(Configuration.GetSection(nameof(ShoppingCartServiceOptions))
+                .Get<ShoppingCartServiceOptions>());
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
-            
-            services.AddSingleton(Configuration.GetSection(nameof(ShoppingCartServiceOptions)).Get<ShoppingCartServiceOptions>());
             
             //signalR
             services.AddSignalR();

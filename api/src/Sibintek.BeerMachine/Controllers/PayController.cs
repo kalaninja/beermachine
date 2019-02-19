@@ -32,5 +32,11 @@ namespace Sibintek.BeerMachine.Controllers
             
             return Ok();
         }
+
+        [HttpPost("mock")]
+        public ActionResult Mock([FromBody] Account account)
+        {
+            return Ok();
+        }
     }
 }

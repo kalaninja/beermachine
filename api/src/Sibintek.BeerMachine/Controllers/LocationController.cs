@@ -13,5 +13,11 @@ namespace Sibintek.BeerMachine.Controllers
         {
             return Ok();
         }
+
+        [HttpPost("mock")]
+        public ActionResult Mock([FromBody] Location[] locations)
+        {
+            return Ok();
+        }
     }
 }

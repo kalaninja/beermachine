@@ -17,8 +17,8 @@
             v-bind:isEmpty="shoppingCart.isEmpty" v-if="shoppingCart.isEmpty"></cart-empty>
         <ul class="list-group mb-3">
             <cart-product
-                v-for="item in shoppingCart.products"
-                v-bind:product="item"></cart-product>
+                v-for="item in shoppingCart.items"
+                v-bind:item="item"></cart-product>
             <cart-total v-bind:total="shoppingCart.total" v-if="!shoppingCart.isEmpty"></cart-total>
         </ul>
     </div>

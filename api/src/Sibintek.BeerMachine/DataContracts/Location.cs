@@ -1,8 +1,24 @@
 namespace Sibintek.BeerMachine.DataContracts
 {
-    public class Location
+    public class Location : Account
     {
-        public string Id { get; set; }
-        public int Room { get; set; }
+        public Room Room { get; set; }
+    }
+
+    public enum Room
+    {
+        Lobby = 1,
+        CoffeeBreak,
+        GrandHall,
+        ConfHallA,
+        ConfHallB,
+        ConfHallC,
+        Volga,
+        Thames,
+        Rhine,
+        Don,
+        Danube,
+        Amur,
+        Neva
     }
 }

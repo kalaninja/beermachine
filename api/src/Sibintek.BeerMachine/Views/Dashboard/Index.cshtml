@@ -19,7 +19,7 @@
         height: 50%;
         top: 0;
         left: 0;
-        background: rgb(16,26,55)
+        background: rgb(16, 26, 55)
     }
 
     #NE {
@@ -28,7 +28,7 @@
         height: 50%;
         top: 0;
         left: 50%;
-        background: rgb(16,26,55)
+        background: rgb(16, 26, 55)
     }
 
     #SW {
@@ -37,7 +37,7 @@
         height: 50%;
         top: 50%;
         left: 0;
-        background: rgb(16,26,55)
+        background: rgb(16, 26, 55)
     }
 
     #SE {
@@ -46,19 +46,21 @@
         height: 50%;
         top: 50%;
         left: 50%;
-        background: rgb(16,26,55)
+        background: rgb(16, 26, 55)
     }
 
-    #SE, #SW { border-top: 4px solid rgb(171,190, 218); }
+    #SE, #SW { border-top: 4px solid rgb(171, 190, 218); }
 
-    #NE, #SE { border-left: 4px solid rgb(171,190, 218); }
-    
-    #cart h4 {
-        color: white;
-    }
+    #NE, #SE { border-left: 4px solid rgb(171, 190, 218); }
+
+    #cart h4 { color: white; }
 </style>
-<div id="NW"></div>
-<div id="NE"></div>
+<div id="NW">
+
+</div>
+<div id="NE">
+
+</div>
 <div id="SW">
     <div id="cart" class="row justify-content-md-center">
         <div class="col-md-6 order-md-2 mb-4">
@@ -66,11 +68,13 @@
                 v-bind:count="shoppingCart.count">
             </cart-header>
             <cart-empty
-                v-bind:isEmpty="shoppingCart.isEmpty" v-if="shoppingCart.isEmpty"></cart-empty>
+                v-bind:isEmpty="shoppingCart.isEmpty" v-if="shoppingCart.isEmpty">
+            </cart-empty>
             <ul class="list-group mb-3">
                 <cart-product
-                    v-for="item in shoppingCart.products"
-                    v-bind:product="item"></cart-product>
+                    v-for="item in shoppingCart.items"
+                    v-bind:item="item">
+                </cart-product>
                 <cart-total v-bind:total="shoppingCart.total" v-if="!shoppingCart.isEmpty"></cart-total>
             </ul>
         </div>

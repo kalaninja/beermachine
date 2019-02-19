@@ -1,8 +1,7 @@
-using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using Sibintek.BeerMachine.Settings;
 using Sibintek.BeerMachine.Domain;
 
@@ -27,44 +26,30 @@ namespace Sibintek.BeerMachine.Services
                     .Content
                     .ReadAsStringAsync();
 
-                return Map(responseText);
+                return Parse(responseText);
             }
         }
 
-        private static ShoppingCart Map(string responseText)
+        private static ShoppingCart Parse(string responseText)
         {
-            const short responseArrayLength = 4;
+            var response = JsonConvert.DeserializeObject<ShoppingCartResponse>(responseText);
 
-            var jsonArray = JArray.Parse(responseText);
-            if (jsonArray.Count < responseArrayLength)
-            {
-                throw new Exception("wrong response from shopping cart service");
-            }
+            var items = response.products
+                .Zip(response.quantity, (name, count) => (name, count))
+                .Zip(response.price_for_each,
+                    ((string name, int count) x, decimal price) => new ShoppingCart.Item(x.name, price, x.count))
+                .ToList();
 
-            var productNames = jsonArray[0].ToObject<string[]>();
-            var productCounts = jsonArray[1].ToObject<int[]>();
-            var productPrices = jsonArray[2].ToObject<decimal[]>();
-            var total = jsonArray[3].ToObject<decimal>();
-
-            if (productNames.Length != productCounts.Length
-                || productNames.Length != productPrices.Length)
-            {
-                throw new Exception("wrong array length in response from shopping cart service");
-            }
-
-            return new ShoppingCart
-            {
-                Products = productNames
-                    .Zip(productCounts, (name, count) => (name, count))
-                    .Zip(productPrices, (x, price) => new Product
-                    {
-                        Name = x.Item1,
-                        Count = x.Item2,
-                        Price = price
-                    })
-                    .ToList(),
-                Total = total
-            };
+            return new ShoppingCart(items);
+        }
+        
+        private class ShoppingCartResponse
+        {
+            public decimal[] price_for_each { get; set; }
+            
+            public string[] products { get; set; }
+            
+            public int[] quantity { get; set; }
         }
     }
 }
