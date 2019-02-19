@@ -3,7 +3,7 @@
 Vue.component('cart-header',{
     props: ['count'],
     template: '<h4 class="d-flex justify-content-between align-items-center mb-3">\n' +
-        '            <span class="text-muted">Ваша корзина</span>\n' +
+        '            <span>Ваша корзина</span>\n' +
         '            <span class="badge badge-secondary badge-pill">{{ count }}</span>\n' +
         '        </h4>'
 });
@@ -33,7 +33,7 @@ Vue.component('cart-total', {
 });
 
 var app = new Vue({
-    el: '#app',
+    el: '#cart',
     data: {
         shoppingCart: {
             products:[],
