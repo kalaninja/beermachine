@@ -3,13 +3,13 @@
 }
 
 @{
-    ViewData["Title"] = "Shopping cart";
+    ViewData["Title"] = "Beermachine dashboard";
 }
-
 
 @section Scripts{
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/dashboardCart.js"></script>
+    <script src="~/js/dashboard.js"></script>
 }
 
 <style>
@@ -19,7 +19,7 @@
         height: 50%;
         top: 0;
         left: 0;
-        background: rgb(16, 26, 55)
+        background: whitesmoke
     }
 
     #NE {
@@ -28,7 +28,7 @@
         height: 50%;
         top: 0;
         left: 50%;
-        background: rgb(16, 26, 55)
+        background: whitesmoke
     }
 
     #SW {
@@ -37,7 +37,7 @@
         height: 50%;
         top: 50%;
         left: 0;
-        background: rgb(16, 26, 55)
+        background: whitesmoke
     }
 
     #SE {
@@ -46,38 +46,82 @@
         height: 50%;
         top: 50%;
         left: 50%;
-        background: rgb(16, 26, 55)
+        background: whitesmoke
     }
 
     #SE, #SW { border-top: 4px solid rgb(171, 190, 218); }
 
     #NE, #SE { border-left: 4px solid rgb(171, 190, 218); }
-
-    #cart h4 { color: white; }
+    
+    #SE, #SW, #NE, #SE { padding-top: 4px; padding-left:10px} 
 </style>
-<div id="NW">
-
-</div>
-<div id="NE">
-
-</div>
-<div id="SW">
-    <div id="cart" class="row justify-content-md-center">
-        <div class="col-md-6 order-md-2 mb-4">
-            <cart-header
-                v-bind:count="shoppingCart.count">
-            </cart-header>
-            <cart-empty
-                v-bind:isEmpty="shoppingCart.isEmpty" v-if="shoppingCart.isEmpty">
-            </cart-empty>
-            <ul class="list-group mb-3">
-                <cart-product
-                    v-for="item in shoppingCart.items"
-                    v-bind:item="item">
-                </cart-product>
-                <cart-total v-bind:total="shoppingCart.total" v-if="!shoppingCart.isEmpty"></cart-total>
-            </ul>
+<div id="root">
+    <div id="NW">
+        <div class="container">
+            <div>
+                <div class="chart-container" style="position: relative; height:20vh; width:40vw">
+                    <canvas id="chartFirst"></canvas>
+                </div>
+            </div>
+            <div>
+                <div class="chart-container" style="position: relative; height:20vh; width:40vw">
+                    <canvas id="chartSecond"></canvas>
+                </div>
+            </div>
+        </div>
+    <div id="NE">
+        <h2>Топ накопителей</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Имя участника</th>
+                    <th>Баланс</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr is="customer-row" v-for="(item, index) in dashboardData.topSavers" v-bind:customer="item" v-bind:index="index"></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="SW">
+        <div id="cart" class="row justify-content-md-center">
+            <div class="col-md-6 order-md-2 mb-4">
+                <cart-header
+                    v-bind:count="shoppingCart.count">
+                </cart-header>
+                <cart-empty
+                    v-bind:isEmpty="shoppingCart.isEmpty" v-if="shoppingCart.isEmpty">
+                </cart-empty>
+                <ul class="list-group mb-3">
+                    <cart-product
+                        v-for="item in shoppingCart.items"
+                        v-bind:item="item">
+                    </cart-product>
+                    <cart-total v-bind:total="shoppingCart.total" v-if="!shoppingCart.isEmpty"></cart-total>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="SE">
+        <div class="top-container">
+            <h2>Топ транжир</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Имя участника</th>
+                        <th>Баланс</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr is="customer-row" v-for="(item,index) in dashboardData.topSpenders" v-bind:customer="item" v-bind:index="index"></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-<div id="SE"></div>
