@@ -13,7 +13,7 @@ namespace Sibintek.BeerMachine.Controllers
         {
             return View();
         }
-        
+
         public ActionResult Cart()
         {
             return View();
@@ -24,33 +24,42 @@ namespace Sibintek.BeerMachine.Controllers
             var random = new Random();
             var mockData = new DashboardDataModel
             {
-                TopSavers = new List<Customer>
+                TopSavers = new List<CustomerModel>
                 {
-                    new Customer {Name = "Лев Тихонов", Balance = random.Next(0,11)},
-                    new Customer {Name = "Кирилл Зыков", Balance = random.Next(0,11)},
-                    new Customer {Name = "Максим Шарапов", Balance = random.Next(0,11)},
-                    new Customer {Name = "Фёдор Евдокимов", Balance = random.Next(0,11)},
-                    new Customer {Name = "Антон Куликов", Balance = random.Next(0,11)},
-                    new Customer {Name = "Гавриил Коновалов", Balance = random.Next(0,11)},
-                    new Customer {Name = "Станислав Селиверстов", Balance = random.Next(0,11)},
-                    new Customer {Name = "Михаил Кононов", Balance = random.Next(0,11)},
-                    new Customer {Name = "Анатолий Дроздов", Balance = random.Next(0,11)},
-                    new Customer {Name = "Олег Никитин", Balance = random.Next(0,11)},
+                    new CustomerModel {Name = "Лев Тихонов", Balance = random.Next(0, 11)},
+                    new CustomerModel {Name = "Кирилл Зыков", Balance = random.Next(0, 11)},
+                    new CustomerModel {Name = "Максим Шарапов", Balance = random.Next(0, 11)},
+                    new CustomerModel {Name = "Фёдор Евдокимов", Balance = random.Next(0, 11)},
+                    new CustomerModel {Name = "Антон Куликов", Balance = random.Next(0, 11)},
+                    new CustomerModel {Name = "Гавриил Коновалов", Balance = random.Next(0, 11)},
+                    new CustomerModel {Name = "Станислав Селиверстов", Balance = random.Next(0, 11)},
+                    new CustomerModel {Name = "Михаил Кононов", Balance = random.Next(0, 11)},
+                    new CustomerModel {Name = "Анатолий Дроздов", Balance = random.Next(0, 11)},
+                    new CustomerModel {Name = "Олег Никитин", Balance = random.Next(0, 11)},
+                }.OrderByDescending(x => x.Balance).ToList(),
+                TopSpenders = new List<CustomerModel>
+                {
+                    new CustomerModel {Name = "Александр Дроздов", Balance = random.Next(1, 21)},
+                    new CustomerModel {Name = "Дмитрий Блинов", Balance = random.Next(1, 21)},
+                    new CustomerModel {Name = "Тимофей Якушев", Balance = random.Next(1, 21)},
+                    new CustomerModel {Name = "Борис Зиновьев", Balance = random.Next(1, 21)},
+                    new CustomerModel {Name = "Вадим Фомин", Balance = random.Next(1, 21)},
+                    new CustomerModel {Name = "Денис Устинов", Balance = random.Next(1, 21)},
+                    new CustomerModel {Name = "Алексей Белов", Balance = random.Next(1, 21)},
+                    new CustomerModel {Name = "Эдуард Тимофеев", Balance = random.Next(1, 21)},
+                    new CustomerModel {Name = "Григорий Федотов", Balance = random.Next(1, 21)},
+                    new CustomerModel {Name = "Даниил Королёв", Balance = random.Next(1, 21)},
+                }.OrderByDescending(x => x.Balance).ToList(),
 
-                }.OrderByDescending(x=>x.Balance).ToList(),
-                TopSpenders = new List<Customer>
+                EarnedLostDataSet = Enumerable.Range(0, 2).Select(x => random.Next(0, 100)).ToArray(),
+                SpendAccumulateDataSet = Enumerable.Range(0, 2).Select(x => random.Next(0, 100)).ToArray(),
+                
+                Transactions = Enumerable.Range(0,10).Select(x=> new TransactionModel
                 {
-                    new Customer {Name = "Александр Дроздов", Balance = random.Next(1,21)},
-                    new Customer {Name = "Дмитрий Блинов", Balance = random.Next(1,21)},
-                    new Customer {Name = "Тимофей Якушев", Balance = random.Next(1,21)},
-                    new Customer {Name = "Борис Зиновьев", Balance = random.Next(1,21)},
-                    new Customer {Name = "Вадим Фомин", Balance = random.Next(1,21)},
-                    new Customer {Name = "Денис Устинов", Balance = random.Next(1,21)},
-                    new Customer {Name = "Алексей Белов", Balance = random.Next(1,21)},
-                    new Customer {Name = "Эдуард Тимофеев", Balance = random.Next(1,21)},
-                    new Customer {Name = "Григорий Федотов", Balance = random.Next(1,21)},
-                    new Customer {Name = "Даниил Королёв", Balance = random.Next(1,21)},
-                }.OrderByDescending(x=>x.Balance).ToList()
+                   WalletId = Guid.NewGuid().ToString("N"),
+                   Balance = random.Next(-100,100),
+                   TransactionDate = DateTime.Now
+                }). ToList()
             };
 
             return Json(mockData);

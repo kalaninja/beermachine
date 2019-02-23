@@ -6,6 +6,67 @@
 
     }, 5000);
 
+    //init pie charts
+    var firstChartData = {
+        datasets: [{
+            data: [100, 20],
+            backgroundColor: [
+                'rgba(255, 99, 132)',
+                'rgba(255, 206, 86)'
+            ],
+            borderWidth: 0
+        }],
+
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+            'Свободные баллы',
+            'Заработанные баллы'
+        ]
+    };
+    
+    var secondChartData ={
+        datasets: [{
+            data: [100, 20],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 206, 86)'
+            ],
+            borderWidth: 0
+        }],
+
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+            'Потрачено',
+            'Накоплено'
+        ]
+    };
+    
+    var chartOptions = {
+        responsive: true,
+        aspectRatio:1.5,
+        legend:{
+            position:"bottom",
+            fullWidth: false,
+            labels:{
+                boxWidth: 20
+            }
+        }
+    };
+    
+    var firstChartCtx = document.getElementById("firstChart");
+    var firstChart = new Chart(firstChartCtx, {
+        type: 'pie',
+        data: firstChartData,
+        options: chartOptions
+    });
+    
+    var secondChartCtx = document.getElementById("secondChart");
+    var secondChart = new Chart(secondChartCtx, {
+        type: 'pie',
+        data: secondChartData,
+        options: chartOptions
+    });
+
     function updateDashboard() {
         var req = new XMLHttpRequest();
         req.open('GET', '/dashboard/data', true);
@@ -17,15 +78,21 @@
             if (req.status != 200) {
                 console.log(req.status + ': ' + req.statusText);
             } else {
-                app.$data.dashboardData = JSON.parse(req.responseText);
+                var dashboardData = JSON.parse(req.responseText);
+                app.$data.dashboardData = dashboardData;
 
-                updateCharts();
+                updateCharts(dashboardData);
             }
         };
         req.send();
     }
 
-    function updateCharts() {
+    function updateCharts(dashboardData) {
+        firstChart.data.datasets[0].data = dashboardData.earnedLostDataSet;
+        firstChart.update();
+        
+        secondChart.data.datasets[0].data = dashboardData.spendAccumulateDataSet;
+        secondChart.update();
     }
 })();
 
