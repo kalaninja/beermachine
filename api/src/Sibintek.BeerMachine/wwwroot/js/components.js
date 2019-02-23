@@ -1,5 +1,14 @@
 "use strict";
 
+Vue.component('customer-row', {
+    props: ['customer', 'index'],
+    template: '<tr>\n' +
+        '<td>{{index+1}}</td>\n' +
+        '<td>{{customer.name}}</td>\n' +
+        '<td>{{customer.balance}}</td>\n' +
+        '</tr>'
+});
+
 Vue.component('cart-header',{
     props: ['count'],
     template: '<h4 class="d-flex justify-content-between align-items-center mb-3">\n' +
@@ -31,26 +40,3 @@ Vue.component('cart-total', {
         '<strong>{{total}}.00 ₽</strong>\n' +
         '</li>'
 });
-
-var app = new Vue({
-    el: '#cart',
-    data: {
-        shoppingCart: {
-            items:[],
-            total: 0,
-            isEmpty: true
-        }
-    }
-});
-
-var connection = new signalR.HubConnectionBuilder().withUrl("/cartHub").build();
-
-connection.on("UpdateShoppingCart", function (shoppingCart) {
-    shoppingCart.isEmpty = (!shoppingCart.items || shoppingCart.items === 0);
-    shoppingCart.count = shoppingCart.isEmpty ? 0 : shoppingCart.items.length;
-    
-    app.$data.shoppingCart = shoppingCart
-});
-
-connection.start();
-

@@ -20,4 +20,11 @@
       <Folder Include="wwwroot\lib" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\app\dashboard.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\app\dashboardCart.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\app\site.js" />
+    </ItemGroup>
+
 </Project>
