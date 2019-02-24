@@ -1,4 +1,11 @@
-﻿body {
+﻿@font-face {
+  font-family: Europe;
+  src: url('../font/EuropeC.otf');
+}
+
+
+
+body {
+  font-family: Europe, serif;
   font-size: 14px;
-  font-family: 'Fira Sans', sans-serif;
 }

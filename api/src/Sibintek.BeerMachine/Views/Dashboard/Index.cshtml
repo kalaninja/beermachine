@@ -40,22 +40,56 @@
         max-width: 100%;
     }
 
-    #NW {
+    #N1 {
         position: fixed;
-        width: 50%;
+        width: 25%;
         height: 47%;
         top: 6%;
         left: 0;
-        background: white;
+        background: transparent;
+        padding-left: 20px;
+        padding-right: 0px;
+        padding-top: 20px;
+        padding-bottom: 0px;
     }
-
-    #NE {
+    
+    #N2 {
         position: fixed;
-        width: 50%;
+        width: 25%;
+        height: 47%;
+        top: 6%;
+        left: 25%;
+        background: transparent;
+        padding-left: 20px;
+        padding-right: 0px;
+        padding-top: 20px;
+        padding-bottom: 0px;
+    }
+    
+    #N3 {
+        position: fixed;
+        width: 25%;
         height: 47%;
         top: 6%;
         left: 50%;
-        background: white;
+        background: transparent;
+        padding-left: 20px;
+        padding-right: 0px;
+        padding-top: 20px;
+        padding-bottom: 0px;
+    }
+
+    #N4 {
+        position: fixed;
+        width: 25%;
+        height: 47%;
+        top: 6%;
+        left: 75%;
+        background: transparent;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 0px;
     }
     
     #SW {
@@ -64,7 +98,10 @@
         height: 47%;
         top: 53%;
         left: 0;
-        background: white;
+        background: transparent;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-bottom: 20px;
     }
 
     #SE {
@@ -73,16 +110,17 @@
         height: 47%;
         top: 53%;
         left: 50%;
-        background: white;
+        background: transparent;
+        padding: 20px;
+    }
+    
+    body {
+        background-color: #eee;
     }
 
-    #SE, #SW { border-top: 1px solid #ffd031; }
+    /* #SE, #SW { border-top: 1px solid #ffd031; } */
 
-    #NE, #SE { border-left: 1px solid #ffd031; }
-
-    #SE, #SW, #NW { padding-top: 4px; padding-left:10px }
-    
-    #NE { padding-top: 4px; }
+    /* #NE, #SE { border-left: 1px solid #ffd031; } */
     
     .bg-header {
         opacity: 0.5;
@@ -98,7 +136,20 @@
         padding-top: 5px;
     }
     
+    .widget {
+        background-color: #fff;
+        padding: 24px 20px;
+        margin-bottom: 25px;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+    }
+    
     .empty-shpping-cart {  
+    }
+    
+    .label {
+        
     }
 </style>
 <div id="root">
@@ -109,95 +160,108 @@
             </div>
             <div class="p-2 w-100 align-content-center">
                 <div class="label-container">
-                    <h4 class="text-muted">Умный магазин с blockchain кошельком</h4>
+                    <h4 class="label">Умный магазин с blockchain кошельком</h4>
                 </div>
             </div>
         </div>
     </div>
-    <div id="NW">
-        <h4 class="text-muted">Сводные диаграммы</h4>
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-sm-6 align-self-center">
-                    <canvas id="firstChart"></canvas>
-                </div>
-                <div class="col-sm-6 align-self-center">
-                    <canvas id="secondChart"></canvas>
+    <div id="N1">
+        <div class="widget">
+            <h4 class="text-muted">Диаграмма 1</h4>
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col align-self-center">
+                        <canvas id="firstChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="NE">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="text-muted">Топ накопителей</h4>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Имя участника</th>
-                                <th>Баланс</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr is="customer-row" v-for="(item, index) in dashboardData.topSavers" v-bind:customer="item" v-bind:index="index"></tr>
-                            </tbody>
-                        </table>
+    <div id="N2">
+        <div class="widget">
+            <h4 class="text-muted">Диаграмма 2</h4>
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col align-self-center">
+                        <canvas id="secondChart"></canvas>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <h4 class="text-muted">Топ транжир</h4>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Имя участника</th>
-                                <th>Баланс</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr is="customer-row" v-for="(item,index) in dashboardData.topSpenders" v-bind:customer="item" v-bind:index="index"></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </div>
+    <div id="N3">
+        <div class="container widget">
+            <h4 class="text-muted">Топ накопителей</h4>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Имя участника</th>
+                        <th>Баланс</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr is="customer-row" v-for="(item, index) in dashboardData.topSavers" v-bind:customer="item" v-bind:index="index"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="N4">
+        <div class="container widget">
+            <h4 class="text-muted">Топ транжир</h4>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Имя участника</th>
+                        <th>Баланс</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr is="customer-row" v-for="(item,index) in dashboardData.topSpenders" v-bind:customer="item" v-bind:index="index"></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
     <div id="SW">
+        <div class="widget">
         <h4 class="text-muted">Последняя покупка</h4>
-        <div class="container">
-            <div id="cart" class="row justify-content-md-center">
-                <div class="col-md-6 order-md-2 mb-4">
-                    <cart-empty-dashboard v-bind:isEmpty="shoppingCart.isEmpty" v-if="shoppingCart.isEmpty">
-                    </cart-empty-dashboard>
-                    <ul class="list-group mb-3">
-                        <cart-product
-                            v-for="item in shoppingCart.items"
-                            v-bind:item="item">
-                        </cart-product>
-                        <cart-total v-bind:total="shoppingCart.total" v-if="!shoppingCart.isEmpty"></cart-total>
-                    </ul>
+            <div class="container">
+                <div id="cart" class="row justify-content-md-center">
+                    <div class="col-md-6 order-md-2 mb-4">
+                        <cart-empty-dashboard v-bind:isEmpty="shoppingCart.isEmpty" v-if="shoppingCart.isEmpty">
+                        </cart-empty-dashboard>
+                        <ul class="list-group mb-3">
+                            <cart-product
+                                v-for="item in shoppingCart.items"
+                                v-bind:item="item">
+                            </cart-product>
+                            <cart-total v-bind:total="shoppingCart.total" v-if="!shoppingCart.isEmpty"></cart-total>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="SE">
-        <h4 class="text-muted">Tранзакции</h4>
-        <table class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th>Дата транзакции</th>
-                <th>Номер кошелька</th>
-                <th>Баланс</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr is="transaction-row" v-for="(item, index) in dashboardData.transactions" v-bind:transaction="item" v-bind:index="index"></tr>
-            </tbody>
-        </table>
+        <div class="widget">
+            <h4 class="text-muted">Tранзакции</h4>
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>Дата транзакции</th>
+                    <th>Номер кошелька</th>
+                    <th>Баланс</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr is="transaction-row" v-for="(item, index) in dashboardData.transactions" v-bind:transaction="item" v-bind:index="index"></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

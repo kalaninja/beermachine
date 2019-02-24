@@ -9,10 +9,15 @@ a.navbar-brand {
 
 /* Sticky footer styles
 -------------------------------------------------- */
+@font-face {
+  font-family: Europe;
+  src: url('../font/EuropeC.otf');
+}
+
 html {
   font-size: 14px;
-  font-family: 'Fira Sans', sans-serif;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -45,6 +50,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  font-family: 'Europe', serif;
 }
 .footer {
   position: absolute;

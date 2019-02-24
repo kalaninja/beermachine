@@ -11,8 +11,8 @@
         datasets: [{
             data: [100, 20],
             backgroundColor: [
-                'rgba(255, 99, 132)',
-                'rgba(255, 206, 86)'
+                'rgb(255, 237, 157)',
+                'rgb(105, 133, 175)'
             ],
             borderWidth: 0
         }],
@@ -28,8 +28,8 @@
         datasets: [{
             data: [100, 20],
             backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 206, 86)'
+                'rgb(255, 237, 157)',
+                'rgb(105, 133, 175)'
             ],
             borderWidth: 0
         }],
@@ -55,14 +55,14 @@
     
     var firstChartCtx = document.getElementById("firstChart");
     var firstChart = new Chart(firstChartCtx, {
-        type: 'pie',
+        type: 'doughnut',
         data: firstChartData,
         options: chartOptions
     });
     
     var secondChartCtx = document.getElementById("secondChart");
     var secondChart = new Chart(secondChartCtx, {
-        type: 'pie',
+        type: 'doughnut',
         data: secondChartData,
         options: chartOptions
     });
