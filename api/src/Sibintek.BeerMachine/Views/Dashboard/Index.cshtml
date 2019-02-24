@@ -138,19 +138,41 @@
     
     .widget {
         background-color: #fff;
-        padding: 24px 20px;
         margin-bottom: 25px;
         width: 100%;
         height: 100%;
         border-radius: 3px;
     }
     
-    .empty-shpping-cart {  
+    .widget table {
+        width: 100%;
+        border-top: 0px;
     }
     
-    .label {
-        
+    .widget table td,th {
+        padding-left: 20px;
+        border-top: 0px;
     }
+    
+    .widget table tr:nth-child(odd) {
+        background: #f5f5f5
+    }
+    
+    .widget table th{
+        background: #fff;
+    }
+    
+    .widget table th {
+        border-top: 0px;
+        padding-left: 20px;
+    }
+    
+    .widget .label {
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-bottom: 10px;
+    }
+   
 </style>
 <div id="root">
     <div id="TOP">
@@ -167,7 +189,7 @@
     </div>
     <div id="N1">
         <div class="widget">
-            <h4 class="text-muted">Диаграмма 1</h4>
+            <h4 class="text-muted label">Диаграмма 1</h4>
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col align-self-center">
@@ -179,7 +201,7 @@
     </div>
     <div id="N2">
         <div class="widget">
-            <h4 class="text-muted">Диаграмма 2</h4>
+            <h4 class="text-muted label">Диаграмма 2</h4>
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col align-self-center">
@@ -190,8 +212,8 @@
         </div>
     </div>
     <div id="N3">
-        <div class="container widget">
-            <h4 class="text-muted">Топ накопителей</h4>
+        <div class="widget">
+            <h4 class="text-muted label">Топ накопителей</h4>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -209,8 +231,8 @@
         </div>
     </div>
     <div id="N4">
-        <div class="container widget">
-            <h4 class="text-muted">Топ транжир</h4>
+        <div class="widget">
+            <h4 class="text-muted label">Топ транжир</h4>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -249,13 +271,14 @@
     </div>
     <div id="SE">
         <div class="widget">
-            <h4 class="text-muted">Tранзакции</h4>
+            <h4 class="label text-muted">Tранзакции</h4>
             <table class="table table-striped table-sm">
                 <thead>
                 <tr>
                     <th>Дата транзакции</th>
                     <th>Номер кошелька</th>
-                    <th>Баланс</th>
+                    <th>Тип</th>
+                    <th>Сумма</th>
                 </tr>
                 </thead>
                 <tbody>

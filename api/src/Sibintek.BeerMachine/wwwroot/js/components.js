@@ -51,6 +51,7 @@ Vue.component('transaction-row',{
     template: '<tr>\n' +
         '<td>{{transaction.transactionDateDisplayString}}</td>\n' +
         '<td>{{transaction.walletId}}</td>\n' +
-        '<td>{{transaction.balance}}</td>\n' +
+        '<td>{{transaction.type === 0 ? "начисление" : "списание"}}</td>\n' +
+        '<td>{{transaction.sum}}</td>\n' +
         '</tr>'
 });

@@ -57,9 +57,10 @@ namespace Sibintek.BeerMachine.Controllers
                 Transactions = Enumerable.Range(0,10).Select(x=> new TransactionModel
                 {
                    WalletId = Guid.NewGuid().ToString("N"),
-                   Balance = random.Next(-100,100),
+                   Sum = random.Next(0,100),
+                   Type = (TransactionType)random.Next(0,2),
                    TransactionDate = DateTime.Now
-                }). ToList()
+                }).ToList()
             };
 
             return Json(mockData);

@@ -23,6 +23,12 @@ namespace Sibintek.BeerMachine.Models
         public decimal Balance { get; set; }
     }
 
+    public enum TransactionType
+    {
+        Addition = 0,
+        Subtraction
+    }
+
     public class TransactionModel
     {
         public DateTime TransactionDate { get; set; }
@@ -31,6 +37,8 @@ namespace Sibintek.BeerMachine.Models
         
         public string WalletId { get; set; }
         
-        public decimal Balance { get; set; }
+        public TransactionType Type { get; set; }
+        
+        public decimal Sum { get; set; }
     }
 }
