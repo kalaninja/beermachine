@@ -42,6 +42,12 @@ namespace Sibintek.BeerMachine
 
             services.AddRouting(x => { x.LowercaseUrls = true; });
 
+            services.AddCors(x =>
+            {
+                x.AddPolicy("AllowAll",
+                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+            });
+
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(x => x.RunDefaultMvcValidationAfterFluentValidationExecutes = false)
@@ -85,10 +91,11 @@ namespace Sibintek.BeerMachine
                 app.ConfigureExceptionHandler();
 //                app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+//                app.UseHsts();
             }
 
 //            app.UseHttpsRedirection();
+            app.UseCors("AllowAll");
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
