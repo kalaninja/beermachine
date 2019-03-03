@@ -1,0 +1,16 @@
+[package]
+name = "beercoin"
+version = "0.1.0"
+authors = ["Alexander Kalankhodzhaev <kalansoft@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+exonum = "0.9.7"
+exonum-configuration = "0.9.3"
+failure = "0.1.5"
+serde = "1.0.88"
+serde_derive = "1.0.88"
+
+[dev-dependencies]
+exonum-testkit = "0.9.4"
+serde_json = "1.0.39"
