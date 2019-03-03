@@ -7,7 +7,7 @@ namespace Sibintek.BeerMachine.Services
 {
     public class WalletService : IWalletService
     {
-        private  readonly ISessionService _sessionService;
+        private readonly ISessionService _sessionService;
 
         private readonly IBlockсhainClient _blockсhainClient;
 
@@ -19,21 +19,18 @@ namespace Sibintek.BeerMachine.Services
 
         public async Task UpdateWallets(Location[] locations)
         {
+            const decimal points = 0.25m;
+
             var currentTime = DateTime.Now;
             var program = _sessionService.GetProgram();
 
             var collectionToTransfer = locations
-                .Select(location => (
-                        AccountId: location.Id,
-                        Sum: program.FirstOrDefault(session => session.IsMatch(currentTime, location.Room))?.Points
-                    )
-                )
-                .Where(pair => pair.Sum.HasValue)
-                .Select(pair => (AccountId: pair.AccountId, Sum: pair.Sum.Value));    
+                .Where(location => program.Any(session => session.IsMatch(currentTime, location.Room)))
+                .Select(location => location.Id);
 
-            foreach (var pair in collectionToTransfer)
+            foreach (var accountId in collectionToTransfer)
             {
-                await _blockсhainClient.Transfer(pair.AccountId, pair.Sum);
+                await _blockсhainClient.Transfer(accountId, points);
             }
         }
     }

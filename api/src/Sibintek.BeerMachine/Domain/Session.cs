@@ -14,8 +14,6 @@ namespace Sibintek.BeerMachine.Domain
         public Room[] Rooms { get; }
         
         public string Name { get; }
-
-        public decimal Points { get; } = 0;
         
         public Session(string name, DateTime start, DateTime end, Room[] rooms)
         {
