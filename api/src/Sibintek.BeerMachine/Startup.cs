@@ -1,8 +1,13 @@
-﻿using FluentValidation;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +17,7 @@ using Sibintek.BeerMachine.DataContracts;
 using Sibintek.BeerMachine.ErrorHandling;
 using Sibintek.BeerMachine.Services;
 using Sibintek.BeerMachine.Settings;
+using Sibintek.BeerMachine.SignalrHubs;
 using Sibintek.BeerMachine.Validation;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -77,6 +83,12 @@ namespace Sibintek.BeerMachine
             services.AddSingleton(Configuration.GetSection(nameof(ShoppingCartServiceOptions))
                 .Get<ShoppingCartServiceOptions>());
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
+            services.AddSingleton<ISessionService, SessionService>();
+            services.AddSingleton<IBlockсhainClient, BlockсhainClient>();
+            services.AddSingleton<IWalletService, WalletService>();
+            
+            //signalR
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,6 +110,11 @@ namespace Sibintek.BeerMachine
             app.UseCors("AllowAll");
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<CartHub>("/cartHub");
+            });
 
             app.UseMvc(routes =>
             {
