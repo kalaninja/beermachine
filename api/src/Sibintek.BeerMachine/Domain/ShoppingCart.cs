@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -15,6 +16,8 @@ namespace Sibintek.BeerMachine.Domain
             Items = items.AsReadOnly();
             Total = items.Sum(x => x.Total);
         }
+
+        public bool IsEmpty => Items.Any();
 
         public class Item
         {

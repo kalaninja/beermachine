@@ -10,18 +10,45 @@
     <script src="~/js/cart.js"></script>
 }
 
+<style>
+    body { background-color: #eee; }
+
+    #TOP { padding-bottom: 20px; }
+</style>
+
 <div id="root" class="row justify-content-md-center">
-    <div class="col-md-6 order-md-2 mb-4">
+    <div id="TOP">
+        <div class="d-flex align-items-center">
+            <div class="p-1 flex-shrink-1">
+                <img class="logo" src="~/img/sib_logo.svg"/>
+            </div>
+            <div class="p-2 w-100 align-content-center">
+                <div class="label-container">
+                    <h4 class="label" style="padding-top: 10px">ЦИФРОВОЙ КЛАСТЕР. Умный магазин с BLOCKCHAIN-кошельком</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 order-md-2 mb-4" v-if="purchaseResult.success">
         <cart-header
-            v-bind:count="shoppingCart.count">
+            v-bind:count="purchaseResult.shoppingCart.count">
         </cart-header>
         <cart-empty
-            v-bind:isEmpty="shoppingCart.isEmpty" v-if="shoppingCart.isEmpty"></cart-empty>
+            v-bind:isEmpty="purchaseResult.shoppingCart.isEmpty" v-if="purchaseResult.shoppingCart.isEmpty">
+        </cart-empty>
         <ul class="list-group mb-3">
             <cart-product
-                v-for="item in shoppingCart.items"
-                v-bind:item="item"></cart-product>
-            <cart-total v-bind:total="shoppingCart.total" v-if="!shoppingCart.isEmpty"></cart-total>
+                v-if="purchaseResult.success"
+                v-for="item in purchaseResult.shoppingCart.items"
+                v-bind:item="item">
+            </cart-product>
+            <cart-total v-bind:total="purchaseResult.shoppingCart.total" v-if="!purchaseResult.shoppingCart.isEmpty">
+            </cart-total>
         </ul>
+        <div v-if="!purchaseResult.shoppingCart.isEmpty">
+            <div>Покупатель: {{purchaseResult.customer}}</div>
+            <div>Остаток: {{purchaseResult.walletBalance}}</div>
+        </div>
     </div>
 </div>

@@ -14,6 +14,8 @@ namespace Sibintek.BeerMachine.Models
         public int[] SpendAccumulateDataSet { get; set; }
         
         public List<TransactionModel> Transactions { get; set; }
+
+        public string CurrentDate => DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
     }
 
     public class CustomerModel
@@ -33,7 +35,7 @@ namespace Sibintek.BeerMachine.Models
     {
         public DateTime TransactionDate { get; set; }
 
-        public string TransactionDateDisplayString => TransactionDate.ToString(" HH:mm:ss");
+        public string TransactionDateDisplayString => TransactionDate.ToString("dd.MM.yyyy HH:mm:ss");
         
         public string WalletId { get; set; }
         

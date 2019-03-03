@@ -1,7 +1,9 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Sibintek.BeerMachine.DataContracts;
+using Sibintek.BeerMachine.Models;
 using Sibintek.BeerMachine.Services;
 using Sibintek.BeerMachine.SignalrHubs;
 
@@ -16,7 +18,9 @@ namespace Sibintek.BeerMachine.Controllers
 
         private readonly IShoppingCartService _shoppingCartService;
         
-        public PayController(IHubContext<CartHub, ICartHub> cartHubContext, IShoppingCartService shoppingCartService)
+        public PayController(
+            IHubContext<CartHub, ICartHub> cartHubContext,
+            IShoppingCartService shoppingCartService)
         {
             _cartHubContext = cartHubContext;
             _shoppingCartService = shoppingCartService;
@@ -25,10 +29,17 @@ namespace Sibintek.BeerMachine.Controllers
         [HttpPost]
         public async Task<ActionResult> Index([FromBody] Account account)
         {
-
             var shoppingCart = await _shoppingCartService.GetCurrentShoppingCart();
-            
-            await _cartHubContext.Clients.All.UpdateShoppingCart(shoppingCart);
+
+            var purchaseResult = new PurchaseResult
+            {
+                Success = true,
+                ShoppingCart = shoppingCart,
+                WalletBalance = 100,
+                Customer = "Иванов Иван"
+            };
+
+            await _cartHubContext.Clients.All.UpdatePurchaseResult(purchaseResult);
             
             return Ok();
         }
@@ -38,5 +49,7 @@ namespace Sibintek.BeerMachine.Controllers
         {
             return Ok();
         }
+
+
     }
 }

@@ -3,11 +3,19 @@
 (function(){
     var connection = new signalR.HubConnectionBuilder().withUrl("/cartHub").build();
 
-    connection.on("UpdateShoppingCart", function (shoppingCart) {
-        shoppingCart.isEmpty = (!shoppingCart.items || shoppingCart.items === 0);
-        shoppingCart.count = shoppingCart.isEmpty ? 0 : shoppingCart.items.length;
-
-        app.$data.shoppingCart = shoppingCart
+    connection.on("UpdatePurchaseResult", function (purchaseResult) {
+        if(purchaseResult.shoppingCart){
+            purchaseResult.shoppingCart.isEmpty = (!purchaseResult.shoppingCart.items || purchaseResult.shoppingCart.items === 0);
+            purchaseResult.shoppingCart.count = purchaseResult.shoppingCart.isEmpty 
+                ? 0 
+                : purchaseResult.shoppingCart.items.length;
+        }
+        
+        app.$data.purchaseResult = purchaseResult;
+        
+        if(purchaseResult.success){
+            app.$data.successPurchase = purchaseResult
+        }
     });
 
     connection.start();

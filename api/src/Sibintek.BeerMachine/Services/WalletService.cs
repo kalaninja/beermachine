@@ -19,8 +19,6 @@ namespace Sibintek.BeerMachine.Services
 
         public async Task UpdateWallets(Location[] locations)
         {
-            const decimal points = 0.25m;
-
             var currentTime = DateTime.Now;
             var program = _sessionService.GetProgram();
 
@@ -30,7 +28,7 @@ namespace Sibintek.BeerMachine.Services
 
             foreach (var accountId in collectionToTransfer)
             {
-                await _blockсhainClient.Transfer(accountId, points);
+                await _blockсhainClient.Issue(accountId);
             }
         }
     }

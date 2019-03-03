@@ -9,7 +9,7 @@ Vue.component('customer-row', {
         '</tr>'
 });
 
-Vue.component('cart-header',{
+Vue.component('cart-header', {
     props: ['count'],
     template: '<h4 class="d-flex justify-content-between align-items-center mb-3">\n' +
         '            <span>Ваша корзина</span>\n' +
@@ -17,19 +17,19 @@ Vue.component('cart-header',{
         '        </h4>'
 });
 
-Vue.component('cart-empty',{
-    props:['isEmpty'],
+Vue.component('cart-empty', {
+    props: ['isEmpty'],
     template: '<div>ваша корзина пуста</div>'
 });
 
-Vue.component('cart-empty-dashboard',{
-    props:['isEmpty'],
+Vue.component('cart-empty-dashboard', {
+    props: ['isEmpty'],
     template: '<div class="empty-shpping-cart align-self-center">покупок еще не было</div>'
 });
 
 Vue.component('cart-product', {
     props: ['item'],
-    template:'<li class="list-group-item d-flex justify-content-between lh-condensed">\n' +
+    template: '<li class="list-group-item d-flex justify-content-between lh-condensed">\n' +
         '                <div>\n' +
         '                    <h6 class="my-0">{{ item.name }}</h6>\n' +
         '                    <small class="text-muted">x {{ item.count }}</small>\n' +
@@ -38,15 +38,37 @@ Vue.component('cart-product', {
         '</li>'
 });
 
+Vue.component('purchase', {
+    porps: ['purchaseResult'],
+    template: '<table>' +
+        '<tr>' +
+        '<th>Товар</th>' +
+        '<th>Количество</th>' +
+        '<th>Стоимость ед.</th>' +
+        '</tr>' +
+        '<tr is="purchase-product" v-for="item in purchaseResult.shoppingCart.items"></tr>' +
+        '</table>' +
+        '<div> Баланс кошелька {{purchaseResult.walletBalance}}</div>'
+});
+
+Vue.component('purchase-product', {
+    props: ['item'],
+    template: '<tr>' +
+        '<td>{{item.name}}</td>' +
+        '<td>x{{item.count}}</td>' +
+        '<td>{{item.price}}</td>' +
+        '</tr>'
+});
+
 Vue.component('cart-total', {
-    props: ['total','isEmpty'],
-    template:'<li class="list-group-item d-flex justify-content-between">'+
-        '<span>Итого</span>\n'+
+    props: ['total', 'isEmpty'],
+    template: '<li class="list-group-item d-flex justify-content-between">' +
+        '<span>Итого</span>\n' +
         '<strong>{{total}}</strong>\n' +
         '</li>'
 });
 
-Vue.component('transaction-row',{
+Vue.component('transaction-row', {
     props: ['transaction'],
     template: '<tr>\n' +
         '<td>{{transaction.transactionDateDisplayString}}</td>\n' +

@@ -2,6 +2,6 @@ namespace Sibintek.BeerMachine.DataContracts
 {
     public class Account
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
     }
 }

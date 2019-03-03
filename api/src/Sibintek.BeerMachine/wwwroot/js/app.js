@@ -7,10 +7,23 @@ var app = new Vue({
             topSavers: [],
             topSpenders: []
         },
-        shoppingCart:{
-            items:[],
-            total: 0,
-            isEmpty: true
+        purchaseResult:{
+            success:true,
+            shoppingCart:{
+                items:[],
+                total: 0,
+                isEmpty: true
+            },
+            customer:""
+        },
+        successPurchase:{
+            success:true,
+            customer:"",
+            shoppingCart:{
+                items:[],
+                total: 0,
+                isEmpty: true
+            }
         }
     }
 });
