@@ -10,5 +10,7 @@ namespace Sibintek.BeerMachine.Services
         Task Issue(long walletId);
 
         Task<Wallet> GetWallet(long id);
+        
+        
     }
 }
