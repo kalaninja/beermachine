@@ -8,7 +8,6 @@ use exonum::{
     crypto::{self, CryptoHash, Hash},
 };
 use exonum_testkit::{ApiKind, TestKit, TestKitApi, TestKitBuilder};
-
 use beercoin::{
     BeerCoinService,
     api::{WalletQuery, Report, ReportQuery},
