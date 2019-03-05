@@ -10,16 +10,18 @@ namespace Sibintek.BeerMachine.Services
     public class ShoppingCartService : IShoppingCartService
     {
         private readonly ShoppingCartServiceOptions _shoppingCartServiceOptions;
+        
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public ShoppingCartService(ShoppingCartServiceOptions shoppingCartServiceOptions)
+        public ShoppingCartService(ShoppingCartServiceOptions shoppingCartServiceOptions, IHttpClientFactory httpClientFactory)
         {
             _shoppingCartServiceOptions = shoppingCartServiceOptions;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task<ShoppingCart> GetCurrentShoppingCart()
         {
-            using (var httpClient = new HttpClient())
-            using (var response = await httpClient.GetAsync(_shoppingCartServiceOptions.ServiceUrl))
+            using (var response = await _httpClientFactory.CreateClient().GetAsync(_shoppingCartServiceOptions.ServiceUrl))
             {
                 var responseText = await response
                     .EnsureSuccessStatusCode()

@@ -37,7 +37,42 @@ namespace Sibintek.BeerMachine.Services
                 },
                 new Customer
                 {
-                    Id = 2,
+                    Id = 3,
+                    Name = "Лев Тихонов"
+                },
+                new Customer
+                {
+                    Id = 4,
+                    Name = "Кирилл Зыков"
+                },
+                new Customer
+                {
+                    Id = 5,
+                    Name = "Гавриил Коновалов"
+                },
+                new Customer
+                {
+                    Id = 6,
+                    Name = "Александр Дроздов"
+                },
+                new Customer
+                {
+                    Id = 7,
+                    Name = "Борис Зиновьев"
+                },
+                new Customer
+                {
+                    Id = 8,
+                    Name = "Даниил Королёв"
+                },
+                new Customer
+                {
+                    Id = 9,
+                    Name = "Григорий Федотов"
+                },
+                new Customer
+                {
+                    Id = 10,
                     Name = "Смирнов Петр"
                 },
             }.AsReadOnly();

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using Sibintek.BeerMachine.Domain;
 
-namespace Sibintek.BeerMachine.Domain
+namespace Sibintek.BeerMachine.Services
 {
-    public class BlockchainReport
+    public class BlockchainReportResponse
     {
         public long CoinsTotal { get; set; }
         

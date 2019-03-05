@@ -4,8 +4,8 @@ var app = new Vue({
     el: '#root',
     data: {
         dashboardData: {
-            topSavers: [],
-            topSpenders: []
+            topRich: [],
+            topBuyers: []
         },
         purchaseResult:{
             success:true,

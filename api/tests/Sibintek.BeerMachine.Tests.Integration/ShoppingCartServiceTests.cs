@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Shouldly;
 using Sibintek.BeerMachine.Services;
@@ -18,7 +19,7 @@ namespace Sibintek.BeerMachine.Tests
                 ServiceUrl = serviceUrl
             };
 
-            var shoppingCartService = new ShoppingCartService(options);
+            var shoppingCartService = new ShoppingCartService(options, new TestHttpClientFactory());
 
             var shoppingCart = await shoppingCartService.GetCurrentShoppingCart();
 
@@ -27,6 +28,14 @@ namespace Sibintek.BeerMachine.Tests
             shoppingCart.Items.Count.ShouldBe(4);
             shoppingCart.Items.Distinct().Count().ShouldBe(4);
             shoppingCart.Items.All(x => x.Count > 0 && x.Total > 0 && !string.IsNullOrEmpty(x.Name)).ShouldBeTrue();
+        }
+
+        private class TestHttpClientFactory : IHttpClientFactory
+        {
+            public HttpClient CreateClient(string name)
+            {
+                return new HttpClient();
+            }
         }
     }
 }

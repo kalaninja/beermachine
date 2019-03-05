@@ -80,16 +80,19 @@ namespace Sibintek.BeerMachine
                 });
             });
 
+            services.AddHttpClient();
+
             services.AddSingleton(Configuration.GetSection(nameof(ShoppingCartServiceOptions))
                 .Get<ShoppingCartServiceOptions>());
             services.AddSingleton(Configuration.GetSection(nameof(BlockchainOptions)).Get<BlockchainOptions>());
             services.AddSingleton(Configuration.GetSection(nameof(CustomerFileOptions)).Get<CustomerFileOptions>());
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
             services.AddSingleton<ISessionService, SessionService>();
-            services.AddSingleton<IBlockсhainClient, BlockсhainClient>();
+            services.AddSingleton<IBlockсhainClient, MockBlockсhainClient>();
             services.AddSingleton<IWalletService, WalletService>();
             services.AddSingleton<IPurchaseService, PurchaseService>();
             services.AddSingleton<ICustomerProvider, CustomerProvider>();
+            services.AddSingleton<IReportService, ReportService>();
             
             //signalR
             services.AddSignalR();

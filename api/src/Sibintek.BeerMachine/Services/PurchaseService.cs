@@ -52,6 +52,7 @@ namespace Sibintek.BeerMachine.Services
                 {
                     return new PurchaseResult
                     {
+                        ShoppingCart = shoppingCart,
                         Status = PurchaseStatus.Rejected,
                         ErrorDescription = "Недостаточно баллов для покупки",
                         WalletBalance = wallet.Balance,

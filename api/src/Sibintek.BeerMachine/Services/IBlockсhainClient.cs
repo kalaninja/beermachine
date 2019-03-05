@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sibintek.BeerMachine.Domain;
+using Sibintek.BeerMachine.Models;
 
 namespace Sibintek.BeerMachine.Services
 {
@@ -11,6 +13,8 @@ namespace Sibintek.BeerMachine.Services
 
         Task<Wallet> GetWallet(long id);
 
-        Task<BlockchainReport> Report(int count = 10);
+        Task<BlockchainReportResponse> Report(int count = 10);
+
+        Task<List<TransactionInfo>> TransactionLog(int count = 10);
     }
 }

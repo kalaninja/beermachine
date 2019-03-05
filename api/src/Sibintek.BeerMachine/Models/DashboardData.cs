@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sibintek.BeerMachine.Services;
 
 namespace Sibintek.BeerMachine.Models
 {
@@ -13,7 +14,7 @@ namespace Sibintek.BeerMachine.Models
         
         public int[] SpendAccumulateDataSet { get; set; }
         
-        public List<TransactionModel> Transactions { get; set; }
+        public List<TransactionInfo> Transactions { get; set; }
 
         public string CurrentDate => DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
     }
@@ -23,24 +24,5 @@ namespace Sibintek.BeerMachine.Models
         public string Name { get; set; }
         
         public decimal Balance { get; set; }
-    }
-
-    public enum TransactionType
-    {
-        Addition = 0,
-        Subtraction
-    }
-
-    public class TransactionModel
-    {
-        public DateTime TransactionDate { get; set; }
-
-        public string TransactionDateDisplayString => TransactionDate.ToString("dd.MM.yyyy HH:mm:ss");
-        
-        public long WalletId { get; set; }
-        
-        public TransactionType Type { get; set; }
-        
-        public decimal Sum { get; set; }
     }
 }

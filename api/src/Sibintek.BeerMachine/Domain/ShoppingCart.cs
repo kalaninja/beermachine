@@ -17,7 +17,7 @@ namespace Sibintek.BeerMachine.Domain
             Total = items.Sum(x => x.Total);
         }
 
-        public bool IsEmpty => Items.Any();
+        public bool IsEmpty => !Items.Any();
 
         public class Item
         {
