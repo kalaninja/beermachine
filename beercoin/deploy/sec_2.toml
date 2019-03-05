@@ -1,0 +1,8 @@
+consensus_public_key = "0ec7d9c6e20c6f68ed910bf05d1ffa4d7ffb279b1ce5df91729c15809326d526"
+consensus_secret_key = "f81fc0ea96821202c19703830612d15743aa60aa23d58afb9728f1e0ba92e6f00ec7d9c6e20c6f68ed910bf05d1ffa4d7ffb279b1ce5df91729c15809326d526"
+external_addr = "2.2.2.2:6332"
+listen_addr = "0.0.0.0:6332"
+service_public_key = "3672560e0da52915eafb0110b5cbc1c474613a275f10ece3c29451e5ba0b4a01"
+service_secret_key = "c5e54c988fcb382eecfce4bceaddf8d56ed0942d83208b59c4e3abacfe2c676d3672560e0da52915eafb0110b5cbc1c474613a275f10ece3c29451e5ba0b4a01"
+
+[services_secret_configs]

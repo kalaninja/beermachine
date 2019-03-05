@@ -1,0 +1,19 @@
+Description=beercoin node
+
+[Service]
+Type=simple
+PIDFile=/home/sib/beercoin.pid
+WorkingDirectory=/home/sib
+Restart=always
+RestartSec=10
+LimitNOFILE=65535
+User=root
+
+EnvironmentFile=/home/sib/env.sh
+ExecStart=/home/sib/beercoin run --db-path /opt/db --node-config /home/sib/node_5_cfg.toml
+ExecStop=/usr/bin/killall -9 beercoin
+StandardOutput=file:/home/sib/beercoin.log
+
+[Install]
+WantedBy=multi-user.target
+
