@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "27da39d9-b4a3-4e79-bdac-cdab28649adc",
+		"name": "beercoin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pay",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"body\": {\n    \"pub_key\": \"6ce29b2d3ecadc434107ce52c287001c968a1b6eca3e5a1eb62a2419e2924b85\",\n    \"id\": \"50\",\n    \"amount\": \"100\",\n    \"seed\": \"1111\"\n  },\n  \"protocol_version\": 0,\n  \"service_id\": 26,\n  \"message_id\": 1,\n  \"signature\":\"2c234680adaa67f1e6573895f1557230ea5373b0972f8aa714611f78931c4bae49680580d41ac806977a7a4f9556781018f1061c9be4adcaabc3760c5a92a70b\"\n}"
+				},
+				"url": {
+					"raw": "http://bc-node11.grounddc.ru:8200/api/services/beercoin/v1/wallets/transfer",
+					"protocol": "http",
+					"host": [
+						"bc-node11",
+						"grounddc",
+						"ru"
+					],
+					"port": "8200",
+					"path": [
+						"api",
+						"services",
+						"beercoin",
+						"v1",
+						"wallets",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "issue",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"body\": {\n    \"pub_key\": \"6ce29b2d3ecadc434107ce52c287001c968a1b6eca3e5a1eb62a2419e2924b85\",\n    \"id\": \"5\",\n    \"seed\": \"1111\"\n  },\n  \"protocol_version\": 0,\n  \"service_id\": 26,\n  \"message_id\": 0,\n  \"signature\":\"2c234680adaa67f1e6573895f1557230ea5373b0972f8aa714611f78931c4bae49680580d41ac806977a7a4f9556781018f1061c9be4adcaabc3760c5a92a70b\"\n}"
+				},
+				"url": {
+					"raw": "http://bc-node11.grounddc.ru:8200/api/services/beercoin/v1/wallets/transfer",
+					"protocol": "http",
+					"host": [
+						"bc-node11",
+						"grounddc",
+						"ru"
+					],
+					"port": "8200",
+					"path": [
+						"api",
+						"services",
+						"beercoin",
+						"v1",
+						"wallets",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "35.228.0.95/mock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "35.228.0.95/mock",
+					"host": [
+						"35",
+						"228",
+						"0",
+						"95"
+					],
+					"path": [
+						"mock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://bc-node11.grounddc.ru:8200/api/services/beercoin/v1/report?top=10",
+					"protocol": "http",
+					"host": [
+						"bc-node11",
+						"grounddc",
+						"ru"
+					],
+					"port": "8200",
+					"path": [
+						"api",
+						"services",
+						"beercoin",
+						"v1",
+						"report"
+					],
+					"query": [
+						{
+							"key": "top",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "wallet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://bc-node11.grounddc.ru:8200/api/services/beercoin/v1/wallet?id=-1",
+					"protocol": "http",
+					"host": [
+						"bc-node11",
+						"grounddc",
+						"ru"
+					],
+					"port": "8200",
+					"path": [
+						"api",
+						"services",
+						"beercoin",
+						"v1",
+						"wallet"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "-1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

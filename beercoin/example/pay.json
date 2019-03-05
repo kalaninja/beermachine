@@ -1,0 +1,12 @@
+{
+  "body": {
+    "pub_key": "6ce29b2d3ecadc434107ce52c287001c968a1b6eca3e5a1eb62a2419e2924b85",
+    "id": "5",
+    "amount": "10",
+    "seed": "0"
+  },
+  "protocol_version": 0,
+  "service_id": 26,
+  "message_id": 1,
+  "signature":"2c234680adaa67f1e6573895f1557230ea5373b0972f8aa714611f78931c4bae49680580d41ac806977a7a4f9556781018f1061c9be4adcaabc3760c5a92a70b"
+}
