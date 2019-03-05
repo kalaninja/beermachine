@@ -7,7 +7,7 @@ namespace Sibintek.BeerMachine.Validation
     {
         public AccountValidator()
         {
-            RuleFor(x => x.Id).NotEmpty();
+            RuleFor(x => x.Id).GreaterThan(0);
         }
     }
 }
