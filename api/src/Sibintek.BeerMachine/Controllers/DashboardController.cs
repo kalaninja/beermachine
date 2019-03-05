@@ -56,7 +56,7 @@ namespace Sibintek.BeerMachine.Controllers
                 
                 Transactions = Enumerable.Range(0,10).Select(x=> new TransactionModel
                 {
-                   WalletId = Guid.NewGuid().ToString("N"),
+                   WalletId = random.Next(1,5001),
                    Sum = random.Next(0,100),
                    Type = (TransactionType)random.Next(0,2),
                    TransactionDate = DateTime.Now

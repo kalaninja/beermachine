@@ -5,12 +5,12 @@ namespace Sibintek.BeerMachine.Services
 {
     public interface IBlockсhainClient
     {
-        Task Pay(long walletId, decimal sum);
+        Task<TransactionResponse> Pay(long walletId, decimal sum);
 
-        Task Issue(long walletId);
+        Task<TransactionResponse> Issue(long walletId);
 
         Task<Wallet> GetWallet(long id);
-        
-        
+
+        Task<BlockchainReport> Report(int count = 10);
     }
 }

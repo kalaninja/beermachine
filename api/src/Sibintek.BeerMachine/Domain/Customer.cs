@@ -1,9 +1,9 @@
 namespace Sibintek.BeerMachine.Domain
 {
-    public class Wallet
+    public class Customer
     {
-        public decimal Balance { get;  set; }
-        
         public long Id { get; set; }
+        
+        public string Name { get; set; }
     }
 }

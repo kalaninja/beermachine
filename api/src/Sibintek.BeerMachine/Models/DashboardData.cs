@@ -37,7 +37,7 @@ namespace Sibintek.BeerMachine.Models
 
         public string TransactionDateDisplayString => TransactionDate.ToString("dd.MM.yyyy HH:mm:ss");
         
-        public string WalletId { get; set; }
+        public long WalletId { get; set; }
         
         public TransactionType Type { get; set; }
         

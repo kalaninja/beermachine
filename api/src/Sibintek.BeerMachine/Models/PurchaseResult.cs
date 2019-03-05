@@ -4,9 +4,7 @@ namespace Sibintek.BeerMachine.Models
 {
     public class PurchaseResult
     {
-        public bool Success { get; set; }
-        
-        public string ErrorDescription { get; set; }
+        public PurchaseStatus Status { get; set; }
         
         public ShoppingCart ShoppingCart { get; set; }
         
@@ -15,5 +13,17 @@ namespace Sibintek.BeerMachine.Models
         public string ExceptionText { get; set; }
         
         public string Customer { get; set; }
+        
+        public string ErrorDescription { get; set; }
+        
+        public string TransactionHash { get; set; }
+        
+    }
+
+    public enum PurchaseStatus
+    {
+        Success = 0,
+        Rejected,
+        Error
     }
 }

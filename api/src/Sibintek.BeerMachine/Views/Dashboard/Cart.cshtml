@@ -30,25 +30,36 @@
         </div>
     </div>
 
-    <div class="col-md-6 order-md-2 mb-4" v-if="purchaseResult.success">
+    <div class="col-md-6 order-md-2 mb-4" v-if="purchaseResult.status == 0 || purchaseResult.status == 1">
         <cart-header
             v-bind:count="purchaseResult.shoppingCart.count">
         </cart-header>
         <cart-empty
             v-bind:isEmpty="purchaseResult.shoppingCart.isEmpty" v-if="purchaseResult.shoppingCart.isEmpty">
         </cart-empty>
+        
         <ul class="list-group mb-3">
             <cart-product
-                v-if="purchaseResult.success"
                 v-for="item in purchaseResult.shoppingCart.items"
                 v-bind:item="item">
             </cart-product>
             <cart-total v-bind:total="purchaseResult.shoppingCart.total" v-if="!purchaseResult.shoppingCart.isEmpty">
             </cart-total>
         </ul>
-        <div v-if="!purchaseResult.shoppingCart.isEmpty">
+        
+        <div v-if="purchaseResult.status == 0">
+            <div>Хэш транзакции: {{purchaseResult.transactionHash}}</div>
             <div>Покупатель: {{purchaseResult.customer}}</div>
             <div>Остаток: {{purchaseResult.walletBalance}}</div>
         </div>
+        
+        <div v-if="purchaseResult.status == 1">
+            <div>{{purchaseResult.errorDescription}}</div>
+            <div>Остаток: {{purchaseResult.walletBalance}}</div>
+        </div>
+    </div>
+    <div class="col-md-6 order-md-2 mb-4" v-if="purchaseResult.status == 2">
+        123
+        <div>{{purchaseResult.errorDescription}}</div>
     </div>
 </div>

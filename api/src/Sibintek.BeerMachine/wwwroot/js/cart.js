@@ -13,8 +13,13 @@
         
         app.$data.purchaseResult = purchaseResult;
         
-        if(purchaseResult.success){
+        if(purchaseResult.status === 0){
             app.$data.successPurchase = purchaseResult
+        }
+        
+        if(purchaseResult.exceptionText){
+            console.log("Ошибка api");
+            console.log(purchaseResult);
         }
     });
 

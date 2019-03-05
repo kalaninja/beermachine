@@ -10,24 +10,30 @@ namespace Sibintek.BeerMachine.Services
         private readonly IShoppingCartService _shoppingCartService;
 
         private readonly IBlockсhainClient _blockсhainClient;
+
+        private readonly ICustomerProvider _customerProvider;
         
-        public PurchaseService(IShoppingCartService shoppingCartService, IBlockсhainClient blockсhainClient)
+        public PurchaseService(IShoppingCartService shoppingCartService, IBlockсhainClient blockсhainClient, ICustomerProvider customerProvider)
         {
             _shoppingCartService = shoppingCartService;
             _blockсhainClient = blockсhainClient;
+            _customerProvider = customerProvider;
         }
         
         public async Task<PurchaseResult> MakePurchase(Account account)
         {
             try
-            {
+            {   
+                var customer = _customerProvider.GetCustomer(account.Id);
+                
                 var wallet = await _blockсhainClient.GetWallet(account.Id);
                 if (wallet == null)
                 {
                     return new PurchaseResult
                     {
-                        Success = false,
+                        Status = PurchaseStatus.Error,
                         ErrorDescription = "Кошелек участника не найден",
+                        Customer = customer?.Name
                     };
                 }
                 
@@ -36,39 +42,39 @@ namespace Sibintek.BeerMachine.Services
                 {
                     return new PurchaseResult
                     {
-                        Success = false,
-                        ErrorDescription = "Компьютерное зрение вернуло пустую корзину"
+                        Status = PurchaseStatus.Error,
+                        ErrorDescription = "Компьютерное зрение вернуло пустую корзину",
+                        Customer = customer?.Name
                     };
                 }
-                
                 
                 if (wallet.Balance < shoppingCart.Total)
                 {
                     return new PurchaseResult
                     {
-                        Success = false,
-                        ErrorDescription = "Недостаточно средств для покупки",
-                        WalletBalance = wallet.Balance
+                        Status = PurchaseStatus.Rejected,
+                        ErrorDescription = "Недостаточно баллов для покупки",
+                        WalletBalance = wallet.Balance,
+                        Customer = customer?.Name
                     };
-                }
-                else
+                }               
+                
+                var transactionResponse = await _blockсhainClient.Pay(account.Id, shoppingCart.Total);
+                return new PurchaseResult
                 {
-                    await _blockсhainClient.Pay(account.Id, shoppingCart.Total);
-
-                    return new PurchaseResult
-                    {
-                        Success = true,
-                        ShoppingCart = shoppingCart,
-                        WalletBalance = wallet.Balance - shoppingCart.Total
-                    };
-                }
+                    Status = PurchaseStatus.Success,
+                    ShoppingCart = shoppingCart,
+                    WalletBalance = wallet.Balance - shoppingCart.Total,
+                    TransactionHash = transactionResponse.Hash,
+                    Customer = customer?.Name
+                };
             }
             catch (Exception ex)
             {
                 return new PurchaseResult
                 {
-                    Success = false,
-                    ErrorDescription = "Неизвестная ошибка",
+                    Status = PurchaseStatus.Error,
+                    ErrorDescription = "Неизвестная ошибка. Обратитесь к администратору системы",
                     ExceptionText = ex.ToString()
                 };
             }
