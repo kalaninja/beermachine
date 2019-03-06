@@ -88,7 +88,7 @@ namespace Sibintek.BeerMachine
             services.AddSingleton(Configuration.GetSection(nameof(CustomerFileOptions)).Get<CustomerFileOptions>());
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
             services.AddSingleton<ISessionService, SessionService>();
-            services.AddSingleton<IBlockсhainClient, MockBlockсhainClient>();
+            services.AddSingleton<IBlockсhainClient, BlockсhainClient>();
             services.AddSingleton<IWalletService, WalletService>();
             services.AddSingleton<IPurchaseService, PurchaseService>();
             services.AddSingleton<ICustomerProvider, CustomerProvider>();

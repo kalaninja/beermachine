@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using Sibintek.BeerMachine.Domain;
 using Sibintek.BeerMachine.Settings;
 
@@ -9,7 +11,7 @@ namespace Sibintek.BeerMachine.Services
     public class CustomerProvider : ICustomerProvider
     {
         private ReadOnlyCollection<Customer> _customers;
-        
+
         private readonly CustomerFileOptions _options;
 
         public CustomerProvider(CustomerFileOptions options)
@@ -21,71 +23,27 @@ namespace Sibintek.BeerMachine.Services
 
         private void InitCustomerCollection()
         {
-            //var fileText = File.ReadAllText(_options.FilePath);
-
-            _customers = new List<Customer>
-            {
-                new Customer
-                {
-                    Id = 1,
-                    Name = "Иванов Иван"
-                },
-                new Customer
-                {
-                    Id = 2,
-                    Name = "Петров Семен"
-                },
-                new Customer
-                {
-                    Id = 3,
-                    Name = "Лев Тихонов"
-                },
-                new Customer
-                {
-                    Id = 4,
-                    Name = "Кирилл Зыков"
-                },
-                new Customer
-                {
-                    Id = 5,
-                    Name = "Гавриил Коновалов"
-                },
-                new Customer
-                {
-                    Id = 6,
-                    Name = "Александр Дроздов"
-                },
-                new Customer
-                {
-                    Id = 7,
-                    Name = "Борис Зиновьев"
-                },
-                new Customer
-                {
-                    Id = 8,
-                    Name = "Даниил Королёв"
-                },
-                new Customer
-                {
-                    Id = 9,
-                    Name = "Григорий Федотов"
-                },
-                new Customer
-                {
-                    Id = 10,
-                    Name = "Смирнов Петр"
-                },
-            }.AsReadOnly();
+            var text = File.ReadAllText(_options.FilePath);
+            _customers = JsonConvert.DeserializeObject<List<Customer>>(text).AsReadOnly();
         }
 
         public Customer GetCustomer(long id)
         {
-            return _customers.FirstOrDefault(customer => customer.Id == id);
+            var found = GetCustomerInternal(id);
+            if (found != null)
+            {
+                return found;
+            }
+
+            InitCustomerCollection();
+            return GetCustomerInternal(id);
         }
 
+        private Customer GetCustomerInternal(long id)
+            => _customers.FirstOrDefault(customer => customer.Id.Contains(id));
+
+
         public void ClearCache()
-        {
-            InitCustomerCollection();
-        }
+            => InitCustomerCollection();
     }
 }

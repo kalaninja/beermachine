@@ -39,7 +39,7 @@ namespace Sibintek.BeerMachine.Services
             var items = response.products
                 .Zip(response.quantity, (name, count) => (name, count))
                 .Zip(response.price_for_each,
-                    ((string name, int count) x, decimal price) => new ShoppingCart.Item(x.name, price, x.count))
+                    ((string name, int count) x, long price) => new ShoppingCart.Item(x.name, price, x.count))
                 .ToList();
 
             return new ShoppingCart(items);
@@ -47,7 +47,7 @@ namespace Sibintek.BeerMachine.Services
         
         private class ShoppingCartResponse
         {
-            public decimal[] price_for_each { get; set; }
+            public long[] price_for_each { get; set; }
             
             public string[] products { get; set; }
             

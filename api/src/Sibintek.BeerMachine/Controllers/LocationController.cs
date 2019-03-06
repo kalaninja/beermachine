@@ -10,10 +10,13 @@ namespace Sibintek.BeerMachine.Controllers
     public class LocationController : ControllerBase
     {
         private readonly IWalletService _walletService;
+        
+        private readonly IBlockсhainClient _blockсhainClient;
 
-        public LocationController(IWalletService walletService)
+        public LocationController(IWalletService walletService, IBlockсhainClient blockсhainClient)
         {
             _walletService = walletService;
+            _blockсhainClient = blockсhainClient;
         }
         
         [HttpPost]
@@ -27,6 +30,11 @@ namespace Sibintek.BeerMachine.Controllers
         [HttpPost("mock")]
         public ActionResult Mock([FromBody] Location[] locations)
         {
+            foreach (var location in locations)
+            {
+                _blockсhainClient.Issue(location.Id);
+            }
+            
             return Ok();
         }
     }

@@ -4,7 +4,7 @@ namespace Sibintek.BeerMachine.DataContracts
     {
         public bool Success { get; set; }
 
-        public decimal? Balance { get; set; }
+        public long? Balance { get; set; }
 
         public string Error { get; set; }
 
@@ -12,18 +12,10 @@ namespace Sibintek.BeerMachine.DataContracts
         {
         }
 
-        public static Result Ok(decimal balance) =>
+        public static Result Ok(long balance) =>
             new Result
             {
                 Success = true,
-                Balance = balance
-            };
-
-        public static Result LowBalance(decimal balance) =>
-            new Result
-            {
-                Success = false,
-                Error = "Недостаточно баллов",
                 Balance = balance
             };
 
