@@ -40,13 +40,7 @@ namespace Sibintek.BeerMachine.Services
                     };
                 }
 
-                //var shoppingCart = await _shoppingCartService.GetCurrentShoppingCart();
-                var shoppingCart = new ShoppingCart(new List<ShoppingCart.Item>()
-                {
-                    new ShoppingCart.Item("Борщ", 1, 10),
-                    //new ShoppingCart.Item("Уха", 100, 2),
-                    //new ShoppingCart.Item("Требуха", 300, 3),
-                });
+                var shoppingCart = await _shoppingCartService.GetCurrentShoppingCart();
                 
                 if (shoppingCart.IsEmpty)
                 {
