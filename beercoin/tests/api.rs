@@ -91,11 +91,19 @@ fn test_report() {
     testkit.create_block();
 
     let report = api.report();
-    assert_eq!(report.coins_mined, 17);
-    assert_eq!(report.coins_spent, 6);
+    assert_eq!(17, report.coins_mined);
+    assert_eq!(6, report.coins_spent);
 
-    let top_rich = report.top_rich.iter().map(|x| x.id()).collect::<Vec<i64>>();
-    assert_eq!(top_rich, vec![2, 3, 1])
+    let top_rich = report.top_rich.iter().map(|x| x.id()).collect::<Vec<_>>();
+    assert_eq!(vec![2, 3, 1], top_rich);
+
+    let top_buyers =
+        report.top_buyers.iter().map(|x| (x.buyer.id(), x.spent)).collect::<Vec<_>>();
+    assert_eq!(vec![(3, 3), (2, 2), (1, 1)], top_buyers);
+
+    assert_eq!(20, report.log.len());
+    assert_eq!(2, report.log.first().unwrap().block);
+    assert_eq!(1, report.log.last().unwrap().block);
 }
 
 struct BeerCoinApi {
@@ -142,7 +150,7 @@ impl BeerCoinApi {
     fn report(&self) -> Report {
         self.inner
             .public(ApiKind::Service("beercoin"))
-            .query(&ReportQuery { top: 10 })
+            .query(&ReportQuery { top: 10, tx_count: 100 })
             .get("v1/report")
             .unwrap()
     }

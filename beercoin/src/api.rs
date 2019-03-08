@@ -1,18 +1,18 @@
-use exonum::{
-    api::{self, ServiceApiBuilder, ServiceApiState},
-    blockchain::{self, BlockProof, Transaction, TransactionSet},
-    crypto::Hash,
-    helpers::Height,
-    node::TransactionSend,
-    storage::ListProof,
-};
-use std::cmp::Reverse;
 use crate::{
     config::*,
     schema::BeerCoinSchema,
     transactions::BeerCoinTransactions::{self, TxPay},
     wallet::Wallet,
 };
+use exonum::{
+    api::{self, ServiceApiBuilder, ServiceApiState},
+    blockchain::{self, BlockProof, Transaction, TransactionSet},
+    crypto::Hash,
+    helpers::Height,
+    node::TransactionSend,
+    storage::{ListProof, Snapshot},
+};
+use std::cmp::Reverse;
 
 #[derive(Debug, Clone)]
 pub struct BeerCoinApi;
@@ -64,36 +64,12 @@ impl BeerCoinApi {
         let schema = BeerCoinSchema::new(&snapshot);
         let general_schema = blockchain::Schema::new(&snapshot);
 
-        let mined = schema
-            .wallet(ISSUER_ID)
-            .map(|x| ISSUER_BALLANCE - x.balance())
-            .unwrap_or(0);
-        let shop = schema
-            .wallet(SHOP_ID)
-            .map(|x| x.balance())
-            .unwrap_or(0);
+        let mined = schema.wallet(ISSUER_ID).map(|x| ISSUER_BALLANCE - x.balance()).unwrap_or(0);
+        let shop = schema.wallet(SHOP_ID).map(|x| x.balance()).unwrap_or(0);
 
-        let mut wallets = schema
-            .wallets()
-            .values()
-            .filter(|x| x.id() > 0)
-            .collect::<Vec<Wallet>>();
+        let (top_rich, top_buyers) = Self::tops(query.top, &schema, &general_schema);
 
-        let limit = std::cmp::min(query.top, wallets.len());
-        wallets.sort_by_key(|x| Reverse(x.balance()));
-        let top_rich = wallets[..limit].to_vec();
-
-        wallets.sort_by_key(|x| {
-            schema.wallet_history(x.id())
-                .iter()
-                .map(|record| general_schema.transactions().get(&record).unwrap())
-                .map(|raw| BeerCoinTransactions::tx_from_raw(raw).unwrap())
-                .fold(0_u64, |acc, tx| match tx {
-                    TxPay(x) => acc + x.amount(),
-                    _ => acc,
-                });
-        });
-        let top_buyers = wallets[..limit].to_vec();
+        let log = Self::log(query.tx_count, &general_schema);
 
         let report = Report {
             coins_total: ISSUER_BALLANCE,
@@ -101,6 +77,7 @@ impl BeerCoinApi {
             coins_spent: shop,
             top_rich,
             top_buyers,
+            log,
         };
         Ok(report)
     }
@@ -124,16 +101,82 @@ impl BeerCoinApi {
             .endpoint("v1/wallets/info", Self::wallet_info)
             .endpoint_mut("v1/wallets/transfer", Self::post_transaction);
     }
+
+    fn tops(
+        top: usize,
+        schema: &BeerCoinSchema<&Box<Snapshot>>,
+        general_schema: &blockchain::Schema<&Box<Snapshot>>,
+    ) -> (Vec<Wallet>, Vec<Buyer>) {
+        let mut wallets =
+            schema.wallets().values().filter(|x| x.id() > 0).collect::<Vec<_>>();
+        let limit = std::cmp::min(top, wallets.len());
+
+        wallets.sort_by_key(|x| Reverse(x.balance()));
+        let top_rich = wallets[..limit].to_vec();
+
+        let mut buyers = wallets
+            .iter()
+            .map(|x| {
+                let spent = schema
+                    .wallet_history(x.id())
+                    .iter()
+                    .flat_map(|record| general_schema.transactions().get(&record))
+                    .flat_map(|raw| BeerCoinTransactions::tx_from_raw(raw))
+                    .fold(0_u64, |acc, tx| match tx {
+                        TxPay(x) => acc + x.amount(),
+                        _ => acc,
+                    });
+                Buyer { buyer: x.clone(), spent }
+            })
+            .collect::<Vec<_>>();
+        buyers.sort_by_key(|x| Reverse(x.spent));
+        let top_buyers = buyers[..limit].to_vec();
+
+        (top_rich, top_buyers)
+    }
+
+    fn log(
+        tx_count: usize,
+        general_schema: &blockchain::Schema<&Box<Snapshot>>,
+    ) -> Vec<TransactionLog> {
+        let Height(zero) = Height::zero();
+        let Height(height) = general_schema.height();
+
+        (zero..=height).rev()
+            .flat_map(|height| general_schema.block_transactions(Height(height))
+                .iter()
+                .flat_map(move |hash| general_schema.transactions().get(&hash)
+                    .and_then(|raw| BeerCoinTransactions::tx_from_raw(raw)
+                        .ok()
+                        .map(|tx| TransactionLog { block: height, tx_hash: hash, tx })))
+                .collect::<Vec<_>>())
+            .take(tx_count)
+            .collect::<Vec<_>>()
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, Copy)]
 pub struct WalletQuery {
-    pub id: i64
+    pub id: i64,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, Copy)]
 pub struct ReportQuery {
-    pub top: usize
+    pub top: usize,
+    pub tx_count: usize,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Buyer {
+    pub buyer: Wallet,
+    pub spent: u64,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct TransactionLog {
+    pub block: u64,
+    pub tx_hash: Hash,
+    pub tx: BeerCoinTransactions,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -142,12 +185,13 @@ pub struct Report {
     pub coins_mined: u64,
     pub coins_spent: u64,
     pub top_rich: Vec<Wallet>,
-    pub top_buyers: Vec<Wallet>,
+    pub top_buyers: Vec<Buyer>,
+    pub log: Vec<TransactionLog>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TransactionResponse {
-    pub tx_hash: Hash
+    pub tx_hash: Hash,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
