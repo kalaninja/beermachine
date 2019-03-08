@@ -41,9 +41,9 @@ namespace Sibintek.BeerMachine.Controllers
         {
             var shoppingCart = new ShoppingCart(new List<ShoppingCart.Item>()
             {
-                new ShoppingCart.Item("Борщ", 200, 1),
-                new ShoppingCart.Item("Уха", 100, 2),
-                new ShoppingCart.Item("Требуха", 300, 3),
+                new ShoppingCart.Item("Борщ", 1, 10),
+                //new ShoppingCart.Item("Уха", 100, 2),
+                //new ShoppingCart.Item("Требуха", 300, 3),
             });
             
             var purchaseResult = new PurchaseResult

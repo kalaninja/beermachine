@@ -28,7 +28,7 @@ namespace Sibintek.BeerMachine.Services
                 CoinsSpent = blockChainReport.CoinsSpent,
                 CoinsTotal = blockChainReport.CoinsTotal,
                 TopRich = blockChainReport.TopRich.Select(Map).OrderByDescending(x => x.Balance).ToList(),
-                TopBuyers = blockChainReport.TopBuyers.Select(Map).OrderByDescending(x => x.Balance).ToList(),
+                TopBuyers = blockChainReport.TopBuyers.Select(Map).OrderByDescending(x => x.Spent).ToList(),
                 Transactions = blockChainReport.Log?.Select(Map).OrderByDescending(x => x.TransactionDate).ToList(),
                 ReportDate = DateTime.Now
             };

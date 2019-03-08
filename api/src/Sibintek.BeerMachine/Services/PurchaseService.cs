@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sibintek.BeerMachine.DataContracts;
+using Sibintek.BeerMachine.Domain;
 using Sibintek.BeerMachine.Models;
 
 namespace Sibintek.BeerMachine.Services
@@ -39,6 +41,7 @@ namespace Sibintek.BeerMachine.Services
                 }
 
                 var shoppingCart = await _shoppingCartService.GetCurrentShoppingCart();
+                
                 if (shoppingCart.IsEmpty)
                 {
                     return new PurchaseResult
@@ -63,10 +66,10 @@ namespace Sibintek.BeerMachine.Services
 
                 var transactionResponse = await _blockсhainClient.Pay(account.Id, shoppingCart.Total);
 
-                const int max = 50;
+                const int max = 10;
                 for (var i = 0; i < max; i++)
                 {
-                    var status = await _blockсhainClient.GetStatus(transactionResponse.Hash);
+                    var status = await _blockсhainClient.GetStatus(transactionResponse.TxHash);
                     if (status.IsSuccess)
                     {
                         return new PurchaseResult
@@ -74,7 +77,7 @@ namespace Sibintek.BeerMachine.Services
                             Status = PurchaseStatus.Success,
                             ShoppingCart = shoppingCart,
                             WalletBalance = wallet.Balance - shoppingCart.Total,
-                            TransactionHash = transactionResponse.Hash,
+                            TransactionHash = transactionResponse.TxHash,
                             Customer = customer?.ParticipantName
                         };
                     }
@@ -86,7 +89,7 @@ namespace Sibintek.BeerMachine.Services
                             Status = PurchaseStatus.Rejected,
                             Customer = customer?.ParticipantName,
                             ShoppingCart = shoppingCart,
-                            TransactionHash = transactionResponse.Hash,
+                            TransactionHash = transactionResponse.TxHash,
                             WalletBalance = wallet.Balance,
                             ErrorDescription = "Транзакция отклонена blockchain"
                         };
@@ -100,7 +103,7 @@ namespace Sibintek.BeerMachine.Services
                     Status = PurchaseStatus.Error,
                     Customer = customer?.ParticipantName,
                     ShoppingCart = shoppingCart,
-                    TransactionHash = transactionResponse.Hash,
+                    TransactionHash = transactionResponse.TxHash,
                     WalletBalance = wallet.Balance,
                     ErrorDescription = "Статус транзакции неизвестен"
                 };

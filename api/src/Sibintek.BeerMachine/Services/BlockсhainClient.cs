@@ -128,7 +128,7 @@ namespace Sibintek.BeerMachine.Services
             {
                 Id = id,
                 Seed = seed,
-                Amount = null
+                Amount = amount?.ToString()
             };
             MessageId = messageId;
         }
@@ -142,7 +142,7 @@ namespace Sibintek.BeerMachine.Services
 
         public string Seed { get; set; }
 
-        public long? Amount { get; set; }
+        public string Amount { get; set; }
     }
 
     public class TransactionStatus
@@ -163,12 +163,12 @@ namespace Sibintek.BeerMachine.Services
 
         public Task<TransactionResponse> Pay(long walletId, long sum)
         {
-            return Task.FromResult(new TransactionResponse {Hash = "ashdfkyasoi62934yp9gwfd87fsc"});
+            return Task.FromResult(new TransactionResponse {TxHash = "ashdfkyasoi62934yp9gwfd87fsc"});
         }
 
         public Task<TransactionResponse> Issue(long walletId)
         {
-            return Task.FromResult(new TransactionResponse() {Hash = "ashdfkyasoi62934yp9gwfd87fsc"});
+            return Task.FromResult(new TransactionResponse() {TxHash = "ashdfkyasoi62934yp9gwfd87fsc"});
         }
 
         public Task<Wallet> GetWallet(long id)
