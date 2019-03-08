@@ -1,7 +1,7 @@
 use crate::{
     config::*,
     schema::BeerCoinSchema,
-    transactions::BeerCoinTransactions::{self, TxPay},
+    transactions::BeerCoinTransactions::{self, TxPay, TxIssue},
     wallet::Wallet,
 };
 use exonum::{
@@ -148,7 +148,7 @@ impl BeerCoinApi {
                 .flat_map(move |hash| general_schema.transactions().get(&hash)
                     .and_then(|raw| BeerCoinTransactions::tx_from_raw(raw)
                         .ok()
-                        .map(|tx| TransactionLog { block: height, tx_hash: hash, tx })))
+                        .map(|tx| TransactionLog::new(height, hash, tx))))
                 .collect::<Vec<_>>())
             .take(tx_count)
             .collect::<Vec<_>>()
@@ -176,7 +176,37 @@ pub struct Buyer {
 pub struct TransactionLog {
     pub block: u64,
     pub tx_hash: Hash,
-    pub tx: BeerCoinTransactions,
+    pub id: i64,
+    pub seed: u64,
+    pub message_id: u64,
+    pub amount: u64,
+}
+
+impl TransactionLog {
+    fn new(block: u64, tx_hash: Hash, tx: BeerCoinTransactions) -> Self {
+        match tx {
+            TxIssue(x) => {
+                Self {
+                    block,
+                    tx_hash,
+                    id: x.id(),
+                    seed: x.seed(),
+                    message_id: 0,
+                    amount: ISSUE_AMOUNT,
+                }
+            }
+            TxPay(x) => {
+                Self {
+                    block,
+                    tx_hash,
+                    id: x.id(),
+                    seed: x.seed(),
+                    message_id: 1,
+                    amount: x.amount(),
+                }
+            }
+        }
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
