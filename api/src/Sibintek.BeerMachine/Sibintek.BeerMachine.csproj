@@ -17,12 +17,12 @@
 
 
     <ItemGroup>
-      <Folder Include="Data" />
       <Folder Include="wwwroot\lib" />
     </ItemGroup>
 
+
     <ItemGroup>
-      <Content Update="Data\DevIds.json">
+      <Content Update="DevIds.json">
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
