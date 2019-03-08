@@ -80,6 +80,8 @@ namespace Sibintek.BeerMachine
                 });
             });
 
+            services.AddHttpClient();
+
             services.AddSingleton(Configuration.GetSection(nameof(ShoppingCartServiceOptions))
                 .Get<ShoppingCartServiceOptions>());
             services.AddSingleton(Configuration.GetSection(nameof(BlockchainOptions)).Get<BlockchainOptions>());
@@ -90,6 +92,7 @@ namespace Sibintek.BeerMachine
             services.AddSingleton<IWalletService, WalletService>();
             services.AddSingleton<IPurchaseService, PurchaseService>();
             services.AddSingleton<ICustomerProvider, CustomerProvider>();
+            services.AddSingleton<IReportService, ReportService>();
             
             //signalR
             services.AddSignalR();

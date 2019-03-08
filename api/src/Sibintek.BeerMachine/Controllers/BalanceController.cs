@@ -1,5 +1,7 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sibintek.BeerMachine.DataContracts;
+using Sibintek.BeerMachine.Services;
 
 namespace Sibintek.BeerMachine.Controllers
 {
@@ -8,10 +10,20 @@ namespace Sibintek.BeerMachine.Controllers
     [ApiController]
     public class BalanceController : ControllerBase
     {
-        [HttpPost]
-        public ActionResult<Result> Index([FromBody] Account account)
+        private readonly IBlockсhainClient _blockсhainClient;
+
+        public BalanceController(IBlockсhainClient blockсhainClient)
         {
-            return Result.Ok(5);
+            _blockсhainClient = blockсhainClient;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Result>> Index([FromBody] Account account)
+        {
+            var wallet = await _blockсhainClient.GetWallet(account.Id);
+            return wallet == null 
+                ? Result.NotFound() 
+                : Result.Ok(wallet.Balance);
         }
 
         [HttpPost("mock")]

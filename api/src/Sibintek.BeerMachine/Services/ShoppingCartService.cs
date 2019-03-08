@@ -10,16 +10,18 @@ namespace Sibintek.BeerMachine.Services
     public class ShoppingCartService : IShoppingCartService
     {
         private readonly ShoppingCartServiceOptions _shoppingCartServiceOptions;
+        
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public ShoppingCartService(ShoppingCartServiceOptions shoppingCartServiceOptions)
+        public ShoppingCartService(ShoppingCartServiceOptions shoppingCartServiceOptions, IHttpClientFactory httpClientFactory)
         {
             _shoppingCartServiceOptions = shoppingCartServiceOptions;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task<ShoppingCart> GetCurrentShoppingCart()
         {
-            using (var httpClient = new HttpClient())
-            using (var response = await httpClient.GetAsync(_shoppingCartServiceOptions.ServiceUrl))
+            using (var response = await _httpClientFactory.CreateClient().GetAsync(_shoppingCartServiceOptions.ServiceUrl))
             {
                 var responseText = await response
                     .EnsureSuccessStatusCode()
@@ -37,7 +39,7 @@ namespace Sibintek.BeerMachine.Services
             var items = response.products
                 .Zip(response.quantity, (name, count) => (name, count))
                 .Zip(response.price_for_each,
-                    ((string name, int count) x, decimal price) => new ShoppingCart.Item(x.name, price, x.count))
+                    ((string name, int count) x, long price) => new ShoppingCart.Item(x.name, price, x.count))
                 .ToList();
 
             return new ShoppingCart(items);
@@ -45,7 +47,7 @@ namespace Sibintek.BeerMachine.Services
         
         private class ShoppingCartResponse
         {
-            public decimal[] price_for_each { get; set; }
+            public long[] price_for_each { get; set; }
             
             public string[] products { get; set; }
             

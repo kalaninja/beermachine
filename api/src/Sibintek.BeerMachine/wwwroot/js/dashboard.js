@@ -16,11 +16,9 @@
             ],
             borderWidth: 0
         }],
-
-        // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: [
-            'Свободные баллы',
-            'Заработанные баллы'
+            'Заработанные баллы',
+            'Свободные баллы'
         ]
     };
     
@@ -33,11 +31,9 @@
             ],
             borderWidth: 0
         }],
-
-        // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: [
-            'Потрачено',
-            'Накоплено'
+            'Потраченные баллы',
+            'Накопленные баллы'
         ]
     };
     
@@ -88,10 +84,10 @@
     }
 
     function updateCharts(dashboardData) {
-        firstChart.data.datasets[0].data = dashboardData.earnedLostDataSet;
+        firstChart.data.datasets[0].data = [dashboardData.coinsMined, dashboardData.coinsTotal];
         firstChart.update();
         
-        secondChart.data.datasets[0].data = dashboardData.spendAccumulateDataSet;
+        secondChart.data.datasets[0].data = [dashboardData.coinsSpent,dashboardData.coinsMined];
         secondChart.update();
     }
 })();

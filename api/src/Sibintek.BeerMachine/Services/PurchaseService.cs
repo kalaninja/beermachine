@@ -33,7 +33,7 @@ namespace Sibintek.BeerMachine.Services
                     {
                         Status = PurchaseStatus.Error,
                         ErrorDescription = "Кошелек участника не найден",
-                        Customer = customer?.Name
+                        Customer = customer?.Fio
                     };
                 }
                 
@@ -44,7 +44,7 @@ namespace Sibintek.BeerMachine.Services
                     {
                         Status = PurchaseStatus.Error,
                         ErrorDescription = "Компьютерное зрение вернуло пустую корзину",
-                        Customer = customer?.Name
+                        Customer = customer?.Fio
                     };
                 }
                 
@@ -52,10 +52,11 @@ namespace Sibintek.BeerMachine.Services
                 {
                     return new PurchaseResult
                     {
+                        ShoppingCart = shoppingCart,
                         Status = PurchaseStatus.Rejected,
                         ErrorDescription = "Недостаточно баллов для покупки",
                         WalletBalance = wallet.Balance,
-                        Customer = customer?.Name
+                        Customer = customer?.Fio
                     };
                 }               
                 
@@ -66,7 +67,7 @@ namespace Sibintek.BeerMachine.Services
                     ShoppingCart = shoppingCart,
                     WalletBalance = wallet.Balance - shoppingCart.Total,
                     TransactionHash = transactionResponse.Hash,
-                    Customer = customer?.Name
+                    Customer = customer?.Fio
                 };
             }
             catch (Exception ex)

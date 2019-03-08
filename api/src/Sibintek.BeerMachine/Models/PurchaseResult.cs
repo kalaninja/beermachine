@@ -17,6 +17,17 @@ namespace Sibintek.BeerMachine.Models
         public string ErrorDescription { get; set; }
         
         public string TransactionHash { get; set; }
+
+        public static PurchaseResult Error(PurchaseStatus status, string errorDescription, string customerName, string exceptionText = null)
+        {
+            return new PurchaseResult
+            {
+                Status = status,
+                ErrorDescription = errorDescription,
+                Customer = customerName,
+                ExceptionText = exceptionText
+            };
+        }
         
     }
 

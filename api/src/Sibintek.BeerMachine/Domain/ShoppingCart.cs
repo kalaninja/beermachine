@@ -9,7 +9,7 @@ namespace Sibintek.BeerMachine.Domain
     {
         public ReadOnlyCollection<Item> Items { get; }
 
-        public decimal Total { get; }
+        public long Total { get; }
 
         public ShoppingCart(List<Item> items)
         {
@@ -17,7 +17,7 @@ namespace Sibintek.BeerMachine.Domain
             Total = items.Sum(x => x.Total);
         }
 
-        public bool IsEmpty => Items.Any();
+        public bool IsEmpty => !Items.Any();
 
         public class Item
         {
@@ -27,9 +27,9 @@ namespace Sibintek.BeerMachine.Domain
 
             public int Count { get; }
 
-            public decimal Total { get; }
+            public long Total { get; }
 
-            public Item(string name, decimal price, int count)
+            public Item(string name, long price, int count)
             {
                 Name = name;
                 Price = price;

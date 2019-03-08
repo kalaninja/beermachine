@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -18,28 +17,19 @@ namespace Sibintek.BeerMachine.Controllers
     {
         private readonly IHubContext<CartHub, ICartHub> _cartHubContext;
 
-        private readonly IShoppingCartService _shoppingCartService;
+        private readonly IPurchaseService _purchaseService;
         
         public PayController(
-            IHubContext<CartHub, ICartHub> cartHubContext,
-            IShoppingCartService shoppingCartService)
+            IHubContext<CartHub, ICartHub> cartHubContext, IPurchaseService purchaseService)
         {
             _cartHubContext = cartHubContext;
-            _shoppingCartService = shoppingCartService;
+            _purchaseService = purchaseService;
         }
         
         [HttpPost]
         public async Task<ActionResult> Index([FromBody] Account account)
         {
-            var shoppingCart = await _shoppingCartService.GetCurrentShoppingCart();
-
-            var purchaseResult = new PurchaseResult
-            {
-                Status = PurchaseStatus.Success,
-                ShoppingCart = shoppingCart,
-                WalletBalance = 100,
-                Customer = "Иванов Иван"
-            };
+            var purchaseResult = await _purchaseService.MakePurchase(account);
 
             await _cartHubContext.Clients.All.UpdatePurchaseResult(purchaseResult);
             
