@@ -43,7 +43,7 @@ Vue.component('cart-product', {
         '                    <h6 class="my-0">{{ item.name }}</h6>\n' +
         '                    <small class="text-muted">x {{ item.count }}</small>\n' +
         '                </div>\n' +
-        '                <span class="text-muted">{{ item.price}}</span>\n' +
+        '                <h6 class="text-muted">{{ item.price}}</h6>\n' +
         '</li>'
 });
 
@@ -72,8 +72,8 @@ Vue.component('purchase-product', {
 Vue.component('cart-total', {
     props: ['total', 'isEmpty'],
     template: '<li class="list-group-item d-flex justify-content-between">' +
-        '<span>Итого</span>\n' +
-        '<strong>{{total}}</strong>\n' +
+        '<h6>Итого</h6>\n' +
+        '<h6>{{total}}</h6>\n' +
         '</li>'
 });
 

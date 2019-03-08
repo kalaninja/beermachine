@@ -16,6 +16,18 @@
     #TOP { padding-bottom: 100px; }
 
     .total { font-size: 15pt; }
+    
+    .total .row {
+        padding-top: 12px;
+    }
+
+    .cart h4 { font-size: 1.8rem; }
+
+    .cart h6 { font-size: 1.6rem; }
+    
+    small.text-muted {
+        font-size: 90%;
+    }
 </style>
 
 <div id="root" class="row justify-content-md-center">
@@ -31,8 +43,8 @@
             </div>
         </div>
     </div>
-
-    <div class="col-md-8" v-if="purchaseResult.status == 0 || purchaseResult.status == 1">
+    
+    <div class="cart col-md-8" v-if="purchaseResult.status == 0 || purchaseResult.status == 1">
         <cart-header
             v-bind:count="purchaseResult.shoppingCart.count">
         </cart-header>
@@ -49,9 +61,14 @@
             </cart-total>
         </ul>
     </div>
-    
-    <div v-if="purchaseResult.status == 0">
-        <div class="row" >
+
+    <div class="col-md-8 total" v-if="purchaseResult.status == 0">
+        <div class="row">
+            <div class="col-md-8">
+                <b style="color: green">Успешная покупка</b>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-4">Хэш транзакции:</div>
             <div class="col-md-6">{{purchaseResult.transactionHash}}</div>
         </div>
@@ -60,23 +77,37 @@
             <div class="col-md-6">{{purchaseResult.customer}}</div>
         </div>
         <div class="row" v-if="purchaseResult.status == 0">
-            <div class="col-md-4">Остоток:</div>
+            <div class="col-md-4">Текущий остаток:</div>
             <div class="col-md-6">{{purchaseResult.walletBalance}}</div>
         </div>
     </div>
-    
-    <div v-if="purchaseResult.status == 1">
+
+    <div class="col-md-8 total" v-if="purchaseResult.status == 1">
         <div class="row">
-            <div class="col-md-4">1</div>
-            <div class="col-md-6">{{purchaseResult.errorDescription}}</div>
+            <div class="col-md-8">
+                <b style="color: indianred">Покупка не удалась</b>
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-4">Остаток:</div>
-            <div class="col-md-6">{{purchaseResult.walletBalance}}</div>
+            <div class="col-md-8">{{purchaseResult.errorDescription}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Текущий остаток:</div>
+            <div class="col-md-4">{{purchaseResult.walletBalance}}</div>
         </div>
     </div>
-    
-    <div class="col-md-6 order-md-2 mb-4" v-if="purchaseResult.status == 2">
-        <div>{{purchaseResult.errorDescription}}</div>
+
+    <div class="col-md-8 total" class="col-md-6 order-md-2 mb-4" v-if="purchaseResult.status == 2">
+        <div></div>
+        <div class="row">
+            <div class="col-md-8">
+                <b style="color: indianred">Покупка не удалась</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                {{purchaseResult.errorDescription}}
+            </div>
+        </div>
     </div>
 </div>

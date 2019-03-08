@@ -20,5 +20,7 @@ namespace Sibintek.BeerMachine.Domain
         public List<TransactionModel> Transactions { get; set; }
         
         public DateTime ReportDate { get; set; }
+
+        public string ReportDateDisplayString => ReportDate.ToString("dd.MM.yyyy HH:mm:ss");
     }
 }

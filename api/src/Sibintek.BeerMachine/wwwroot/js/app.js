@@ -6,7 +6,7 @@ var app = new Vue({
         dashboardData: {
             topRich: [],
             topBuyers: [],
-            lastUpdate: "00:00:00"
+            reportDateDisplayString: "09.03.2018 00:00:00"
         },
         purchaseResult:{
             success:true,

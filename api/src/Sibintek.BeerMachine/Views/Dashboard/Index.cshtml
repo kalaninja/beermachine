@@ -173,15 +173,15 @@
                     <h4 class="label">ЦИФРОВОЙ КЛАСТЕР. Умный магазин с BLOCKCHAIN-кошельком</h4>
                 </div>
             </div>
-            <div>
-                Время последнего обновления: {{dashboardData.lastUpdate}}
+            <div class="p-3">
+                Время последнего обновления: {{dashboardData.reportDateDisplayString}}
             </div>
         </div>
     </div>
     <div id="N1">
         <div class="widget">
             <h4 class="text-muted label">Заработанные Участниками баллы</h4>
-            <div class="container h-100">
+            <div class="container h-100" style="margin-top: -40px;">
                 <div class="row h-100">
                     <div class="col align-self-center">
                         <canvas id="firstChart"></canvas>
@@ -193,7 +193,7 @@
     <div id="N2">
         <div class="widget">
             <h4 class="text-muted label">Потраченные участниками баллы</h4>
-            <div class="container h-100">
+            <div class="container h-100" style="margin-top: -40px;">
                 <div class="row h-100">
                     <div class="col align-self-center">
                         <canvas id="secondChart"></canvas>
@@ -258,8 +258,16 @@
                             <td>{{purchaseResult.shoppingCart.total}}</td>
                         </tr>
                     </table>
-                    <div> Покупатель: {{successPurchase.customer}}</div>
-                    <div> Остаток: {{successPurchase.walletBalance}}</div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-4">Покупатель: </div>
+                            <div class="col-md-6">{{successPurchase.customer}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">Остаток: </div>
+                            <div class="col-md-6">{{successPurchase.walletBalance}}</div>
+                        </div>
+                    </div>
                 </div>
                 <cart-empty-dashboard v-bind:isEmpty="successPurchase.shoppingCart.isEmpty" v-if="successPurchase.shoppingCart.isEmpty">
                 </cart-empty-dashboard>

@@ -22,6 +22,22 @@
             console.log(purchaseResult);
         }
     });
+    
+    connection.onclose(function(){
+        console.log('connection closed try to reconnect');
+        var interval = setInterval(function(){
+            connection.start().then(
+                function(){
+                    console.log('reconnect success!');
+                    clearInterval(interval);
+                },
+                function(){
+                    console.log('reconnect failed')
+                });
+        },2000);
+        
+        
+    });
 
     connection.start();
 
