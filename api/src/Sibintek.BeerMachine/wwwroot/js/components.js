@@ -9,6 +9,15 @@ Vue.component('customer-row', {
         '</tr>'
 });
 
+Vue.component('buyer-row', {
+    props: ['customer', 'index'],
+    template: '<tr>\n' +
+        '<td>{{index+1}}</td>\n' +
+        '<td>{{customer.name}}</td>\n' +
+        '<td>{{customer.spent}}</td>\n' +
+        '</tr>'
+});
+
 Vue.component('cart-header', {
     props: ['count'],
     template: '<h4 class="d-flex justify-content-between align-items-center mb-3">\n' +
@@ -71,7 +80,8 @@ Vue.component('cart-total', {
 Vue.component('transaction-row', {
     props: ['transaction'],
     template: '<tr>\n' +
-        '<td>{{transaction.transactionDateDisplayString}}</td>\n' +
+        '<td>{{transaction.block}}</td>\n' +
+        '<td>{{transaction.hash}}</td>\n' +
         '<td>{{transaction.walletId}}</td>\n' +
         '<td>{{transaction.type === 0 ? "начисление" : "списание"}}</td>\n' +
         '<td>{{transaction.sum}}</td>\n' +

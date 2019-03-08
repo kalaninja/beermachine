@@ -13,5 +13,9 @@ namespace Sibintek.BeerMachine.Models
         public int Type { get; set; }
 
         public decimal Sum { get; set; }
+        
+        public long Block { get; set; }
+        
+        public string Hash { get; set; }
     }
 }

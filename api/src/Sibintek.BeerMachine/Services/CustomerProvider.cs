@@ -40,7 +40,7 @@ namespace Sibintek.BeerMachine.Services
         }
 
         private Customer GetCustomerInternal(long id)
-            => _customers.FirstOrDefault(customer => customer.Id.Contains(id));
+            => _customers.FirstOrDefault(customer => customer.DevId == id);
 
 
         public void ClearCache()

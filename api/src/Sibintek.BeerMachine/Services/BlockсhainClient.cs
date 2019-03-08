@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Sibintek.BeerMachine.Domain;
@@ -19,7 +20,7 @@ namespace Sibintek.BeerMachine.Services
         private readonly BlockchainOptions _options;
 
         private readonly IHttpClientFactory _httpClientFactory;
-        
+
         private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
             ContractResolver = new DefaultContractResolver
@@ -34,22 +35,39 @@ namespace Sibintek.BeerMachine.Services
             _httpClientFactory = httpClientFactory;
         }
 
+        public async Task<TransactionStatus> GetStatus(string transactionHash)
+        {
+            var url = _options.NodeUrls[0] + $"/api/explorer/v1/transactions?hash={transactionHash}";
+
+            using (var response = await _httpClientFactory.CreateClient().GetAsync(url))
+            {
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                var responseText = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
+
+                return JsonConvert.DeserializeObject<TransactionStatus>(responseText, _serializerSettings);
+            }
+        }
+
         public Task<TransactionResponse> Pay(long walletId, long sum)
         {
-            var request = new TransactionRequest(walletId.ToString(), DateTime.Now.Ticks.ToString(), sum);
+            var request = new TransactionRequest(walletId.ToString(), DateTime.Now.Ticks.ToString(), 1, sum);
             return Transfer(request);
         }
 
         public Task<TransactionResponse> Issue(long walletId)
         {
-            var request = new TransactionRequest(walletId.ToString(), DateTime.Now.Ticks.ToString());
+            var request = new TransactionRequest(walletId.ToString(), DateTime.Now.Ticks.ToString(), 0);
             return Transfer(request);
         }
 
         private async Task<TransactionResponse> Transfer(TransactionRequest request)
         {
             var url = _options.NodeUrls[0] + $"/api/services/beercoin/v1/wallets/transfer";
-            
+
             var requestText = JsonConvert.SerializeObject(request, _serializerSettings);
             var content = new StringContent(requestText, Encoding.UTF8, "application/json");
 
@@ -80,7 +98,7 @@ namespace Sibintek.BeerMachine.Services
 
         public async Task<BlockchainReportResponse> Report(int count = 10)
         {
-            var url = _options.NodeUrls[0] + $"/api/services/beercoin/v1/report?top={count}";
+            var url = _options.NodeUrls[0] + $"/api/services/beercoin/v1/report?top={count}&tx_count={count}";
 
             using (var response = await _httpClientFactory.CreateClient().GetAsync(url))
             {
@@ -97,13 +115,14 @@ namespace Sibintek.BeerMachine.Services
 
         public int ProtocolVersion => 0;
 
-        public long ServiceId => 26;
+        public int ServiceId => 26;
 
-        public long MessageId => 0;
+        public short MessageId { get; set; }
 
-        public string Signature => "2c234680adaa67f1e6573895f1557230ea5373b0972f8aa714611f78931c4bae49680580d41ac806977a7a4f9556781018f1061c9be4adcaabc3760c5a92a70b";
+        public string Signature =>
+            "2c234680adaa67f1e6573895f1557230ea5373b0972f8aa714611f78931c4bae49680580d41ac806977a7a4f9556781018f1061c9be4adcaabc3760c5a92a70b";
 
-        public TransactionRequest(string id, string seed, long? amount = null)
+        public TransactionRequest(string id, string seed, short messageId, long? amount = null)
         {
             Body = new TransactionBody
             {
@@ -111,22 +130,37 @@ namespace Sibintek.BeerMachine.Services
                 Seed = seed,
                 Amount = null
             };
+            MessageId = messageId;
         }
     }
-    
+
     public class TransactionBody
     {
         public string Id { get; set; }
 
         public string PubKey => "6ce29b2d3ecadc434107ce52c287001c968a1b6eca3e5a1eb62a2419e2924b85";
-        
+
         public string Seed { get; set; }
-        
+
         public long? Amount { get; set; }
+    }
+
+    public class TransactionStatus
+    {
+        public string Type { get; set; }
+
+        public bool IsSuccess => Type == "committed";
+
+        public bool IsError => Type == "error";
     }
 
     public class MockBlockсhainClient : IBlockсhainClient
     {
+        public Task<TransactionStatus> GetStatus(string transactionHash)
+        {
+            return Task.FromResult<TransactionStatus>(new TransactionStatus {Type = "committed"});
+        }
+
         public Task<TransactionResponse> Pay(long walletId, long sum)
         {
             return Task.FromResult(new TransactionResponse {Hash = "ashdfkyasoi62934yp9gwfd87fsc"});
@@ -158,21 +192,24 @@ namespace Sibintek.BeerMachine.Services
                     Balance = random.Next(15, 101)
                 }).ToList(),
 
-                TopBuyers = Enumerable.Range(1, 10).Select(x => new Wallet
+                TopBuyers = Enumerable.Range(1, 10).Select(x => new Buyer
                 {
-                    Id = x,
-                    Balance = random.Next(15, 101)
+                    BuyerWallet = new Wallet
+                    {
+                        Id = x,
+                        Balance = random.Next(15, 101)
+                    },
+                    Spent = random.Next(16, 200)
                 }).ToList(),
 
                 CoinsMined = random.Next(100, 2503),
                 CoinsSpent = random.Next(272, 1273),
                 CoinsTotal = random.Next(123, 1204),
-                Transactions = Enumerable.Range(1, 11).Select(x => new TransactionLogResponse
+                Log = Enumerable.Range(1, 11).Select(x => new TransactionLogResponse
                 {
-                    WalletId = x,
-                    Sum = random.Next(0, 100),
-                    Type = random.Next(0, 2),
-                    TransactionDate = DateTime.Now
+                    Amount = random.Next(0, 200),
+                    Id = x,
+                    Block = random.Next(1000, 20002)
                 }).ToList()
             });
         }

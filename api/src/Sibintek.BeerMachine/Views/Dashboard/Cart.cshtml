@@ -13,7 +13,9 @@
 <style>
     body { background-color: #eee; }
 
-    #TOP { padding-bottom: 20px; }
+    #TOP { padding-bottom: 100px; }
+
+    .total { font-size: 15pt; }
 </style>
 
 <div id="root" class="row justify-content-md-center">
@@ -30,14 +32,14 @@
         </div>
     </div>
 
-    <div class="col-md-6 order-md-2 mb-4" v-if="purchaseResult.status == 0 || purchaseResult.status == 1">
+    <div class="col-md-8" v-if="purchaseResult.status == 0 || purchaseResult.status == 1">
         <cart-header
             v-bind:count="purchaseResult.shoppingCart.count">
         </cart-header>
         <cart-empty
             v-bind:isEmpty="purchaseResult.shoppingCart.isEmpty" v-if="purchaseResult.shoppingCart.isEmpty">
         </cart-empty>
-        
+
         <ul class="list-group mb-3">
             <cart-product
                 v-for="item in purchaseResult.shoppingCart.items"
@@ -46,18 +48,34 @@
             <cart-total v-bind:total="purchaseResult.shoppingCart.total" v-if="!purchaseResult.shoppingCart.isEmpty">
             </cart-total>
         </ul>
-        
-        <div v-if="purchaseResult.status == 0">
-            <div>Хэш транзакции: {{purchaseResult.transactionHash}}</div>
-            <div>Покупатель: {{purchaseResult.customer}}</div>
-            <div>Остаток: {{purchaseResult.walletBalance}}</div>
+    </div>
+    
+    <div v-if="purchaseResult.status == 0">
+        <div class="row" >
+            <div class="col-md-4">Хэш транзакции:</div>
+            <div class="col-md-6">{{purchaseResult.transactionHash}}</div>
         </div>
-        
-        <div v-if="purchaseResult.status == 1">
-            <div>{{purchaseResult.errorDescription}}</div>
-            <div>Остаток: {{purchaseResult.walletBalance}}</div>
+        <div class="row" v-if="purchaseResult.status == 0">
+            <div class="col-md-4">Покупатель:</div>
+            <div class="col-md-6">{{purchaseResult.customer}}</div>
+        </div>
+        <div class="row" v-if="purchaseResult.status == 0">
+            <div class="col-md-4">Остоток:</div>
+            <div class="col-md-6">{{purchaseResult.walletBalance}}</div>
         </div>
     </div>
+    
+    <div v-if="purchaseResult.status == 1" class="row">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-6">{{purchaseResult.errorDescription}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Остаток:</div>
+            <div class="col-md-6">{{purchaseResult.walletBalance}}</div>
+        </div>
+    </div>
+    
     <div class="col-md-6 order-md-2 mb-4" v-if="purchaseResult.status == 2">
         <div>{{purchaseResult.errorDescription}}</div>
     </div>

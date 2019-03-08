@@ -5,7 +5,8 @@ var app = new Vue({
     data: {
         dashboardData: {
             topRich: [],
-            topBuyers: []
+            topBuyers: [],
+            lastUpdate: "00:00:00"
         },
         purchaseResult:{
             success:true,

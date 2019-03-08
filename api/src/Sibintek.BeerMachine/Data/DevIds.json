@@ -1,0 +1,1786 @@
+[
+  {
+    "DevId": 1,
+    "ParticipantName": "Titsch Thomas"
+  },
+  {
+    "DevId": 2,
+    "ParticipantName": "Абражевич Ольга Владиславовна"
+  },
+  {
+    "DevId": 3,
+    "ParticipantName": "Агаркова Маргарита Геннадьевна"
+  },
+  {
+    "DevId": 4,
+    "ParticipantName": "Аксёнов Борис Игоревич"
+  },
+  {
+    "DevId": 5,
+    "ParticipantName": "Алесенко Дмитрий Михайлович"
+  },
+  {
+    "DevId": 6,
+    "ParticipantName": "Алешков Илья Викторович"
+  },
+  {
+    "DevId": 7,
+    "ParticipantName": "Андриец Алексей Анатольевич"
+  },
+  {
+    "DevId": 8,
+    "ParticipantName": "Андриков Денис Анатольевич"
+  },
+  {
+    "DevId": 9,
+    "ParticipantName": "Андропов Алексей Викторович"
+  },
+  {
+    "DevId": 10,
+    "ParticipantName": "Антипин Евгений Олегович"
+  },
+  {
+    "DevId": 11,
+    "ParticipantName": "Антонов Вячеслав Борисович"
+  },
+  {
+    "DevId": 12,
+    "ParticipantName": "Арсеньев Сергей Александрович"
+  },
+  {
+    "DevId": 13,
+    "ParticipantName": "Архипкина Ирина Юрьевна"
+  },
+  {
+    "DevId": 14,
+    "ParticipantName": "Асадуллин Руслан Ринатович"
+  },
+  {
+    "DevId": 15,
+    "ParticipantName": "Бабич Дмитрий Борисович"
+  },
+  {
+    "DevId": 16,
+    "ParticipantName": "Бабич Роман Васильевич"
+  },
+  {
+    "DevId": 17,
+    "ParticipantName": "Бабушкина Людмила Витальевна"
+  },
+  {
+    "DevId": 18,
+    "ParticipantName": "Баврин Василий Оскарович"
+  },
+  {
+    "DevId": 19,
+    "ParticipantName": "Багрина Елена Владимировна"
+  },
+  {
+    "DevId": 20,
+    "ParticipantName": "Баженов Виктор Андреевич"
+  },
+  {
+    "DevId": 21,
+    "ParticipantName": "Байрамов Илгар Шахбаддин"
+  },
+  {
+    "DevId": 22,
+    "ParticipantName": "Балакшев Кирилл Дмитриевич"
+  },
+  {
+    "DevId": 23,
+    "ParticipantName": "Бандин Денис Сергеевич"
+  },
+  {
+    "DevId": 24,
+    "ParticipantName": "Бандурин Станислав Викторович"
+  },
+  {
+    "DevId": 25,
+    "ParticipantName": "Баранов Иван Александрович"
+  },
+  {
+    "DevId": 26,
+    "ParticipantName": "Баулин Алексей Анатольевич"
+  },
+  {
+    "DevId": 27,
+    "ParticipantName": "Бахиров Алексей Геннадьевич"
+  },
+  {
+    "DevId": 28,
+    "ParticipantName": "Бедрин Валерий Геннадьевич"
+  },
+  {
+    "DevId": 29,
+    "ParticipantName": "Бежин Олег Николаевич"
+  },
+  {
+    "DevId": 30,
+    "ParticipantName": "Беленко Александр Александрович"
+  },
+  {
+    "DevId": 31,
+    "ParticipantName": "Белова Татьяна Владимировна"
+  },
+  {
+    "DevId": 32,
+    "ParticipantName": "Белоусов Виктор Владимирович"
+  },
+  {
+    "DevId": 33,
+    "ParticipantName": "Белоусов Олег Викторович"
+  },
+  {
+    "DevId": 34,
+    "ParticipantName": "Белошапка Алексей Николаевич"
+  },
+  {
+    "DevId": 35,
+    "ParticipantName": "Блинников Максим Валерьевич"
+  },
+  {
+    "DevId": 36,
+    "ParticipantName": "Блинников Михаил Александрович"
+  },
+  {
+    "DevId": 37,
+    "ParticipantName": "Бобров Павел Юрьевич"
+  },
+  {
+    "DevId": 38,
+    "ParticipantName": "Богданчиков Кирилл Николаевич"
+  },
+  {
+    "DevId": 39,
+    "ParticipantName": "Болонев Константин Павлович"
+  },
+  {
+    "DevId": 40,
+    "ParticipantName": "Большаков Алексей Александрович"
+  },
+  {
+    "DevId": 41,
+    "ParticipantName": "Борзенков Дмитрий Алексеевич"
+  },
+  {
+    "DevId": 42,
+    "ParticipantName": "Борисов Алексей Александрович"
+  },
+  {
+    "DevId": 43,
+    "ParticipantName": "Борисов Сергей Геннадьевич"
+  },
+  {
+    "DevId": 44,
+    "ParticipantName": "Боронин Андрей Васильевич"
+  },
+  {
+    "DevId": 45,
+    "ParticipantName": "Борцов Евгений Семенович"
+  },
+  {
+    "DevId": 46,
+    "ParticipantName": "Боханкевич Василий Дмитриевич"
+  },
+  {
+    "DevId": 47,
+    "ParticipantName": "Бочаров Петр Александрович"
+  },
+  {
+    "DevId": 48,
+    "ParticipantName": "Бочков Дмитрий Иванович"
+  },
+  {
+    "DevId": 49,
+    "ParticipantName": "Бронников Владимир Павлович"
+  },
+  {
+    "DevId": 50,
+    "ParticipantName": "Бурлакова Ирина Николаевна"
+  },
+  {
+    "DevId": 51,
+    "ParticipantName": "Буртасов Александр Иванович"
+  },
+  {
+    "DevId": 52,
+    "ParticipantName": "Варьяс Иван Леонидович"
+  },
+  {
+    "DevId": 53,
+    "ParticipantName": "Вдовин Виктор Анатольевич"
+  },
+  {
+    "DevId": 54,
+    "ParticipantName": "Ведерников Артем Валерьевич"
+  },
+  {
+    "DevId": 55,
+    "ParticipantName": "Вергай Александр Юрьевич"
+  },
+  {
+    "DevId": 56,
+    "ParticipantName": "Веревкина Наталья Владимировна"
+  },
+  {
+    "DevId": 57,
+    "ParticipantName": "Виноградова Елена Петровна"
+  },
+  {
+    "DevId": 58,
+    "ParticipantName": "Возный Юрий Александрович"
+  },
+  {
+    "DevId": 59,
+    "ParticipantName": "Волков Роман Михайлович"
+  },
+  {
+    "DevId": 60,
+    "ParticipantName": "Вольский Андрей Андреевич"
+  },
+  {
+    "DevId": 61,
+    "ParticipantName": "Воробьев Юрий Евгеньевич"
+  },
+  {
+    "DevId": 62,
+    "ParticipantName": "Воронина Ирина Георгиевна"
+  },
+  {
+    "DevId": 63,
+    "ParticipantName": "Габриэлян Ольга Юрьевна"
+  },
+  {
+    "DevId": 64,
+    "ParticipantName": "Гаврилов Вячеслав Александрович"
+  },
+  {
+    "DevId": 65,
+    "ParticipantName": "Газизов Алексей Асхатович"
+  },
+  {
+    "DevId": 66,
+    "ParticipantName": "Гайлунь Владимир Вячеславович"
+  },
+  {
+    "DevId": 67,
+    "ParticipantName": "Ганевич Александр Станиславович"
+  },
+  {
+    "DevId": 68,
+    "ParticipantName": "Ганеев Тимур Айратович"
+  },
+  {
+    "DevId": 69,
+    "ParticipantName": "Гаркунов Станислав Алексеевич"
+  },
+  {
+    "DevId": 70,
+    "ParticipantName": "Гиринов Алексей Сергеевич"
+  },
+  {
+    "DevId": 71,
+    "ParticipantName": "Глотов Александр Александрович"
+  },
+  {
+    "DevId": 72,
+    "ParticipantName": "Годунов Владимир Борисович"
+  },
+  {
+    "DevId": 73,
+    "ParticipantName": "Головина Евгения Сергеевна"
+  },
+  {
+    "DevId": 74,
+    "ParticipantName": "Головков Александр Владимирович"
+  },
+  {
+    "DevId": 75,
+    "ParticipantName": "Голоха Евгений Владимирович"
+  },
+  {
+    "DevId": 76,
+    "ParticipantName": "Гольцман Антон Владимирович"
+  },
+  {
+    "DevId": 77,
+    "ParticipantName": "Гончаренко Антон Александрович"
+  },
+  {
+    "DevId": 78,
+    "ParticipantName": "Городов Андрей Алексеевич"
+  },
+  {
+    "DevId": 79,
+    "ParticipantName": "Горячев Сергей Петрович"
+  },
+  {
+    "DevId": 80,
+    "ParticipantName": "Григорченко Семён Борисович"
+  },
+  {
+    "DevId": 81,
+    "ParticipantName": "Григорьев Владимир Николаевич"
+  },
+  {
+    "DevId": 82,
+    "ParticipantName": "Громов Максим Юрьевич"
+  },
+  {
+    "DevId": 83,
+    "ParticipantName": "Грудинин Михаил Александрович"
+  },
+  {
+    "DevId": 84,
+    "ParticipantName": "Грязнова Яна Олеговна"
+  },
+  {
+    "DevId": 85,
+    "ParticipantName": "Губенко Юлия Владимировна"
+  },
+  {
+    "DevId": 86,
+    "ParticipantName": "Гуницкий Евгений Юрьевич"
+  },
+  {
+    "DevId": 87,
+    "ParticipantName": "Гусев Александр Иванович"
+  },
+  {
+    "DevId": 88,
+    "ParticipantName": "Данилова Елена Вячеславовна"
+  },
+  {
+    "DevId": 89,
+    "ParticipantName": "Двуреков Ярослав Евгеньевич"
+  },
+  {
+    "DevId": 90,
+    "ParticipantName": "Деев Олег Александрович"
+  },
+  {
+    "DevId": 91,
+    "ParticipantName": "Дементьева Елена Викторовна"
+  },
+  {
+    "DevId": 92,
+    "ParticipantName": "Демидов Артур Анатольевич"
+  },
+  {
+    "DevId": 93,
+    "ParticipantName": "Демченко Евгений Анатольевич"
+  },
+  {
+    "DevId": 94,
+    "ParticipantName": "Демьянов Алексей Владимирович"
+  },
+  {
+    "DevId": 95,
+    "ParticipantName": "Деньга Ульяна Юрьевна"
+  },
+  {
+    "DevId": 96,
+    "ParticipantName": "Джунковский Павел Олегович"
+  },
+  {
+    "DevId": 97,
+    "ParticipantName": "Дмитриев Вячеслав Валентинович"
+  },
+  {
+    "DevId": 98,
+    "ParticipantName": "Дмитриев Александр Сергеевич"
+  },
+  {
+    "DevId": 99,
+    "ParticipantName": "Добров Григорий Игоревич"
+  },
+  {
+    "DevId": 100,
+    "ParticipantName": "Довгань Елена Александровна"
+  },
+  {
+    "DevId": 101,
+    "ParticipantName": "Докучаев Игорь Евгеньевич"
+  },
+  {
+    "DevId": 102,
+    "ParticipantName": "Долгинов Сергей Львович"
+  },
+  {
+    "DevId": 103,
+    "ParticipantName": "Дронина Наталья Пантелеевна"
+  },
+  {
+    "DevId": 104,
+    "ParticipantName": "Дружинина Оксана Александровна"
+  },
+  {
+    "DevId": 105,
+    "ParticipantName": "Дулаев Константин Владимирович"
+  },
+  {
+    "DevId": 106,
+    "ParticipantName": "Евдокимов Денис -"
+  },
+  {
+    "DevId": 107,
+    "ParticipantName": "Егоров Николай Евгеньевич"
+  },
+  {
+    "DevId": 108,
+    "ParticipantName": "Елизаров Сергей Дмитриевич"
+  },
+  {
+    "DevId": 109,
+    "ParticipantName": "Елисеев Александр Юрьевич"
+  },
+  {
+    "DevId": 110,
+    "ParticipantName": "Елисеев Максим Евгеньевич"
+  },
+  {
+    "DevId": 111,
+    "ParticipantName": "Елоза Жанна Ивановна"
+  },
+  {
+    "DevId": 112,
+    "ParticipantName": "Еникеев Тимур Раилевич"
+  },
+  {
+    "DevId": 113,
+    "ParticipantName": "Еникеев Руслан Марсельевич"
+  },
+  {
+    "DevId": 114,
+    "ParticipantName": "Ердяков Евгений Сергеевич"
+  },
+  {
+    "DevId": 115,
+    "ParticipantName": "Ершов Антон Владимирович"
+  },
+  {
+    "DevId": 116,
+    "ParticipantName": "Ефимова Ирина Сергеевна"
+  },
+  {
+    "DevId": 117,
+    "ParticipantName": "Жаров Денис Владимирович"
+  },
+  {
+    "DevId": 118,
+    "ParticipantName": "Жеков Федор Иванович"
+  },
+  {
+    "DevId": 119,
+    "ParticipantName": "Желтышев Павел Васильевич"
+  },
+  {
+    "DevId": 120,
+    "ParticipantName": "Жиганова Кристина Евгеньевна"
+  },
+  {
+    "DevId": 121,
+    "ParticipantName": "Забатурин Алексей Владимирович"
+  },
+  {
+    "DevId": 122,
+    "ParticipantName": "Забегайлов Дмитрий Алексеевич"
+  },
+  {
+    "DevId": 123,
+    "ParticipantName": "Загайнов Олег Геннадьевич"
+  },
+  {
+    "DevId": 124,
+    "ParticipantName": "Загидуллин Ильдар Винерович"
+  },
+  {
+    "DevId": 125,
+    "ParticipantName": "Закатов Александр Юрьевич"
+  },
+  {
+    "DevId": 126,
+    "ParticipantName": "Занозин Илья Юрьевич"
+  },
+  {
+    "DevId": 127,
+    "ParticipantName": "Зарубина Кристина Юрьевна"
+  },
+  {
+    "DevId": 128,
+    "ParticipantName": "Збант Виталий -"
+  },
+  {
+    "DevId": 129,
+    "ParticipantName": "Зеленин Алексей Алексеевич"
+  },
+  {
+    "DevId": 130,
+    "ParticipantName": "Золотавин Алексей Юрьевич"
+  },
+  {
+    "DevId": 131,
+    "ParticipantName": "Золотарев Дмитрий Геннадьевич"
+  },
+  {
+    "DevId": 132,
+    "ParticipantName": "Зубарев Иван Степанович"
+  },
+  {
+    "DevId": 133,
+    "ParticipantName": "Зюкин Юрий Алексеевич"
+  },
+  {
+    "DevId": 134,
+    "ParticipantName": "Иванов Михаил Георгиевич"
+  },
+  {
+    "DevId": 135,
+    "ParticipantName": "Иванов Роман Викторович"
+  },
+  {
+    "DevId": 136,
+    "ParticipantName": "Ивашин Александр Александрович"
+  },
+  {
+    "DevId": 137,
+    "ParticipantName": "Ивлев Вадим Вячеславович"
+  },
+  {
+    "DevId": 138,
+    "ParticipantName": "Исаев Сергей Владимирович"
+  },
+  {
+    "DevId": 139,
+    "ParticipantName": "Исангильдин Раис Сабитович"
+  },
+  {
+    "DevId": 140,
+    "ParticipantName": "Ишмухаметов Расиль Рустамович"
+  },
+  {
+    "DevId": 141,
+    "ParticipantName": "Ищеряков Рафаэль Растямович"
+  },
+  {
+    "DevId": 142,
+    "ParticipantName": "Кабанов Владимир Иванович"
+  },
+  {
+    "DevId": 143,
+    "ParticipantName": "Кадыров Дмитрий Буттаевич"
+  },
+  {
+    "DevId": 144,
+    "ParticipantName": "Казаков Андрей Леонидович"
+  },
+  {
+    "DevId": 145,
+    "ParticipantName": "Каланходжаев Александр Ильдарович"
+  },
+  {
+    "DevId": 146,
+    "ParticipantName": "Калашников Алексей Викторович"
+  },
+  {
+    "DevId": 147,
+    "ParticipantName": "Калинин Артём Юрьевич"
+  },
+  {
+    "DevId": 148,
+    "ParticipantName": "Калинский Павел Борисович"
+  },
+  {
+    "DevId": 149,
+    "ParticipantName": "Калмыков Роман Евгеньевич"
+  },
+  {
+    "DevId": 150,
+    "ParticipantName": "Капцова Наталья Юрьевна"
+  },
+  {
+    "DevId": 151,
+    "ParticipantName": "Каштанов Александр Юрьевич"
+  },
+  {
+    "DevId": 152,
+    "ParticipantName": "Каштанов Иван Геннадьевич"
+  },
+  {
+    "DevId": 153,
+    "ParticipantName": "Кириков Антон Владимирович"
+  },
+  {
+    "DevId": 154,
+    "ParticipantName": "Клевенский Николай Витальевич"
+  },
+  {
+    "DevId": 155,
+    "ParticipantName": "Клековкин Александр Владимирович"
+  },
+  {
+    "DevId": 156,
+    "ParticipantName": "Кленин Сергей Евгеньевич"
+  },
+  {
+    "DevId": 157,
+    "ParticipantName": "Климкович Альберт Анатольевич"
+  },
+  {
+    "DevId": 158,
+    "ParticipantName": "Клур-Павлов Дмитрий Александрович"
+  },
+  {
+    "DevId": 159,
+    "ParticipantName": "Кнорре Виктор Алексеевич"
+  },
+  {
+    "DevId": 160,
+    "ParticipantName": "Коваленко Ольга Игоревна"
+  },
+  {
+    "DevId": 161,
+    "ParticipantName": "Коверга Тимур Леонидович"
+  },
+  {
+    "DevId": 162,
+    "ParticipantName": "Козарийчук Игорь Александрович"
+  },
+  {
+    "DevId": 163,
+    "ParticipantName": "Козлов Никита Сергеевич"
+  },
+  {
+    "DevId": 164,
+    "ParticipantName": "Козырева Анна Анатольевна"
+  },
+  {
+    "DevId": 165,
+    "ParticipantName": "Коконов Роман Альбертович"
+  },
+  {
+    "DevId": 166,
+    "ParticipantName": "Колесников Владимир Михайлович"
+  },
+  {
+    "DevId": 167,
+    "ParticipantName": "Кольцов Олег Станиславович"
+  },
+  {
+    "DevId": 168,
+    "ParticipantName": "Комиссаров Александр Васильевич"
+  },
+  {
+    "DevId": 169,
+    "ParticipantName": "Комкова Татьяна Игоревна"
+  },
+  {
+    "DevId": 170,
+    "ParticipantName": "Кондаков Дмитрий Евгеньевич"
+  },
+  {
+    "DevId": 171,
+    "ParticipantName": "Кондратьев Дмитрий Игоревич"
+  },
+  {
+    "DevId": 172,
+    "ParticipantName": "Константинова Ксения Константиновна"
+  },
+  {
+    "DevId": 173,
+    "ParticipantName": "Конюхов Сергей Владимирович"
+  },
+  {
+    "DevId": 174,
+    "ParticipantName": "Копин Владимир Анатольевич"
+  },
+  {
+    "DevId": 175,
+    "ParticipantName": "Коренев Максим Александрович"
+  },
+  {
+    "DevId": 176,
+    "ParticipantName": "Королев Владимир Геннадьевич"
+  },
+  {
+    "DevId": 177,
+    "ParticipantName": "Королёв Роман Валерьевич"
+  },
+  {
+    "DevId": 178,
+    "ParticipantName": "Костригин Игорь Вячеславович"
+  },
+  {
+    "DevId": 179,
+    "ParticipantName": "Костров Алексей Владимирович"
+  },
+  {
+    "DevId": 180,
+    "ParticipantName": "Котухов Эдуард Александрович"
+  },
+  {
+    "DevId": 181,
+    "ParticipantName": "Коцко Денис Иванович"
+  },
+  {
+    "DevId": 182,
+    "ParticipantName": "Кошкарев Дмитрий Геннадьевич"
+  },
+  {
+    "DevId": 183,
+    "ParticipantName": "Кравец Сергей Иванович"
+  },
+  {
+    "DevId": 184,
+    "ParticipantName": "Кренкель Эрнст Теодорович"
+  },
+  {
+    "DevId": 185,
+    "ParticipantName": "Кривенцев Денис Игорьевич"
+  },
+  {
+    "DevId": 186,
+    "ParticipantName": "Кривоносов Денис Викторович"
+  },
+  {
+    "DevId": 187,
+    "ParticipantName": "Кропанев Александр Валерьевич"
+  },
+  {
+    "DevId": 188,
+    "ParticipantName": "Кругляков Евгений Игоревич"
+  },
+  {
+    "DevId": 189,
+    "ParticipantName": "Кругляков Станислав Александрович"
+  },
+  {
+    "DevId": 190,
+    "ParticipantName": "Крущ Алексей Леонидович"
+  },
+  {
+    "DevId": 191,
+    "ParticipantName": "Крылов Евгений Владимирович"
+  },
+  {
+    "DevId": 192,
+    "ParticipantName": "Крылова Галина Игоревна"
+  },
+  {
+    "DevId": 193,
+    "ParticipantName": "Крысов Александр Николаевич"
+  },
+  {
+    "DevId": 194,
+    "ParticipantName": "Кудрявцев Дмитрий Иванович"
+  },
+  {
+    "DevId": 195,
+    "ParticipantName": "Кудряшов Константин Юрьевич"
+  },
+  {
+    "DevId": 196,
+    "ParticipantName": "Кулаков Юрий Николаевич"
+  },
+  {
+    "DevId": 197,
+    "ParticipantName": "Кулгарин Тимур Борисович"
+  },
+  {
+    "DevId": 198,
+    "ParticipantName": "Куликов Максим Андреевич"
+  },
+  {
+    "DevId": 199,
+    "ParticipantName": "Куликов Альберт Александрович"
+  },
+  {
+    "DevId": 200,
+    "ParticipantName": "Кульков Александр Валерьевич"
+  },
+  {
+    "DevId": 201,
+    "ParticipantName": "Кунафин Ринат Наильевич"
+  },
+  {
+    "DevId": 202,
+    "ParticipantName": "Кухтенков Игорь Юрьевич"
+  },
+  {
+    "DevId": 203,
+    "ParticipantName": "Кучеров (возможно будут"
+  },
+  {
+    "DevId": 204,
+    "ParticipantName": "Лаврентьев Дмитрий Алексеевич"
+  },
+  {
+    "DevId": 205,
+    "ParticipantName": "Лазарев Петр Иванович"
+  },
+  {
+    "DevId": 206,
+    "ParticipantName": "Ламухина Анна Игоревна"
+  },
+  {
+    "DevId": 207,
+    "ParticipantName": "Ларин Алексей Юрьевич"
+  },
+  {
+    "DevId": 208,
+    "ParticipantName": "Лебединский Кирилл Викторович"
+  },
+  {
+    "DevId": 209,
+    "ParticipantName": "Лекомцева Екатерина Викторовна"
+  },
+  {
+    "DevId": 210,
+    "ParticipantName": "Леонов Данил Сергеевич"
+  },
+  {
+    "DevId": 211,
+    "ParticipantName": "Лешко Дмитрий Станиславович"
+  },
+  {
+    "DevId": 212,
+    "ParticipantName": "Ли Иннокентий Андреевич"
+  },
+  {
+    "DevId": 213,
+    "ParticipantName": "Лисянский Максим Александрович"
+  },
+  {
+    "DevId": 214,
+    "ParticipantName": "Литвиненко Максим Анатольевич"
+  },
+  {
+    "DevId": 215,
+    "ParticipantName": "Литвинов Александр Михайлович"
+  },
+  {
+    "DevId": 216,
+    "ParticipantName": "Лобанов Антон Николаевич"
+  },
+  {
+    "DevId": 217,
+    "ParticipantName": "Лозанский Дмитрий Николаевич"
+  },
+  {
+    "DevId": 218,
+    "ParticipantName": "Лория Жан Ревазович"
+  },
+  {
+    "DevId": 219,
+    "ParticipantName": "Лукьянова Полина Александровна"
+  },
+  {
+    "DevId": 220,
+    "ParticipantName": "Лучков Валерий Александрович"
+  },
+  {
+    "DevId": 221,
+    "ParticipantName": "Любимов Сергей Николаевич"
+  },
+  {
+    "DevId": 222,
+    "ParticipantName": "Ляпин Михаил Владимирович"
+  },
+  {
+    "DevId": 223,
+    "ParticipantName": "Максимов Дмитрий Владимирович"
+  },
+  {
+    "DevId": 224,
+    "ParticipantName": "Малафеев Сергей Александрович"
+  },
+  {
+    "DevId": 225,
+    "ParticipantName": "Мальцев Александр Михайлович"
+  },
+  {
+    "DevId": 226,
+    "ParticipantName": "Манаков Дмитрий Владимирович"
+  },
+  {
+    "DevId": 227,
+    "ParticipantName": "Мандровский Александр Сергеевич"
+  },
+  {
+    "DevId": 228,
+    "ParticipantName": "Мантуров Виталий Юрьевич"
+  },
+  {
+    "DevId": 229,
+    "ParticipantName": "Маразенкова Светлана Ивановна"
+  },
+  {
+    "DevId": 230,
+    "ParticipantName": "Маркевич Станислав Олегович"
+  },
+  {
+    "DevId": 231,
+    "ParticipantName": "Мартынова Елена Валерьевна"
+  },
+  {
+    "DevId": 232,
+    "ParticipantName": "Марынич Константин Юрьевич"
+  },
+  {
+    "DevId": 233,
+    "ParticipantName": "Масленников Андрей Александрович"
+  },
+  {
+    "DevId": 234,
+    "ParticipantName": "Барышев Алексей Васильевич"
+  },
+  {
+    "DevId": 235,
+    "ParticipantName": "Мелехова Светлана Анатольевна"
+  },
+  {
+    "DevId": 236,
+    "ParticipantName": "Мелешко Максим Сергеевич"
+  },
+  {
+    "DevId": 237,
+    "ParticipantName": "Мельник Роман Юрьевич"
+  },
+  {
+    "DevId": 238,
+    "ParticipantName": "Мельников Константин Владимирович"
+  },
+  {
+    "DevId": 239,
+    "ParticipantName": "Мельников Олег Викторович"
+  },
+  {
+    "DevId": 240,
+    "ParticipantName": "Мельчугов Александр Николаевич"
+  },
+  {
+    "DevId": 241,
+    "ParticipantName": "Мерцалов Иван Вадимович"
+  },
+  {
+    "DevId": 242,
+    "ParticipantName": "Мехтиев Эльчин Мехтиевич"
+  },
+  {
+    "DevId": 243,
+    "ParticipantName": "Мещанов Алексей Михайлович"
+  },
+  {
+    "DevId": 244,
+    "ParticipantName": "Микитча Евгений Викторович"
+  },
+  {
+    "DevId": 245,
+    "ParticipantName": "Минкин Андрей Алексеевич"
+  },
+  {
+    "DevId": 246,
+    "ParticipantName": "Михайленко Алексей Олегович"
+  },
+  {
+    "DevId": 247,
+    "ParticipantName": "Михайлов Антон Константинович"
+  },
+  {
+    "DevId": 248,
+    "ParticipantName": "Михеев Александр Николаевич"
+  },
+  {
+    "DevId": 249,
+    "ParticipantName": "Моисеев Алексей Вячеславович"
+  },
+  {
+    "DevId": 250,
+    "ParticipantName": "Молоканов Иван Николаевич"
+  },
+  {
+    "DevId": 251,
+    "ParticipantName": "Молчанов Олег Владиславович"
+  },
+  {
+    "DevId": 252,
+    "ParticipantName": "Мольский Роман Владимирович"
+  },
+  {
+    "DevId": 253,
+    "ParticipantName": "Момот Александр Владимирович"
+  },
+  {
+    "DevId": 254,
+    "ParticipantName": "Мостовяк Сергей Иосифович"
+  },
+  {
+    "DevId": 255,
+    "ParticipantName": "Моторин Антон Николаевич"
+  },
+  {
+    "DevId": 256,
+    "ParticipantName": "Муратов Ринат Тахирович"
+  },
+  {
+    "DevId": 257,
+    "ParticipantName": "Мухамедьяров Альберт Винерович"
+  },
+  {
+    "DevId": 258,
+    "ParticipantName": "Надопта Сергей Васильевич"
+  },
+  {
+    "DevId": 259,
+    "ParticipantName": "Назаров Максим Владимирович"
+  },
+  {
+    "DevId": 260,
+    "ParticipantName": "Наумченков Алексей Леонидович"
+  },
+  {
+    "DevId": 261,
+    "ParticipantName": "Некрасов Андрей Николаевич"
+  },
+  {
+    "DevId": 262,
+    "ParticipantName": "Нечухаев Максим Аркадиевич"
+  },
+  {
+    "DevId": 263,
+    "ParticipantName": "Нигматуллин Айдар Рузалинович"
+  },
+  {
+    "DevId": 264,
+    "ParticipantName": "Низамов Радмир Радикович"
+  },
+  {
+    "DevId": 265,
+    "ParticipantName": "Никитин Валерий Юрьевич"
+  },
+  {
+    "DevId": 266,
+    "ParticipantName": "Никитин Борис Леонидович"
+  },
+  {
+    "DevId": 267,
+    "ParticipantName": "Никитина Альбина Станиславовна"
+  },
+  {
+    "DevId": 268,
+    "ParticipantName": "Никитина Галина Николаевна"
+  },
+  {
+    "DevId": 269,
+    "ParticipantName": "Никищенко Александр Викторович"
+  },
+  {
+    "DevId": 270,
+    "ParticipantName": "Николаев Глеб Андрианович"
+  },
+  {
+    "DevId": 271,
+    "ParticipantName": "Никульшин Андрей Васильевич"
+  },
+  {
+    "DevId": 272,
+    "ParticipantName": "Новиков Дмитрий Евгеньевич"
+  },
+  {
+    "DevId": 273,
+    "ParticipantName": "Новиков Сергей Владимирович"
+  },
+  {
+    "DevId": 274,
+    "ParticipantName": "Носиков Дмитрий Викторович"
+  },
+  {
+    "DevId": 275,
+    "ParticipantName": "Овчаров Дмитрий Сергеевич"
+  },
+  {
+    "DevId": 276,
+    "ParticipantName": "Окунева Лариса Александровна"
+  },
+  {
+    "DevId": 277,
+    "ParticipantName": "Оноприенко Алексей Владимирович"
+  },
+  {
+    "DevId": 278,
+    "ParticipantName": "Осипов Константин Сергеевич"
+  },
+  {
+    "DevId": 279,
+    "ParticipantName": "Павлова Наталья Владимировна"
+  },
+  {
+    "DevId": 280,
+    "ParticipantName": "Паков Сергей Владимирович"
+  },
+  {
+    "DevId": 281,
+    "ParticipantName": "Панарин Александр Сергеевич"
+  },
+  {
+    "DevId": 282,
+    "ParticipantName": "Панкратов Юрий Владимирович"
+  },
+  {
+    "DevId": 283,
+    "ParticipantName": "Папин Станислав Юрьевич"
+  },
+  {
+    "DevId": 284,
+    "ParticipantName": "Парасына Алексей Викторович"
+  },
+  {
+    "DevId": 285,
+    "ParticipantName": "Парталян Игорь Агаекович"
+  },
+  {
+    "DevId": 286,
+    "ParticipantName": "Патин Кирилл Игоревич"
+  },
+  {
+    "DevId": 287,
+    "ParticipantName": "Пекарский Сергей Дмитриевич"
+  },
+  {
+    "DevId": 288,
+    "ParticipantName": "Пелевин Илья Игоревич"
+  },
+  {
+    "DevId": 289,
+    "ParticipantName": "Пелех Денис Степанович"
+  },
+  {
+    "DevId": 290,
+    "ParticipantName": "Перевозный Владимир Николаевич"
+  },
+  {
+    "DevId": 291,
+    "ParticipantName": "Пермяков Алексей Александрович"
+  },
+  {
+    "DevId": 292,
+    "ParticipantName": "Пермяков Олег Анатольевич"
+  },
+  {
+    "DevId": 293,
+    "ParticipantName": "Петров Дмитрий Владимирович"
+  },
+  {
+    "DevId": 294,
+    "ParticipantName": "Петров Павел Андреевич"
+  },
+  {
+    "DevId": 295,
+    "ParticipantName": "Петров Артем Сергеевич"
+  },
+  {
+    "DevId": 296,
+    "ParticipantName": "Печурин Алексей Михайлович"
+  },
+  {
+    "DevId": 297,
+    "ParticipantName": "Пинской Евгений Александрович"
+  },
+  {
+    "DevId": 298,
+    "ParticipantName": "Плетнинцев Алексей Владимирович"
+  },
+  {
+    "DevId": 299,
+    "ParticipantName": "Подвинцев Ким Олегович"
+  },
+  {
+    "DevId": 300,
+    "ParticipantName": "Подземельных Андрей Вячеславович"
+  },
+  {
+    "DevId": 301,
+    "ParticipantName": "Полянский Михаил Александрович"
+  },
+  {
+    "DevId": 302,
+    "ParticipantName": "Поразочко Владимир Николаевич"
+  },
+  {
+    "DevId": 303,
+    "ParticipantName": "Порошин Николай Владимирович"
+  },
+  {
+    "DevId": 304,
+    "ParticipantName": "Приходько Павел Александрович"
+  },
+  {
+    "DevId": 305,
+    "ParticipantName": "Прохожев Алексей Николаевич"
+  },
+  {
+    "DevId": 306,
+    "ParticipantName": "Проценко Андрей Викторович"
+  },
+  {
+    "DevId": 307,
+    "ParticipantName": "Пучков Николай Викторович"
+  },
+  {
+    "DevId": 308,
+    "ParticipantName": "Пушкин Никита Валерьевич"
+  },
+  {
+    "DevId": 309,
+    "ParticipantName": "Рахматуллин Радик Рауитович"
+  },
+  {
+    "DevId": 310,
+    "ParticipantName": "Раченков Валерий Валерьевич"
+  },
+  {
+    "DevId": 311,
+    "ParticipantName": "Раянов Алик Флюрович"
+  },
+  {
+    "DevId": 312,
+    "ParticipantName": "Решетников Дмитрий Сергеевич"
+  },
+  {
+    "DevId": 313,
+    "ParticipantName": "Романов Алексей Сергеевич"
+  },
+  {
+    "DevId": 314,
+    "ParticipantName": "Рукавишникова Евдокия Львовна"
+  },
+  {
+    "DevId": 315,
+    "ParticipantName": "Русаков Сергей Юрьевич"
+  },
+  {
+    "DevId": 316,
+    "ParticipantName": "Рыбин Илья Михайлович"
+  },
+  {
+    "DevId": 317,
+    "ParticipantName": "Рыжков Артем Николаевич"
+  },
+  {
+    "DevId": 318,
+    "ParticipantName": "Рыжов Александр Евгеньевич"
+  },
+  {
+    "DevId": 319,
+    "ParticipantName": "Рындин Андрей Михайлович"
+  },
+  {
+    "DevId": 320,
+    "ParticipantName": "Рябушев Виктор Александрович"
+  },
+  {
+    "DevId": 321,
+    "ParticipantName": "Сабиров Роберт Равелевич"
+  },
+  {
+    "DevId": 322,
+    "ParticipantName": "Гришин Александр Сергеевич"
+  },
+  {
+    "DevId": 323,
+    "ParticipantName": "Сальников Юрий Александрович"
+  },
+  {
+    "DevId": 324,
+    "ParticipantName": "Самилло Алексей Викторович"
+  },
+  {
+    "DevId": 325,
+    "ParticipantName": "Самойленко Игорь Александрович"
+  },
+  {
+    "DevId": 326,
+    "ParticipantName": "Саркисов Артем Константинович"
+  },
+  {
+    "DevId": 327,
+    "ParticipantName": "Сафин Максим Филюрович"
+  },
+  {
+    "DevId": 328,
+    "ParticipantName": "Саяпин Евгений Анатольевич"
+  },
+  {
+    "DevId": 329,
+    "ParticipantName": "Светличный Вадим Анатольевич"
+  },
+  {
+    "DevId": 330,
+    "ParticipantName": "Светов Сергей Геннадьевич"
+  },
+  {
+    "DevId": 331,
+    "ParticipantName": "Селиверстов Сергей Валентинович"
+  },
+  {
+    "DevId": 332,
+    "ParticipantName": "Селиверстов Артем Юрьевич"
+  },
+  {
+    "DevId": 333,
+    "ParticipantName": "Селянкин Александр Владимирович"
+  },
+  {
+    "DevId": 334,
+    "ParticipantName": "Семенов Сергей Николаевич"
+  },
+  {
+    "DevId": 335,
+    "ParticipantName": "Семенов (возможно будут"
+  },
+  {
+    "DevId": 336,
+    "ParticipantName": "Сёмкин Руслан Петрович"
+  },
+  {
+    "DevId": 337,
+    "ParticipantName": "Сеничкина Надежда Анатольевна"
+  },
+  {
+    "DevId": 338,
+    "ParticipantName": "Сенчаков Вадим Геннадьевич"
+  },
+  {
+    "DevId": 339,
+    "ParticipantName": "Сергачева Алла Владимировна"
+  },
+  {
+    "DevId": 340,
+    "ParticipantName": "Сергеев Вячеслав Викторович"
+  },
+  {
+    "DevId": 341,
+    "ParticipantName": "Сергеев Наталья Викторовна"
+  },
+  {
+    "DevId": 342,
+    "ParticipantName": "Серов  Кирилл"
+  },
+  {
+    "DevId": 343,
+    "ParticipantName": "Серых Татьяна Александровна"
+  },
+  {
+    "DevId": 344,
+    "ParticipantName": "Сидоров Александр Иванович"
+  },
+  {
+    "DevId": 345,
+    "ParticipantName": "Сидорова Анжелика Николаевна"
+  },
+  {
+    "DevId": 346,
+    "ParticipantName": "Симкин Андрей Юрьевич"
+  },
+  {
+    "DevId": 347,
+    "ParticipantName": "Симонов Андрей Юрьевич"
+  },
+  {
+    "DevId": 348,
+    "ParticipantName": "Смагин Максим Александрович"
+  },
+  {
+    "DevId": 349,
+    "ParticipantName": "Смирнов Валентин Владимирович"
+  },
+  {
+    "DevId": 350,
+    "ParticipantName": "Смыслов Андрей Михайлович"
+  },
+  {
+    "DevId": 351,
+    "ParticipantName": "Снесарев Максим Станиславович"
+  },
+  {
+    "DevId": 352,
+    "ParticipantName": "Шубин Илья Сергеевич"
+  },
+  {
+    "DevId": 353,
+    "ParticipantName": "Сокуров Денис Сергеевич"
+  },
+  {
+    "DevId": 354,
+    "ParticipantName": "Солафильева Светлана Вячеславовна"
+  },
+  {
+    "DevId": 355,
+    "ParticipantName": "Солнышкин Андрей Михайлович"
+  },
+  {
+    "DevId": 356,
+    "ParticipantName": "Соловьев Павел Олегович"
+  },
+  {
+    "DevId": 357,
+    "ParticipantName": "Соловьева Мария Николаевна"
+  },
+  {
+    "DevId": 358,
+    "ParticipantName": "Солтаев Ильяс Висханович"
+  },
+  {
+    "DevId": 359,
+    "ParticipantName": "Сопов Алексей Витальевич"
+  },
+  {
+    "DevId": 360,
+    "ParticipantName": "Стадников Николай Дмитриевич"
+  },
+  {
+    "DevId": 361,
+    "ParticipantName": "Стакс Янис Айварович"
+  },
+  {
+    "DevId": 362,
+    "ParticipantName": "Степанова Елена Георгиевна"
+  },
+  {
+    "DevId": 363,
+    "ParticipantName": "Столицын Николай Владимирович"
+  },
+  {
+    "DevId": 364,
+    "ParticipantName": "Сторчилов Андрей Анатольевич"
+  },
+  {
+    "DevId": 365,
+    "ParticipantName": "Сугаков Владимир Павлович"
+  },
+  {
+    "DevId": 366,
+    "ParticipantName": "Сурнин Дмитрий Иванович"
+  },
+  {
+    "DevId": 367,
+    "ParticipantName": "Суснин Владимир Владимирович"
+  },
+  {
+    "DevId": 368,
+    "ParticipantName": "Сычев Вадим Вячеславович"
+  },
+  {
+    "DevId": 369,
+    "ParticipantName": "Тамбасов Сергей Васильевич"
+  },
+  {
+    "DevId": 370,
+    "ParticipantName": "Текучев Владимир Александрович"
+  },
+  {
+    "DevId": 371,
+    "ParticipantName": "Темченко Людмила Владимировна"
+  },
+  {
+    "DevId": 372,
+    "ParticipantName": "Терентьев Денис Андреевич"
+  },
+  {
+    "DevId": 373,
+    "ParticipantName": "Терешина Ирина Владимировна"
+  },
+  {
+    "DevId": 374,
+    "ParticipantName": "Тимофеев Дмитрий Николаевич"
+  },
+  {
+    "DevId": 375,
+    "ParticipantName": "Тищенко Марина Игоревна"
+  },
+  {
+    "DevId": 376,
+    "ParticipantName": "Токарь Мария Николаевна"
+  },
+  {
+    "DevId": 377,
+    "ParticipantName": "Толстопятенко Юрий Викторович"
+  },
+  {
+    "DevId": 378,
+    "ParticipantName": "Торопов Денис Вячеславович"
+  },
+  {
+    "DevId": 379,
+    "ParticipantName": "Травилин Юрий Михайлович"
+  },
+  {
+    "DevId": 380,
+    "ParticipantName": "Трусий Евгений Игоревич"
+  },
+  {
+    "DevId": 381,
+    "ParticipantName": "Тубольцев Владимир Александрович"
+  },
+  {
+    "DevId": 382,
+    "ParticipantName": "Тумаков Роман Николаевич"
+  },
+  {
+    "DevId": 383,
+    "ParticipantName": "Тураджева Диана Львовна"
+  },
+  {
+    "DevId": 384,
+    "ParticipantName": "Уваров Алексей Олегович"
+  },
+  {
+    "DevId": 385,
+    "ParticipantName": "Урманцев Радион Мажитович"
+  },
+  {
+    "DevId": 386,
+    "ParticipantName": "Усков Михаил Валерьевич"
+  },
+  {
+    "DevId": 387,
+    "ParticipantName": "Устинов Сергей Юрьевич"
+  },
+  {
+    "DevId": 388,
+    "ParticipantName": "Фатеева Кристина Леонидовна"
+  },
+  {
+    "DevId": 389,
+    "ParticipantName": "Федоров Александр Вячеславович"
+  },
+  {
+    "DevId": 390,
+    "ParticipantName": "Федотова Екатерина Васильевна"
+  },
+  {
+    "DevId": 391,
+    "ParticipantName": "Федченко Игорь Валерьянович"
+  },
+  {
+    "DevId": 392,
+    "ParticipantName": "Федюков Николай Геннадьевич"
+  },
+  {
+    "DevId": 393,
+    "ParticipantName": "Федяев Игорь Владимирович"
+  },
+  {
+    "DevId": 394,
+    "ParticipantName": "Филатов Дмитрий Анатольевич"
+  },
+  {
+    "DevId": 395,
+    "ParticipantName": "Филатов Денис Анатольевич"
+  },
+  {
+    "DevId": 396,
+    "ParticipantName": "Филатова Мария Александровна"
+  },
+  {
+    "DevId": 397,
+    "ParticipantName": "Филимонова Елена Игоревна"
+  },
+  {
+    "DevId": 398,
+    "ParticipantName": "Филиппов Станислав Сергеевич"
+  },
+  {
+    "DevId": 399,
+    "ParticipantName": "Филиппов Александр Сергеевич"
+  },
+  {
+    "DevId": 400,
+    "ParticipantName": "Финенко Алексей Сергеевич"
+  },
+  {
+    "DevId": 401,
+    "ParticipantName": "Финкель Михаил Андреевич"
+  },
+  {
+    "DevId": 402,
+    "ParticipantName": "ФИО кандидата будет"
+  },
+  {
+    "DevId": 403,
+    "ParticipantName": "Фирсов Иван Александрович"
+  },
+  {
+    "DevId": 404,
+    "ParticipantName": "Фоломеев Владимир Валентинович"
+  },
+  {
+    "DevId": 405,
+    "ParticipantName": "Фролова Екатерина Викторовна"
+  },
+  {
+    "DevId": 406,
+    "ParticipantName": "Фурсов Вадим Викторович"
+  },
+  {
+    "DevId": 407,
+    "ParticipantName": "Хайруллин Тимур Наилевич"
+  },
+  {
+    "DevId": 408,
+    "ParticipantName": "Хакимов Руслан Раисович"
+  },
+  {
+    "DevId": 409,
+    "ParticipantName": "Халецкий Игорь Геннадьевич"
+  },
+  {
+    "DevId": 410,
+    "ParticipantName": "Хамидуллина Амиля Радиславовна"
+  },
+  {
+    "DevId": 411,
+    "ParticipantName": "Харитонов Олег Владимирович"
+  },
+  {
+    "DevId": 412,
+    "ParticipantName": "Хасанов Руслан Николаевич"
+  },
+  {
+    "DevId": 413,
+    "ParticipantName": "Ходакова Виктория Ивановна"
+  },
+  {
+    "DevId": 414,
+    "ParticipantName": "Хоренко Сергей Владимирович"
+  },
+  {
+    "DevId": 415,
+    "ParticipantName": "Хорлин Илья Андреевич"
+  },
+  {
+    "DevId": 416,
+    "ParticipantName": "Цареградский Петр Юрьевич"
+  },
+  {
+    "DevId": 417,
+    "ParticipantName": "Цветков Дмитрий Сергеевич"
+  },
+  {
+    "DevId": 418,
+    "ParticipantName": "Цициев Абубакар Аюпович"
+  },
+  {
+    "DevId": 419,
+    "ParticipantName": "Цой Альберт Сергеевич"
+  },
+  {
+    "DevId": 420,
+    "ParticipantName": "Чернер Вадим Сергеевич"
+  },
+  {
+    "DevId": 421,
+    "ParticipantName": "Черных Евгений Валерьевич"
+  },
+  {
+    "DevId": 422,
+    "ParticipantName": "Чернягова Екатерина Константиновна"
+  },
+  {
+    "DevId": 423,
+    "ParticipantName": "Чикамасов Виктор Владимирович"
+  },
+  {
+    "DevId": 424,
+    "ParticipantName": "Чистюнин Владимир Анатольевич"
+  },
+  {
+    "DevId": 425,
+    "ParticipantName": "Чистякова Анастасия Владимировна"
+  },
+  {
+    "DevId": 426,
+    "ParticipantName": "Чуваткин Алексей Викторович"
+  },
+  {
+    "DevId": 427,
+    "ParticipantName": "Чудин Ян Сергеевич"
+  },
+  {
+    "DevId": 428,
+    "ParticipantName": "Шаблонов Сергей Викторович"
+  },
+  {
+    "DevId": 429,
+    "ParticipantName": "Шаврин Дмитрий Валерьевич"
+  },
+  {
+    "DevId": 430,
+    "ParticipantName": "Шаталов Александр Вячеславович"
+  },
+  {
+    "DevId": 431,
+    "ParticipantName": "Шевцов Александр Валерьевич"
+  },
+  {
+    "DevId": 432,
+    "ParticipantName": "Шепляков Владислав Дмитриевич"
+  },
+  {
+    "DevId": 433,
+    "ParticipantName": "Шерембей Андрей Витальевич"
+  },
+  {
+    "DevId": 434,
+    "ParticipantName": "Шибанов Геннадий Викторович"
+  },
+  {
+    "DevId": 435,
+    "ParticipantName": "Шилько Сергей Николаевич"
+  },
+  {
+    "DevId": 436,
+    "ParticipantName": "Шмельков Сергей Александрович"
+  },
+  {
+    "DevId": 437,
+    "ParticipantName": "Шумеев Василий Николаевич"
+  },
+  {
+    "DevId": 438,
+    "ParticipantName": "Шустров Олег Анатольевич"
+  },
+  {
+    "DevId": 439,
+    "ParticipantName": "Щелконогов Сергей Юрьевич"
+  },
+  {
+    "DevId": 440,
+    "ParticipantName": "Юсупов Олег Равильевич"
+  },
+  {
+    "DevId": 441,
+    "ParticipantName": "Якимов Илья Сергеевич"
+  },
+  {
+    "DevId": 442,
+    "ParticipantName": "Яковлев Александр Викторович"
+  },
+  {
+    "DevId": 443,
+    "ParticipantName": "Яньков Виктор Викторович"
+  },
+  {
+    "DevId": 444,
+    "ParticipantName": "Яцишен Игорь Дмитриевич"
+  },
+  {
+    "DevId": 445,
+    "ParticipantName": "Яцко Дмитрий Геннадьевич"
+  },
+  {
+    "DevId": 446,
+    "ParticipantName": "Яцков Григорий Петрович"
+  }
+]

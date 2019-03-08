@@ -1,6 +1,6 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Storage;
 using Sibintek.BeerMachine.Domain;
 using Sibintek.BeerMachine.Models;
 
@@ -29,13 +29,14 @@ namespace Sibintek.BeerMachine.Services
                 CoinsTotal = blockChainReport.CoinsTotal,
                 TopRich = blockChainReport.TopRich.Select(Map).OrderByDescending(x => x.Balance).ToList(),
                 TopBuyers = blockChainReport.TopBuyers.Select(Map).OrderByDescending(x => x.Balance).ToList(),
-                Transactions = blockChainReport.Transactions?.Select(Map).OrderByDescending(x => x.TransactionDate).ToList(),
+                Transactions = blockChainReport.Log?.Select(Map).OrderByDescending(x => x.TransactionDate).ToList(),
+                ReportDate = DateTime.Now
             };
         }
 
         private CustomerModel Map(Wallet wallet)
         {
-            var customerName = _customerProvider.GetCustomer(wallet.Id)?.Fio ?? "Неизвестный участник";
+            var customerName = _customerProvider.GetCustomer(wallet.Id)?.ParticipantName ?? "Неизвестный участник";
 
             return new CustomerModel
             {
@@ -45,14 +46,29 @@ namespace Sibintek.BeerMachine.Services
             };
         }
 
+        private BuyerModel Map(Buyer buyer)
+        {
+            var customerName = _customerProvider.GetCustomer(buyer.BuyerWallet.Id)?.ParticipantName ?? "Неизвестный участник";
+
+            return new BuyerModel
+            {
+                Id = buyer.BuyerWallet.Id,
+                Balance = buyer.BuyerWallet.Balance,
+                Name = customerName,
+                Spent = buyer.Spent
+            };
+        }
+
         private static TransactionModel Map(TransactionLogResponse transaction)
         {
             return new TransactionModel
             {
-                Sum = transaction.Sum,
-                Type = transaction.Type,
-                WalletId = transaction.WalletId,
-                TransactionDate = transaction.TransactionDate
+                Sum = transaction.Amount,
+                Type = transaction.MessageId,
+                WalletId = transaction.Id,
+                TransactionDate =  transaction.TransactionDate,
+                Hash = transaction.TxHash,
+                Block = transaction.Block
             };
         }
     }

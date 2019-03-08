@@ -7,6 +7,8 @@ namespace Sibintek.BeerMachine.Services
 {
     public interface IBlockсhainClient
     {
+        Task<TransactionStatus> GetStatus(string transactionHash);
+        
         Task<TransactionResponse> Pay(long walletId, long sum);
 
         Task<TransactionResponse> Issue(long walletId);

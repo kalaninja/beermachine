@@ -2,8 +2,8 @@ namespace Sibintek.BeerMachine.Domain
 {
     public class Customer
     {
-        public long[] Id { get; set; }
+        public long DevId { get; set; }
         
-        public string Fio { get; set; }
+        public string ParticipantName { get; set; }
     }
 }

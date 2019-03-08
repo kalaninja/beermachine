@@ -173,6 +173,9 @@
                     <h4 class="label">ЦИФРОВОЙ КЛАСТЕР. Умный магазин с BLOCKCHAIN-кошельком</h4>
                 </div>
             </div>
+            <div>
+                Время последнего обновления: {{dashboardData.lastUpdate}}
+            </div>
         </div>
     </div>
     <div id="N1">
@@ -231,7 +234,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr is="customer-row" v-for="(item,index) in dashboardData.topBuyers" v-bind:customer="item" v-bind:index="index"></tr>
+                    <tr is="buyer-row" v-for="(item,index) in dashboardData.topBuyers" v-bind:customer="item" v-bind:index="index"></tr>
                     </tbody>
                 </table>
             </div>
@@ -269,7 +272,8 @@
             <table class="table table-striped table-sm">
                 <thead>
                 <tr>
-                    <th>Дата транзакции</th>
+                    <th>Блок транзакции</th>
+                    <th>Хэш</th>
                     <th>Номер кошелька Участника</th>
                     <th>Тип транзакции</th>
                     <th>Сумма транзакции</th>

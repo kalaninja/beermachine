@@ -8,4 +8,9 @@ namespace Sibintek.BeerMachine.Models
 
         public string Name { get; set; }
     }
+
+    public class BuyerModel: CustomerModel
+    {
+        public long Spent { get; set; }
+    }
 }
