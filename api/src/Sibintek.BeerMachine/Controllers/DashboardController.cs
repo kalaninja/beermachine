@@ -18,11 +18,6 @@ namespace Sibintek.BeerMachine.Controllers
             return View();
         }
 
-        public ActionResult Cart()
-        {
-            return View();
-        }
-
         public async Task<JsonResult> Data()
         {
             var reportData = await _reportService.GetReport();

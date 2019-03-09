@@ -53,7 +53,7 @@ Vue.component('purchase', {
         '<tr>' +
         '<th>Товар</th>' +
         '<th>Количество</th>' +
-        '<th>Стоимость ед.</th>' +
+        '<th>Стоимость, sibcoin</th>' +
         '</tr>' +
         '<tr is="purchase-product" v-for="item in purchaseResult.shoppingCart.items"></tr>' +
         '</table>' +

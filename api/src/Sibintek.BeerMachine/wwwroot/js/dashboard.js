@@ -4,7 +4,7 @@
     var timerId = setInterval(function () {
         updateDashboard();
 
-    }, 5000);
+    }, 20000);
 
     //init pie charts
     var firstChartData = {
