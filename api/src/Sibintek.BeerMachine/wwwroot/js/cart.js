@@ -1,9 +1,25 @@
 "use strict";
 
 (function(){
+    var emptyPurchase = {
+        success: true,
+        shoppingCart:{
+            items:[],
+            total: 0,
+            isEmpty: true
+        },
+        customer:""
+    };
+    
+    var timeOutId = undefined;
+    
     var connection = new signalR.HubConnectionBuilder().withUrl("/cartHub").build();
 
     connection.on("UpdatePurchaseResult", function (purchaseResult) {
+        if(timeOutId){
+            clearTimeout(timeOutId);
+        }
+        
         if(purchaseResult.shoppingCart){
             purchaseResult.shoppingCart.isEmpty = (!purchaseResult.shoppingCart.items || purchaseResult.shoppingCart.items === 0);
             purchaseResult.shoppingCart.count = purchaseResult.shoppingCart.isEmpty 
@@ -21,6 +37,10 @@
             console.log("Ошибка api");
             console.log(purchaseResult);
         }
+
+        timeOutId = setTimeout(function(){
+            app.$data.purchaseResult =  emptyPurchase;
+        },60000)
     });
     
     connection.onclose(function(){
