@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Sibintek.BeerMachine.DataContracts;
-using Sibintek.BeerMachine.Domain;
 using Sibintek.BeerMachine.Models;
 
 namespace Sibintek.BeerMachine.Services
@@ -15,12 +14,15 @@ namespace Sibintek.BeerMachine.Services
 
         private readonly ICustomerProvider _customerProvider;
 
+        private readonly ILogger _logger;
+
         public PurchaseService(IShoppingCartService shoppingCartService, IBlockсhainClient blockсhainClient,
-            ICustomerProvider customerProvider)
+            ICustomerProvider customerProvider, ILoggerFactory loggerFactory)
         {
             _shoppingCartService = shoppingCartService;
             _blockсhainClient = blockсhainClient;
             _customerProvider = customerProvider;
+            _logger = loggerFactory.CreateLogger<PurchaseService>();
         }
 
         public async Task<PurchaseResult> MakePurchase(Account account)
@@ -98,6 +100,8 @@ namespace Sibintek.BeerMachine.Services
                     await Task.Delay(TimeSpan.FromMilliseconds(100));
                 }
                 
+                _logger.LogWarning($"Статус транзакции неизвестен после {max} попыток");
+                
                 return new PurchaseResult
                 {
                     Status = PurchaseStatus.Error,
@@ -110,6 +114,8 @@ namespace Sibintek.BeerMachine.Services
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Ошибка при оплате");
+                
                 return new PurchaseResult
                 {
                     Status = PurchaseStatus.Error,

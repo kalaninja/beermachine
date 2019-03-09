@@ -1,6 +1,9 @@
 "use strict";
 
 (function () {
+    //first time update
+    updateDashboard();
+    
     var timerId = setInterval(function () {
         updateDashboard();
 

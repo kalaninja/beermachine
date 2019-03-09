@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Sibintek.BeerMachine.Domain;
 using Sibintek.BeerMachine.Settings;
@@ -14,9 +15,13 @@ namespace Sibintek.BeerMachine.Services
 
         private readonly CustomerFileOptions _options;
 
-        public CustomerProvider(CustomerFileOptions options)
+        private readonly ILogger _logger;
+
+        public CustomerProvider(CustomerFileOptions options, ILoggerFactory loggerFactory)
         {
             _options = options;
+
+            _logger = loggerFactory.CreateLogger<CustomerProvider>();
 
             InitCustomerCollection();
         }
@@ -30,13 +35,12 @@ namespace Sibintek.BeerMachine.Services
         public Customer GetCustomer(long id)
         {
             var found = GetCustomerInternal(id);
-            if (found != null)
+            if (found == null)
             {
-                return found;
+                _logger.LogError($"Покупатель c Id {id} не найден в файле.");
             }
 
-            InitCustomerCollection();
-            return GetCustomerInternal(id);
+            return found;
         }
 
         private Customer GetCustomerInternal(long id)

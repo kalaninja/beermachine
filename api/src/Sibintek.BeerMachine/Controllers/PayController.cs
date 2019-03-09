@@ -52,7 +52,7 @@ namespace Sibintek.BeerMachine.Controllers
                 ShoppingCart = shoppingCart,
                 WalletBalance = 100,
                 Customer = "Иванов Иван",
-                TransactionHash = "2C886F84AD23BA59CF12EA15A80FBA5C",
+                TransactionHash = "3b8d3d62456a56e047eeb4b37dc9b6d27285cb63877c929b3a6aae574b6e4de2",
             };
 
             if (status == PurchaseStatus.Rejected)
