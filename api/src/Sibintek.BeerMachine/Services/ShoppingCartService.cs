@@ -1,9 +1,11 @@
+using System;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using MimeMapping;
 using Newtonsoft.Json;
+using Polly;
 using Sibintek.BeerMachine.Settings;
 using Sibintek.BeerMachine.Domain;
 
@@ -24,16 +26,22 @@ namespace Sibintek.BeerMachine.Services
 
         public async Task<ShoppingCart> GetCurrentShoppingCart()
         {
-            using (var response =
-                await _httpClientFactory.CreateClient().GetAsync(_shoppingCartServiceOptions.ServiceUrl))
-            {
-                var responseText = await response
-                    .EnsureSuccessStatusCode()
-                    .Content
-                    .ReadAsStringAsync();
+            return await Policy
+                .Handle<Exception>()
+                .RetryAsync(2)
+                .ExecuteAsync(async () =>
+                {
+                    using (var response = await _httpClientFactory.CreateClient()
+                        .GetAsync(_shoppingCartServiceOptions.ServiceUrl))
+                    {
+                        var responseText = await response
+                            .EnsureSuccessStatusCode()
+                            .Content
+                            .ReadAsStringAsync();
 
-                return Parse(responseText);
-            }
+                        return Parse(responseText);
+                    }
+                });
         }
 
         public Task SuccessPurchase()
@@ -53,14 +61,20 @@ namespace Sibintek.BeerMachine.Services
 
         private async Task Status(string status)
         {
-            var body = JsonConvert.SerializeObject(new StatusRequest {status = status});
-            var content = new StringContent(body, Encoding.UTF8, KnownMimeTypes.Json);
+            await Policy
+                .Handle<Exception>()
+                .RetryAsync(2)
+                .ExecuteAsync(async () =>
+                {
+                    var body = JsonConvert.SerializeObject(new StatusRequest {status = status});
+                    var content = new StringContent(body, Encoding.UTF8, KnownMimeTypes.Json);
 
-            using (var response = await _httpClientFactory.CreateClient()
-                .PostAsync(_shoppingCartServiceOptions.StatusUrl, content))
-            {
-                response.EnsureSuccessStatusCode();
-            }
+                    using (var response = await _httpClientFactory.CreateClient()
+                        .PostAsync(_shoppingCartServiceOptions.StatusUrl, content))
+                    {
+                        response.EnsureSuccessStatusCode();
+                    }
+                });
         }
 
         private static ShoppingCart Parse(string responseText)
