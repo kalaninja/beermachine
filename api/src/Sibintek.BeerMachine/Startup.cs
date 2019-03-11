@@ -87,6 +87,8 @@ namespace Sibintek.BeerMachine
                 .Get<ShoppingCartServiceOptions>());
             services.AddSingleton(Configuration.GetSection(nameof(BlockchainOptions)).Get<BlockchainOptions>());
             services.AddSingleton(Configuration.GetSection(nameof(CustomerFileOptions)).Get<CustomerFileOptions>());
+            services.AddSingleton(Configuration.GetSection(nameof(MaintenanceOptions)).Get<MaintenanceOptions>());
+            
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
             services.AddSingleton<ISessionService, SessionService>();
             services.AddSingleton<IBlockсhainClient, BlockсhainClient>();
@@ -94,6 +96,7 @@ namespace Sibintek.BeerMachine
             services.AddSingleton<IPurchaseService, PurchaseService>();
             services.AddSingleton<ICustomerProvider, CustomerProvider>();
             services.AddSingleton<IReportService, ReportService>();
+            services.AddSingleton<IMaintenanceService, MaintenanceService>();
             
             //signalR
             services.AddSignalR();

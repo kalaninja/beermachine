@@ -28,43 +28,41 @@ namespace Sibintek.BeerMachine.Services
 
         public async Task<PurchaseResult> MakePurchase(Account account)
         {
+            var result = await GetPurchaseResult(account);
+            if (result.Status == PurchaseStatus.Success)
+            {
+                await _shoppingCartService.SuccessPurchase();
+            }
+            else
+            {
+                await _shoppingCartService.FailurePurchase();
+            }
+
+            return result;
+        }
+
+        public async Task<PurchaseResult> GetPurchaseResult(Account account)
+        {
             try
             {
-                var customer = _customerProvider.GetCustomer(account.Id);
+                var customerName = _customerProvider.GetCustomer(account.Id)?.ParticipantName ?? "Неизвестный участник";
 
                 var wallet = await _blockсhainClient.GetWallet(account.Id);
                 if (wallet == null)
                 {
-                    return new PurchaseResult
-                    {
-                        Status = PurchaseStatus.Error,
-                        ErrorDescription = "Кошелек участника не найден",
-                        Customer = customer?.ParticipantName
-                    };
+                    return PurchaseResult.Error("Кошелек участника не найден", customerName);
                 }
 
                 var shoppingCart = await _shoppingCartService.GetCurrentShoppingCart();
-                
                 if (shoppingCart.IsEmpty)
                 {
-                    return new PurchaseResult
-                    {
-                        Status = PurchaseStatus.Error,
-                        ErrorDescription = "Компьютерное зрение вернуло пустую корзину",
-                        Customer = customer?.ParticipantName
-                    };
+                    return PurchaseResult.Error("Компьютерное зрение вернуло пустую корзину", customerName);
                 }
 
                 if (wallet.Balance < shoppingCart.Total)
                 {
-                    return new PurchaseResult
-                    {
-                        ShoppingCart = shoppingCart,
-                        Status = PurchaseStatus.Rejected,
-                        ErrorDescription = "Недостаточно баллов для покупки",
-                        WalletBalance = wallet.Balance,
-                        Customer = customer?.ParticipantName
-                    };
+                    return PurchaseResult.Rejected(customerName, "Недостаточно баллов для покупки", shoppingCart,
+                        wallet.Balance);
                 }
 
                 var transactionResponse = await _blockсhainClient.Pay(account.Id, shoppingCart.Total);
@@ -75,54 +73,29 @@ namespace Sibintek.BeerMachine.Services
                     var status = await _blockсhainClient.GetStatus(transactionResponse.TxHash);
                     if (status.IsSuccess)
                     {
-                        return new PurchaseResult
-                        {
-                            Status = PurchaseStatus.Success,
-                            ShoppingCart = shoppingCart,
-                            WalletBalance = wallet.Balance - shoppingCart.Total,
-                            TransactionHash = transactionResponse.TxHash,
-                            Customer = customer?.ParticipantName
-                        };
+                        return PurchaseResult.Success(customerName, shoppingCart, wallet.Balance - shoppingCart.Total,
+                            transactionResponse.TxHash);
                     }
 
                     if (status.IsError)
                     {
-                        return new PurchaseResult
-                        {
-                            Status = PurchaseStatus.Rejected,
-                            Customer = customer?.ParticipantName,
-                            ShoppingCart = shoppingCart,
-                            TransactionHash = transactionResponse.TxHash,
-                            WalletBalance = wallet.Balance,
-                            ErrorDescription = "Транзакция отклонена blockchain"
-                        };
+                        return PurchaseResult.Rejected(customerName, "Транзакция отклонена blockchain", shoppingCart,
+                            wallet.Balance, transactionResponse.TxHash);
                     }
 
                     await Task.Delay(TimeSpan.FromMilliseconds(100));
                 }
-                
+
                 _logger.LogWarning($"Статус транзакции неизвестен после {max} попыток");
-                
-                return new PurchaseResult
-                {
-                    Status = PurchaseStatus.Error,
-                    Customer = customer?.ParticipantName,
-                    ShoppingCart = shoppingCart,
-                    TransactionHash = transactionResponse.TxHash,
-                    WalletBalance = wallet.Balance,
-                    ErrorDescription = "Статус транзакции неизвестен"
-                };
+
+                return PurchaseResult.Error("Статус транзакции неизвестен", customerName, transactionResponse.TxHash,
+                    shoppingCart, wallet.Balance);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Ошибка при оплате");
-                
-                return new PurchaseResult
-                {
-                    Status = PurchaseStatus.Error,
-                    ErrorDescription = "Неизвестная ошибка. Обратитесь к администратору системы",
-                    ExceptionText = ex.ToString()
-                };
+
+                return PurchaseResult.UknownError(ex.ToString());
             }
         }
     }

@@ -115,8 +115,11 @@
     }
     
     .logo {
-        padding-left: 100px;
-        opacity: 0.9;
+        padding-left: 100px;       
+    }
+    
+    .logo-2 {
+        height: 55px;
     }
     
     .label-container {
@@ -166,20 +169,30 @@
     .total .row {
         padding-top: 14px;
     }
+    
+    .text-centered {
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    .top-side{
+        font-size: 70%;
+    }
    
 </style>
 <div id="root">
     <div id="TOP">
         <div class="d-flex align-items-center">
             <div class="p-1 flex-shrink-1">
-                <img class="logo" src="~/img/sib_logo.svg"/>
+                <img class="logo" style="" src="~/img/sib_logo.svg"/>
             </div>
-            <div class="p-2 w-100 align-content-center">
-                <div class="label-container">
-                    <h4 class="label">ЦИФРОВОЙ КЛАСТЕР. Умный магазин с BLOCKCHAIN-кошельком</h4>
-                </div>
+            <div class="p-2 w-100 align-content-center text-centered">
+                <h4 class="label">Умный магазин с BLOCKCHAIN-кошельком</h4>
             </div>
-            <div class="p-3">
+            <div class="p-1 flex-shrink-1">
+                <img class="logo-2" style="" src="~/img/logo_digit.png"/>
+            </div>
+            <div class="p-3 top-side">
                 Время последнего обновления: {{dashboardData.reportDateDisplayString}}
             </div>
         </div>
