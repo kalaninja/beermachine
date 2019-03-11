@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Sibintek.BeerMachine.BlockchainClient;
 using Sibintek.BeerMachine.DataContracts;
 
 namespace Sibintek.BeerMachine.Services

@@ -18,9 +18,11 @@ namespace Sibintek.BeerMachine.Domain
         public List<BuyerModel> TopBuyers { get; set; }
 
         public List<TransactionModel> Transactions { get; set; }
-        
+
         public DateTime ReportDate { get; set; }
 
         public string ReportDateDisplayString => ReportDate.ToString("dd.MM.yyyy HH:mm:ss");
+
+        public IDictionary<int, bool> NodeStatuses { get; set; }
     }
 }

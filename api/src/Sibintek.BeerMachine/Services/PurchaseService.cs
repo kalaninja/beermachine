@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Sibintek.BeerMachine.BlockchainClient;
 using Sibintek.BeerMachine.DataContracts;
 using Sibintek.BeerMachine.Models;
 

@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Sibintek.BeerMachine.BlockchainClient;
 using Sibintek.BeerMachine.Domain;
 using Sibintek.BeerMachine.Models;
 
@@ -30,7 +31,8 @@ namespace Sibintek.BeerMachine.Services
                 TopRich = blockChainReport.TopRich.Select(Map).OrderByDescending(x => x.Balance).ToList(),
                 TopBuyers = blockChainReport.TopBuyers.Select(Map).OrderByDescending(x => x.Spent).ToList(),
                 Transactions = blockChainReport.Log?.Select(Map).OrderByDescending(x => x.TransactionDate).ToList(),
-                ReportDate = DateTime.Now
+                ReportDate = DateTime.Now,
+                NodeStatuses = _blockсhainClient.NodeStatuses()
             };
         }
 
@@ -48,7 +50,8 @@ namespace Sibintek.BeerMachine.Services
 
         private BuyerModel Map(Buyer buyer)
         {
-            var customerName = _customerProvider.GetCustomer(buyer.BuyerWallet.Id)?.ParticipantName ?? "Неизвестный участник";
+            var customerName = _customerProvider.GetCustomer(buyer.BuyerWallet.Id)?.ParticipantName ??
+                               "Неизвестный участник";
 
             return new BuyerModel
             {
@@ -66,7 +69,7 @@ namespace Sibintek.BeerMachine.Services
                 Sum = transaction.Amount,
                 Type = transaction.MessageId,
                 WalletId = transaction.Id,
-                TransactionDate =  transaction.TransactionDate,
+                TransactionDate = transaction.TransactionDate,
                 Hash = transaction.TxHash,
                 Block = transaction.Block
             };

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Sibintek.BeerMachine.BlockchainClient;
 using Sibintek.BeerMachine.DataContracts;
 using Sibintek.BeerMachine.ErrorHandling;
 using Sibintek.BeerMachine.Services;

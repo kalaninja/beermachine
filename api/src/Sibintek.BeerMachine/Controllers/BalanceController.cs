@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sibintek.BeerMachine.BlockchainClient;
 using Sibintek.BeerMachine.DataContracts;
 using Sibintek.BeerMachine.Services;
 

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Sibintek.BeerMachine.Domain;
 
-namespace Sibintek.BeerMachine.Services
+namespace Sibintek.BeerMachine.BlockchainClient
 {
     public class BlockchainReportResponse
     {
@@ -22,7 +22,7 @@ namespace Sibintek.BeerMachine.Services
     public class TransactionLogResponse
     {
         public long Block { get; set; }
-        
+
         public long Id { get; set; }
 
         public string TxHash { get; set; }
