@@ -269,44 +269,14 @@ namespace Sibintek.BeerMachine.Services
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
 
                 new Session("Вводная часть про дизайн-мышление",
-                    DateTime.Parse("2019-03-14 15:45", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-14 16:14", CultureInfo.InvariantCulture),
+                    DateTime.Parse("2019-03-14 15:40", CultureInfo.InvariantCulture),
+                    DateTime.Parse("2019-03-14 16:10", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
-
-                new Session("Объявление",
-                    DateTime.Parse("2019-03-14 16:14", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-14 16:15", CultureInfo.InvariantCulture),
-                    new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
-
-                new Session("Подготовка А+В+С к Гала-ужину",
-                    DateTime.Parse("2019-03-14 16:15", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-14 19:30", CultureInfo.InvariantCulture),
-                    new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
-
-                new Session("Вручение призов директорам филиалов (Сибинтек)",
-                    DateTime.Parse("2019-03-14 15:45", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-14 16:00", CultureInfo.InvariantCulture),
-                    new[] {Room.Rhine}),
-
-                new Session("Объявление о старте стратегической сессии по дизайн-мышлению: взаимодействие ЦАУК и ОГ",
-                    DateTime.Parse("2019-03-14 15:45", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-14 15:46", CultureInfo.InvariantCulture),
-                    new[] {Room.Don, Room.Danube, Room.Amur, Room.Neva}),
-
-                new Session("Представление Е.В. Мартыновой",
-                    DateTime.Parse("2019-03-14 15:46", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-14 15:47", CultureInfo.InvariantCulture),
-                    new[] {Room.Don, Room.Danube, Room.Amur, Room.Neva}),
-
-                new Session("Дизайн-мышление Part 1",
-                    DateTime.Parse("2019-03-14 15:47", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-14 17:15", CultureInfo.InvariantCulture),
-                    new[] {Room.Don, Room.Danube, Room.Amur, Room.Neva}),
-
-                new Session("Дизайн-мышление Part 2",
-                    DateTime.Parse("2019-03-14 17:30", CultureInfo.InvariantCulture),
+                
+                new Session("Вводная часть про дизайн-мышление",
+                    DateTime.Parse("2019-03-14 16:10", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-14 18:45", CultureInfo.InvariantCulture),
-                    new[] {Room.Don, Room.Danube, Room.Amur, Room.Neva}),
+                    new[] {Room. Rhine, Room.Don, Room.Danube, Room.Amur, Room.Neva}),
 
 
                 // 2019-03-15
