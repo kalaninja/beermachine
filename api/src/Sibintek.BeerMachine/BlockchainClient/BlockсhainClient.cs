@@ -164,6 +164,7 @@ namespace Sibintek.BeerMachine.BlockchainClient
                             JsonConvert.DeserializeObject<BlockchainReportResponse>(responseText, _serializerSettings);
 
                         _nodeStatus.AddOrUpdate(node, true, (_, __) => true);
+                        result.NodeIndex = node;
                         return result;
                     }
                 });

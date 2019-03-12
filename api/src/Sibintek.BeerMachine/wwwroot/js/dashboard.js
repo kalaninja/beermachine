@@ -79,6 +79,7 @@
             } else {
                 var dashboardData = JSON.parse(req.responseText);
                 if (dashboardData.coinsMined <= 0) {
+                    console.log('empty report from ' + dashboardData.nodeIndex + ' node');
                     return;
                 }
                 

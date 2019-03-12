@@ -17,6 +17,8 @@ namespace Sibintek.BeerMachine.BlockchainClient
         public List<Buyer> TopBuyers { get; set; }
 
         public List<TransactionLogResponse> Log { get; set; }
+
+        public int NodeIndex { get; set; }
     }
 
     public class TransactionLogResponse
