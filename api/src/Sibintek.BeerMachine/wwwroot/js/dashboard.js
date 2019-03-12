@@ -78,6 +78,10 @@
                 console.log(req.status + ': ' + req.statusText);
             } else {
                 var dashboardData = JSON.parse(req.responseText);
+                if (dashboardData.coinsMined <= 0) {
+                    return;
+                }
+                
                 app.$data.dashboardData = dashboardData;
 
                 updateCharts(dashboardData);
