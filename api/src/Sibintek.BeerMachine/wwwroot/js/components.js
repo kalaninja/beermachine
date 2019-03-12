@@ -85,7 +85,7 @@ Vue.component('transaction-row', {
         '<td>{{transaction.block}}</td>\n' +
         '<td>{{transaction.hash}}</td>\n' +
         '<td>{{transaction.walletId}}</td>\n' +
-        '<td>{{transaction.type === 0 ? "начисление" : "списание"}}</td>\n' +
+        '<td>{{transaction.type}}</td>\n' +
         '<td>{{transaction.sum}}</td>\n' +
         '</tr>'
 });

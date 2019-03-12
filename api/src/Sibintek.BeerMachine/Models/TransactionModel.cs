@@ -10,7 +10,7 @@ namespace Sibintek.BeerMachine.Models
 
         public long WalletId { get; set; }
 
-        public int Type { get; set; }
+        public string Type { get; set; }
 
         public decimal Sum { get; set; }
         

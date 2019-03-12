@@ -67,12 +67,21 @@ namespace Sibintek.BeerMachine.Services
             return new TransactionModel
             {
                 Sum = transaction.Amount,
-                Type = transaction.MessageId,
+                Type = GetTransactionType(transaction.MessageId, transaction.Success),
                 WalletId = transaction.Id,
                 TransactionDate = transaction.TransactionDate,
                 Hash = transaction.TxHash,
                 Block = transaction.Block
             };
+            
+            string GetTransactionType(int messageId, bool success)
+            {
+                return success
+                    ? (messageId == 0 ? "зачислено" : "списано")
+                    : (messageId == 0 ? "не зачислено" : "не списано");
+            }
         }
+        
+        
     }
 }

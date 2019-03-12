@@ -34,6 +34,8 @@ namespace Sibintek.BeerMachine.BlockchainClient
         public short MessageId { get; set; }
 
         public long Seed { get; set; }
+        
+        public bool Success { get; set; }
 
         public DateTime TransactionDate => new DateTime(Seed);
     }
