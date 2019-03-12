@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using Sibintek.BeerMachine.DataContracts;
 using Sibintek.BeerMachine.Domain;
 
@@ -93,7 +94,7 @@ namespace Sibintek.BeerMachine.Services
                     DateTime.Parse("2019-03-14 10:49", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
 
-                new Session("Объявление кофе-брейка", 
+                new Session("Объявление кофе-брейка",
                     DateTime.Parse("2019-03-14 10:49", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-14 10:50", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
@@ -130,7 +131,7 @@ namespace Sibintek.BeerMachine.Services
                     DateTime.Parse("2019-03-14 11:44", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
 
-                new Session("Объявление ", 
+                new Session("Объявление ",
                     DateTime.Parse("2019-03-14 11:44", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-14 11:45", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
@@ -145,7 +146,7 @@ namespace Sibintek.BeerMachine.Services
                     DateTime.Parse("2019-03-14 11:54", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
 
-                new Session("Видео о цифровом заводе", 
+                new Session("Видео о цифровом заводе",
                     DateTime.Parse("2019-03-14 11:54", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-14 12:04", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
@@ -155,7 +156,7 @@ namespace Sibintek.BeerMachine.Services
                     DateTime.Parse("2019-03-14 12:14", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
 
-                new Session("Объявление ", 
+                new Session("Объявление ",
                     DateTime.Parse("2019-03-14 12:14", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-14 12:15", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
@@ -169,7 +170,7 @@ namespace Sibintek.BeerMachine.Services
                     DateTime.Parse("2019-03-14 12:16", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-14 12:18", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
-                
+
                 new Session("Презентация проекта Системы Электронной Пломбировк",
                     DateTime.Parse("2019-03-14 12:18", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-14 12:24", CultureInfo.InvariantCulture),
@@ -272,11 +273,11 @@ namespace Sibintek.BeerMachine.Services
                     DateTime.Parse("2019-03-14 15:40", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-14 16:10", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
-                
+
                 new Session("Вводная часть про дизайн-мышление",
                     DateTime.Parse("2019-03-14 16:10", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-14 18:45", CultureInfo.InvariantCulture),
-                    new[] {Room. Rhine, Room.Don, Room.Danube, Room.Amur, Room.Neva}),
+                    new[] {Room.Rhine, Room.Don, Room.Danube, Room.Amur, Room.Neva}),
 
 
                 // 2019-03-15
@@ -319,7 +320,7 @@ namespace Sibintek.BeerMachine.Services
                     DateTime.Parse("2019-03-15 10:29", CultureInfo.InvariantCulture),
                     new[] {Room.Amur}),
 
-                new Session("Объевление кофе-брейка", 
+                new Session("Объевление кофе-брейка",
                     DateTime.Parse("2019-03-15 10:29", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-15 10:30", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC}),
@@ -327,194 +328,221 @@ namespace Sibintek.BeerMachine.Services
 
                 new Session("Объявление о старте выступлений в секции  ДОБЫЧА: Нефтегазовое месторождение",
                     DateTime.Parse("2019-03-15 10:50", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 10:51", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 10:51", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
                 new Session("Программа цифровизации РиД - обзорная презентация",
                     DateTime.Parse("2019-03-15 10:51", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:06", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:06", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
                 new Session("Программа цифровизации Блока Газ - обзорная презентация",
                     DateTime.Parse("2019-03-15 11:06", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:21", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:21", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
                 new Session("Стратегия развития цифровизации службы Бурения",
                     DateTime.Parse("2019-03-15 11:21", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:31", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:31", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
                 new Session("Переход на комплексные услуги - «ГеоПАК»",
                     DateTime.Parse("2019-03-15 11:31", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:41", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:41", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
                 new Session(
                     "Подход к реализации цифровых инициатив - вызовы и пути решения (по результатам опроса ОГ о готовности к цифровизации)",
                     DateTime.Parse("2019-03-15 11:41", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 12:03", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 12:03", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
                 new Session("Инфраструктурная поддержка цифровизации",
                     DateTime.Parse("2019-03-15 12:03", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 12:18", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 12:18", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
                 new Session("Модель взаимодействия с Цифровым Кластером",
                     DateTime.Parse("2019-03-15 12:18", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 12:30", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 12:30", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
                 new Session(
                     "Программа мобильности - развитие системы удаленного доступа к корпоративным информационным системам Компании",
                     DateTime.Parse("2019-03-15 12:30", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 12:40", CultureInfo.InvariantCulture), 
-                    new[] {Room.ConfHallB}),
-                
-                new Session("Управление ИТ-активами", 
                     DateTime.Parse("2019-03-15 12:40", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 12:50", CultureInfo.InvariantCulture), 
+                    new[] {Room.ConfHallB}),
+
+                new Session("Управление ИТ-активами",
+                    DateTime.Parse("2019-03-15 12:40", CultureInfo.InvariantCulture),
+                    DateTime.Parse("2019-03-15 12:50", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
                 new Session("Вопросы и ответы по автоматизации, информатизации и цифровизации ОГ РиД/Газ",
                     DateTime.Parse("2019-03-15 12:50", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 13:15", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 13:15", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallB}),
 
-                
+
                 new Session(
                     "\"Объявление о старте выступлений в секции ПЕРЕРАБОТКА: Современное производство в нефтепереработке и нефтегазохимии",
                     DateTime.Parse("2019-03-15 10:50", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 10:51", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 10:51", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session(
                     "Обзор программы цифровизации, основные тренды и топ 5 активностей Искусственный интеллект для промышленности",
                     DateTime.Parse("2019-03-15 10:51", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:01", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:01", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session(
                     "Обзор программы цифровизации, основные тренды и топ 5 активностей Искусственный интеллект для промышленности",
                     DateTime.Parse("2019-03-15 11:01", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:11", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:11", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session("Подход к реализации цифровых инициатив компании BP",
                     DateTime.Parse("2019-03-15 11:11", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:18", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:18", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session("Подход к реализации цифровых инициатив компании BP",
                     DateTime.Parse("2019-03-15 11:18", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:25", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:25", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session("Непрерывный контроль и управление технологическим процессом (СУУТП)",
                     DateTime.Parse("2019-03-15 11:25", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:35", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:35", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session("Внедрение системы удаленного доступа к КИС и ее развитие в регионах",
                     DateTime.Parse("2019-03-15 11:35", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:45", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:45", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session("Перспективы развития программных роботов",
                     DateTime.Parse("2019-03-15 11:45", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:55", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:55", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session("Применение Blockchain технологий в нефтепереработке и региональных продажах",
                     DateTime.Parse("2019-03-15 11:55", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 12:30", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 12:30", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session(
                     "Методика ускоренной реализации цифровых инициатив на основе подходов интеллектуального анализа производственных данных: как создавать решения, которые нужны",
                     DateTime.Parse("2019-03-15 12:30", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 12:40", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 12:40", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session("Тренды  будущего, потенциальные варианты применения в нефтепереработке",
                     DateTime.Parse("2019-03-15 12:40", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 13:00", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 13:00", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session("Тренды  будущего, потенциальные варианты применения в нефтепереработке",
                     DateTime.Parse("2019-03-15 13:00", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 13:15", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 13:15", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallA}),
 
                 new Session(
                     "Объявление о старте выступлений в секции СБЫТ:Цифровая АЗС, система региональных продаж, маркетинг",
                     DateTime.Parse("2019-03-15 10:50", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 10:51", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 10:51", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallC}),
-               
-                new Session("Вводное слово", 
+
+                new Session("Вводное слово",
                     DateTime.Parse("2019-03-15 10:50", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:00", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:00", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallC}),
-                
+
                 new Session("Обзор цифровых трендов и технологий в блоке",
                     DateTime.Parse("2019-03-15 11:00", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:10", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:10", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallC}),
-                
+
                 new Session("050 проект",
                     DateTime.Parse("2019-03-15 11:10", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:20", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:20", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallC}),
-                
+
                 new Session("АИС \"НБХ\"",
                     DateTime.Parse("2019-03-15 11:20", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:30", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:30", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallC}),
-               
+
                 new Session("CRM для ДПСН",
                     DateTime.Parse("2019-03-15 11:30", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:40", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:40", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallC}),
-                
+
                 new Session("Применение BLOCKCHAIN технологий в региональных продаж",
                     DateTime.Parse("2019-03-15 11:40", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 11:50", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 11:50", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallC}),
-                
+
                 new Session("Контроль сохранности материальных запасов",
                     DateTime.Parse("2019-03-15 11:50", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 12:00", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 12:00", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallC}),
-                
+
                 new Session("Перспективы развития программных роботов",
                     DateTime.Parse("2019-03-15 12:00", CultureInfo.InvariantCulture),
-                    DateTime.Parse("2019-03-15 12:10", CultureInfo.InvariantCulture), 
+                    DateTime.Parse("2019-03-15 12:10", CultureInfo.InvariantCulture),
                     new[] {Room.ConfHallC}),
-                
+
                 new Session(
                     "Подход к реализации цифровых инициатив - вызовы и пути решения (по результатам опроса ОГ о готовности к цифровизации)",
                     DateTime.Parse("2019-03-15 12:10", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-15 12:35", CultureInfo.InvariantCulture), new[] {Room.ConfHallC}),
-                
+
                 new Session("Восстановление работоспособности АЗС",
                     DateTime.Parse("2019-03-15 12:35", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-15 12:45", CultureInfo.InvariantCulture), new[] {Room.ConfHallC}),
-                
+
                 new Session("Внедрение системы удаленного доступа к КИС и ее развитие в регионах",
                     DateTime.Parse("2019-03-15 12:45", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-15 12:55", CultureInfo.InvariantCulture), new[] {Room.ConfHallC}),
-                
+
                 new Session(
                     "Методика ускоренной реализации цифровых инициатив на основе подходов интеллектуального анализа производственных данных: как создавать решения, которые нужны",
                     DateTime.Parse("2019-03-15 12:55", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-15 13:05", CultureInfo.InvariantCulture), new[] {Room.ConfHallC}),
-               
+
                 new Session("Сессия вопросов и ответов ",
                     DateTime.Parse("2019-03-15 13:05", CultureInfo.InvariantCulture),
                     DateTime.Parse("2019-03-15 13:15", CultureInfo.InvariantCulture), new[] {Room.ConfHallC}),
             }.AsReadOnly();
+        }
+    }
+
+    public class MockSessionService : ISessionService
+    {
+        private readonly IReadOnlyList<Session> _program;
+
+        public MockSessionService()
+        {
+            _program = CreateProgram().ToList().AsReadOnly();
+        }
+
+        public IReadOnlyList<Session> GetProgram() => _program;
+
+        private static IEnumerable<Session> CreateProgram()
+        {
+            var today = DateTime.Today;
+
+            var start = DateTime.Today;
+            for (var i = 0; start.Date == today; i++)
+            {
+                var end = start.AddMinutes(15);
+                yield return new Session($"Session{i}", start, end,
+                    new[] {Room.ConfHallA, Room.ConfHallB, Room.ConfHallC});
+
+                start = end.AddMinutes(5);
+            }
         }
     }
 }
