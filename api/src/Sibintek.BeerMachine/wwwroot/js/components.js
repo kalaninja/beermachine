@@ -33,7 +33,9 @@ Vue.component('cart-empty', {
 
 Vue.component('cart-empty-dashboard', {
     props: ['isEmpty'],
-    template: '<div class="empty-shpping-cart align-self-center">покупок еще не было</div>'
+    template: '<div class="empty-shopping-cart align-self-center">' +
+        '<img alt="" class="empty-cart-img" src="/img/empty_cart.png">'+
+        '</div>'
 });
 
 Vue.component('cart-product', {
