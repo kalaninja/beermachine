@@ -88,6 +88,7 @@ fn test_report() {
     api.pay(1, 1);
     api.pay(2, 2);
     api.pay(3, 3);
+    api.pay(4, 30);
     testkit.create_block();
 
     let report = api.report();
@@ -101,9 +102,13 @@ fn test_report() {
         report.top_buyers.iter().map(|x| (x.buyer.id(), x.spent)).collect::<Vec<_>>();
     assert_eq!(vec![(3, 3), (2, 2), (1, 1)], top_buyers);
 
-    assert_eq!(20, report.log.len());
-    assert_eq!(2, report.log.first().unwrap().block);
-    assert_eq!(1, report.log.last().unwrap().block);
+    let first_tx = report.log.first().unwrap();
+    let last_tx = report.log.last().unwrap();
+    assert_eq!(21, report.log.len());
+    assert_eq!(2, first_tx.block);
+    assert_eq!(false, first_tx.success);
+    assert_eq!(1, last_tx.block);
+    assert_eq!(true, last_tx.success);
 }
 
 struct BeerCoinApi {
