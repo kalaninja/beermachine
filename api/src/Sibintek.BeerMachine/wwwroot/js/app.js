@@ -25,6 +25,7 @@ var app = new Vue({
                 total: 0,
                 isEmpty: true
             }
-        }
+        },
+        nodeStatuses:{}
     }
 });

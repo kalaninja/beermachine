@@ -9,10 +9,10 @@
 @section Scripts{
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
     <script src="~/lib/chartjs/dist/Chart.min.js"></script>
-    <script src="~/js/components.js?v1"></script>
-    <script src="~/js/app.js?v1"></script>
-    <script src="~/js/cart.js?v1"></script>
-    <script src="~/js/dashboard.js?v1"></script>
+    <script src="~/js/components.js?v2"></script>
+    <script src="~/js/app.js?v2"></script>
+    <script src="~/js/cart.js?v2"></script>
+    <script src="~/js/dashboard.js?v2"></script>
 }
 
 <style>
@@ -178,6 +178,22 @@
     .top-side{
         font-size: 70%;
     }
+    
+    .node-green {
+        width:10px;
+        height: 10px;
+        background:green;
+        display:inline-block;
+        margin-left: 3px;
+    }
+    
+    .node-red {
+        width:10px;
+        height: 10px;
+        background:red;
+        display:inline-block;
+        margin-left: 3px;
+    }
    
 </style>
 <div id="root">
@@ -192,8 +208,10 @@
             <div class="p-1 flex-shrink-1">
                 <img class="logo-2" style="" src="~/img/logo_digit.png"/>
             </div>
-            <div class="p-3 top-side">
-                Время последнего обновления: {{dashboardData.reportDateDisplayString}}
+            <div class="p-3 top-side"><div>Время последнего обновления: {{dashboardData.reportDateDisplayString}}</div>
+                <div>
+                    <div v-for="key in dashboardData.nodeStatuses" v-bind:class="[key===true? 'node-green':'node-red']"></div>
+                </div>
             </div>
         </div>
     </div>

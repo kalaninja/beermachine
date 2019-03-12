@@ -94,8 +94,8 @@
     function updateCharts(dashboardData) {
         firstChart.data.datasets[0].data = [dashboardData.coinsMined, dashboardData.coinsTotal];
         firstChart.update();
-        
-        secondChart.data.datasets[0].data = [dashboardData.coinsSpent,dashboardData.coinsMined];
+
+        secondChart.data.datasets[0].data = [dashboardData.coinsSpent, dashboardData.coinsMined];
         secondChart.update();
     }
 })();
