@@ -146,9 +146,15 @@ impl BeerCoinApi {
             .flat_map(|height| general_schema.block_transactions(Height(height))
                 .iter()
                 .flat_map(move |hash| general_schema.transactions().get(&hash)
-                    .and_then(|raw| BeerCoinTransactions::tx_from_raw(raw)
-                        .ok()
-                        .map(|tx| TransactionLog::new(height, hash, tx))))
+                    .and_then(|raw| BeerCoinTransactions::tx_from_raw(raw).ok()
+                        .map(|tx| {
+                            let success = general_schema
+                                .transaction_results()
+                                .get(&hash)
+                                .and_then(|result| result.ok())
+                                .is_some();
+                            TransactionLog::new(height, hash, tx, success)
+                        })))
                 .collect::<Vec<_>>())
             .take(tx_count)
             .collect::<Vec<_>>()
@@ -180,10 +186,11 @@ pub struct TransactionLog {
     pub seed: u64,
     pub message_id: u64,
     pub amount: u64,
+    pub success: bool,
 }
 
 impl TransactionLog {
-    fn new(block: u64, tx_hash: Hash, tx: BeerCoinTransactions) -> Self {
+    fn new(block: u64, tx_hash: Hash, tx: BeerCoinTransactions, success: bool) -> Self {
         match tx {
             TxIssue(x) => {
                 Self {
@@ -193,6 +200,7 @@ impl TransactionLog {
                     seed: x.seed(),
                     message_id: 0,
                     amount: ISSUE_AMOUNT,
+                    success,
                 }
             }
             TxPay(x) => {
@@ -203,6 +211,7 @@ impl TransactionLog {
                     seed: x.seed(),
                     message_id: 1,
                     amount: x.amount(),
+                    success,
                 }
             }
         }
