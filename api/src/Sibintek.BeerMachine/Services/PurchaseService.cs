@@ -29,13 +29,20 @@ namespace Sibintek.BeerMachine.Services
         public async Task<PurchaseResult> MakePurchase(Account account)
         {
             var result = await GetPurchaseResult(account);
-            if (result.Status == PurchaseStatus.Success)
+            try
             {
-                await _shoppingCartService.SuccessPurchase();
+                if (result.Status == PurchaseStatus.Success)
+                {
+                    await _shoppingCartService.SuccessPurchase();
+                }
+                else
+                {
+                    await _shoppingCartService.FailurePurchase();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                await _shoppingCartService.FailurePurchase();
+                _logger.LogError(ex, "Ошибка при подтверждении оплаты");
             }
 
             return result;
