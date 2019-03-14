@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Sibintek.BeerMachine.Domain;
+using Sibintek.BeerMachine.Models;
 
 namespace Sibintek.BeerMachine.Services
 {
@@ -7,9 +8,9 @@ namespace Sibintek.BeerMachine.Services
     {
         Task<ShoppingCart> GetCurrentShoppingCart();
 
-        Task SuccessPurchase();
+        Task SuccessPurchase(PurchaseResult purchaseResult);
 
-        Task FailurePurchase();
+        Task FailurePurchase(PurchaseResult purchaseResult);
 
         Task ResetShoppingCart();
     }

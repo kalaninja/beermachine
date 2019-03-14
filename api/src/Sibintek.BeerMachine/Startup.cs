@@ -90,7 +90,7 @@ namespace Sibintek.BeerMachine
             services.AddSingleton(Configuration.GetSection(nameof(MaintenanceOptions)).Get<MaintenanceOptions>());
 
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
-            services.AddSingleton<ISessionService, MockSessionService>();
+            services.AddSingleton<ISessionService, SessionService>();
             services.AddSingleton<IBlockсhainClient, BlockсhainClient>();
             services.AddSingleton<IWalletService, WalletService>();
             services.AddSingleton<IPurchaseService, PurchaseService>();

@@ -33,11 +33,11 @@ namespace Sibintek.BeerMachine.Services
             {
                 if (result.Status == PurchaseStatus.Success)
                 {
-                    await _shoppingCartService.SuccessPurchase();
+                    await _shoppingCartService.SuccessPurchase(result);
                 }
                 else
                 {
-                    await _shoppingCartService.FailurePurchase();
+                    await _shoppingCartService.FailurePurchase(result);
                 }
             }
             catch (Exception ex)

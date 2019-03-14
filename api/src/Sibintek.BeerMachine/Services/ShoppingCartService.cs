@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Polly;
 using Sibintek.BeerMachine.Settings;
 using Sibintek.BeerMachine.Domain;
+using Sibintek.BeerMachine.Models;
 
 namespace Sibintek.BeerMachine.Services
 {
@@ -44,29 +45,29 @@ namespace Sibintek.BeerMachine.Services
                 });
         }
 
-        public Task SuccessPurchase()
+        public Task SuccessPurchase(PurchaseResult purchaseResult)
         {
-            return Status("success");
+            return Status("success", purchaseResult);
         }
 
-        public Task FailurePurchase()
+        public Task FailurePurchase(PurchaseResult purchaseResult)
         {
-            return Status("failure");
+            return Status("failure", purchaseResult);
         }
 
         public Task ResetShoppingCart()
         {
-            return Status("reset");
+            return Status("reset", null);
         }
 
-        private async Task Status(string status)
+        private async Task Status(string status, PurchaseResult purchaseResult)
         {
             await Policy
                 .Handle<Exception>()
                 .RetryAsync(2)
                 .ExecuteAsync(async () =>
                 {
-                    var body = JsonConvert.SerializeObject(new StatusRequest {status = status});
+                    var body = JsonConvert.SerializeObject(new StatusRequest {status = status, data = purchaseResult});
                     var content = new StringContent(body, Encoding.UTF8, KnownMimeTypes.Json);
 
                     using (var response = await _httpClientFactory.CreateClient()
@@ -102,6 +103,8 @@ namespace Sibintek.BeerMachine.Services
         private class StatusRequest
         {
             public string status { get; set; }
+
+            public PurchaseResult data { get; set; }
         }
     }
 }

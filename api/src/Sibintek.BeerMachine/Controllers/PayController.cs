@@ -26,9 +26,9 @@ namespace Sibintek.BeerMachine.Controllers
         private readonly MaintenanceOptions _maintenanceOptions;
 
         public PayController(
-            IHubContext<CartHub, ICartHub> cartHubContext, 
-            IPurchaseService purchaseService, 
-            IMaintenanceService maintenanceService, 
+            IHubContext<CartHub, ICartHub> cartHubContext,
+            IPurchaseService purchaseService,
+            IMaintenanceService maintenanceService,
             MaintenanceOptions maintenanceOptions)
         {
             _cartHubContext = cartHubContext;
@@ -47,10 +47,10 @@ namespace Sibintek.BeerMachine.Controllers
             else
             {
                 var purchaseResult = await _purchaseService.MakePurchase(account);
-                
+
                 await _cartHubContext.Clients.All.UpdatePurchaseResult(purchaseResult);
             }
-            
+
             return Ok();
         }
 
