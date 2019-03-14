@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +27,9 @@ namespace Sibintek.BeerMachine.Controllers
 
         private readonly MaintenanceOptions _maintenanceOptions;
 
+        private static readonly ConcurrentDictionary<long, DateTime> AccessTimes =
+            new ConcurrentDictionary<long, DateTime>();
+
         public PayController(
             IHubContext<CartHub, ICartHub> cartHubContext,
             IPurchaseService purchaseService,
@@ -40,6 +45,17 @@ namespace Sibintek.BeerMachine.Controllers
         [HttpPost]
         public async Task<ActionResult> Index([FromBody] Account account)
         {
+            account.Id = account.Id + 1;
+
+            var now = DateTime.Now;
+            if (AccessTimes.TryGetValue(account.Id, out var accessTime) && now.Subtract(accessTime).TotalMinutes < 3)
+            {
+                AccessTimes.AddOrUpdate(account.Id, now, (_, value) => value);
+                return Ok();
+            }
+
+            AccessTimes.AddOrUpdate(account.Id, now, (_, value) => value);
+
             if (_maintenanceOptions.MasterKeys.Contains(account.Id))
             {
                 await _maintenanceService.ResetShoppingCart();
