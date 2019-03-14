@@ -16,7 +16,5 @@ namespace Sibintek.BeerMachine.BlockchainClient
         Task<Wallet> GetWallet(long id);
 
         Task<BlockchainReportResponse> Report(int count = 10);
-
-        IDictionary<int, bool> NodeStatuses();
     }
 }

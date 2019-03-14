@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Sibintek.BeerMachine.BlockchainClient;
@@ -32,7 +33,7 @@ namespace Sibintek.BeerMachine.Services
                 TopBuyers = blockChainReport.TopBuyers.Select(Map).OrderByDescending(x => x.Spent).ToList(),
                 Transactions = blockChainReport.Log?.Select(Map).OrderByDescending(x => x.TransactionDate).ToList(),
                 ReportDate = DateTime.Now,
-                NodeStatuses = _blockсhainClient.NodeStatuses()
+                NodeStatuses = new Dictionary<int, bool>()
             };
         }
 

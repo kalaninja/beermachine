@@ -31,8 +31,7 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 NamingStrategy = new SnakeCaseNamingStrategy()
             }
         };
-
-        private ConcurrentDictionary<int, bool> _nodeStatus = new ConcurrentDictionary<int, bool>();
+        
         private int _currentNodeIndex;
 
         public BlockсhainClient(BlockchainOptions options, IHttpClientFactory httpClientFactory)
@@ -48,7 +47,6 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 .Handle<Exception>()
                 .RetryAsync(4, (ex, i) =>
                 {
-                    _nodeStatus.AddOrUpdate(node, false, (_, __) => false);
                     node = node >= _options.NodeUrls.Length - 1 ? 0 : node + 1;
                 })
                 .ExecuteAsync(async () =>
@@ -66,7 +64,6 @@ namespace Sibintek.BeerMachine.BlockchainClient
                         var result =
                             JsonConvert.DeserializeObject<TransactionStatus>(responseText, _serializerSettings);
 
-                        _nodeStatus.AddOrUpdate(node, true, (_, __) => true);
                         return result;
                     }
                 });
@@ -91,7 +88,6 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 .Handle<Exception>()
                 .RetryAsync(4, (ex, i) =>
                 {
-                    _nodeStatus.AddOrUpdate(node, false, (_, __) => false);
                     node = node >= _options.NodeUrls.Length - 1 ? 0 : node + 1;
                 })
                 .ExecuteAsync(async () =>
@@ -107,7 +103,6 @@ namespace Sibintek.BeerMachine.BlockchainClient
                         var result =
                             JsonConvert.DeserializeObject<TransactionResponse>(responseText, _serializerSettings);
 
-                        _nodeStatus.AddOrUpdate(node, true, (_, __) => true);
                         return result;
                     }
                 });
@@ -120,7 +115,6 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 .Handle<Exception>()
                 .RetryAsync(4, (ex, i) =>
                 {
-                    _nodeStatus.AddOrUpdate(node, false, (_, __) => false);
                     node = node >= _options.NodeUrls.Length - 1 ? 0 : node + 1;
                 })
                 .ExecuteAsync(async () =>
@@ -137,7 +131,6 @@ namespace Sibintek.BeerMachine.BlockchainClient
                         var responseText = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
                         var result = JsonConvert.DeserializeObject<Wallet>(responseText, _serializerSettings);
 
-                        _nodeStatus.AddOrUpdate(node, true, (_, __) => true);
                         return result;
                     }
                 });
@@ -150,7 +143,6 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 .Handle<Exception>()
                 .RetryAsync(4, (ex, i) =>
                 {
-                    _nodeStatus.AddOrUpdate(node, false, (_, __) => false);
                     node = node >= _options.NodeUrls.Length - 1 ? 0 : node + 1;
                 })
                 .ExecuteAsync(async () =>
@@ -163,14 +155,11 @@ namespace Sibintek.BeerMachine.BlockchainClient
                         var result =
                             JsonConvert.DeserializeObject<BlockchainReportResponse>(responseText, _serializerSettings);
 
-                        _nodeStatus.AddOrUpdate(node, true, (_, __) => true);
                         result.NodeIndex = node;
                         return result;
                     }
                 });
         }
-
-        public IDictionary<int, bool> NodeStatuses() => _nodeStatus;
 
         private int GetNodeIndex()
         {
