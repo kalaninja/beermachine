@@ -20,6 +20,16 @@ namespace Sibintek.BeerMachine.Controllers
         [HttpGet]
         public JsonResult Index()
         {
+//            long[] ids = {302, 349};
+//
+//            foreach (var id in ids)
+//            {
+//                for (var i = 0; i < 300; i++)
+//                {
+//                    await _blockсhainClient.Issue(id);
+//                }
+//            }
+
 //            const int sum = 167;
 //            var report = await _blockсhainClient.Report(500);
 //
