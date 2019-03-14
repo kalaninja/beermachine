@@ -1,18 +1,11 @@
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Sibintek.BeerMachine.Domain;
-using Sibintek.BeerMachine.Models;
 using Sibintek.BeerMachine.Settings;
 using Polly;
 using Sibintek.BeerMachine.Services;
@@ -31,8 +24,6 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 NamingStrategy = new SnakeCaseNamingStrategy()
             }
         };
-        
-        private int _currentNodeIndex;
 
         public BlockсhainClient(BlockchainOptions options, IHttpClientFactory httpClientFactory)
         {
@@ -88,7 +79,7 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 .Handle<Exception>()
                 .RetryAsync(4, (ex, i) =>
                 {
-                    node = node >= _options.NodeUrls.Length - 1 ? 0 : node + 1;
+                    node = GetNodeIndex();
                 })
                 .ExecuteAsync(async () =>
                 {
@@ -115,7 +106,7 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 .Handle<Exception>()
                 .RetryAsync(4, (ex, i) =>
                 {
-                    node = node >= _options.NodeUrls.Length - 1 ? 0 : node + 1;
+                    node = GetNodeIndex();
                 })
                 .ExecuteAsync(async () =>
                 {
@@ -143,7 +134,7 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 .Handle<Exception>()
                 .RetryAsync(4, (ex, i) =>
                 {
-                    node = node >= _options.NodeUrls.Length - 1 ? 0 : node + 1;
+                    node = GetNodeIndex();
                 })
                 .ExecuteAsync(async () =>
                 {
@@ -161,16 +152,7 @@ namespace Sibintek.BeerMachine.BlockchainClient
                 });
         }
 
-        private int GetNodeIndex()
-        {
-            var last = _options.NodeUrls.Length - 1;
-            if (last == Interlocked.CompareExchange(ref _currentNodeIndex, 0, last))
-            {
-                return _currentNodeIndex;
-            }
-
-            Interlocked.Increment(ref _currentNodeIndex);
-            return _currentNodeIndex;
-        }
+        private int GetNodeIndex() 
+            => new Random().Next(0, _options.NodeUrls.Length);
     }
 }
