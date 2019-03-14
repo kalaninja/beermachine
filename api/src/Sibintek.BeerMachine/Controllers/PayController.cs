@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
 using Sibintek.BeerMachine.DataContracts;
 using Sibintek.BeerMachine.Domain;
 using Sibintek.BeerMachine.Models;
@@ -27,6 +28,8 @@ namespace Sibintek.BeerMachine.Controllers
 
         private readonly MaintenanceOptions _maintenanceOptions;
 
+        private readonly ILogger _logger;
+
         private static readonly ConcurrentDictionary<long, DateTime> AccessTimes =
             new ConcurrentDictionary<long, DateTime>();
 
@@ -34,18 +37,20 @@ namespace Sibintek.BeerMachine.Controllers
             IHubContext<CartHub, ICartHub> cartHubContext,
             IPurchaseService purchaseService,
             IMaintenanceService maintenanceService,
-            MaintenanceOptions maintenanceOptions)
+            MaintenanceOptions maintenanceOptions,
+            ILoggerFactory loggerFactory)
         {
             _cartHubContext = cartHubContext;
             _purchaseService = purchaseService;
             _maintenanceService = maintenanceService;
             _maintenanceOptions = maintenanceOptions;
+            _logger = loggerFactory.CreateLogger<PayController>();
         }
 
         [HttpPost]
         public async Task<ActionResult> Index([FromBody] Account account)
         {
-            account.Id = account.Id + 1;
+            _logger.LogDebug($"Pay: {account.Id}");
 
             var now = DateTime.Now;
             if (AccessTimes.TryGetValue(account.Id, out var accessTime) && now.Subtract(accessTime).TotalMinutes < 3)
