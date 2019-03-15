@@ -33,15 +33,17 @@ namespace Sibintek.BeerMachine.BlockchainClient
 
         public async Task<TransactionStatus> GetStatus(string transactionHash)
         {
-            var node = GetNodeIndex();
+            if (string.IsNullOrEmpty(transactionHash))
+            {
+                throw new ArgumentNullException(nameof(transactionHash));
+            }
+
             return await Policy
                 .Handle<Exception>()
-                .RetryAsync(4, (ex, i) =>
-                {
-                    node = node >= _options.NodeUrls.Length - 1 ? 0 : node + 1;
-                })
+                .RetryAsync(4)
                 .ExecuteAsync(async () =>
                 {
+                    var node = new Random().Next(0, _options.NodeUrls.Length);
                     var url = $"{_options.NodeUrls[node]}/api/explorer/v1/transactions?hash={transactionHash}";
 
                     using (var response = await _httpClientFactory.CreateClient().GetAsync(url))
@@ -74,15 +76,12 @@ namespace Sibintek.BeerMachine.BlockchainClient
 
         private async Task<TransactionResponse> Transfer(TransactionRequest request)
         {
-            var node = GetNodeIndex();
             return await Policy
                 .Handle<Exception>()
-                .RetryAsync(4, (ex, i) =>
-                {
-                    node = GetNodeIndex();
-                })
+                .RetryAsync(4)
                 .ExecuteAsync(async () =>
                 {
+                    var node = new Random().Next(0, _options.NodeUrls.Length);
                     var url = $"{_options.NodeUrls[node]}/api/services/beercoin/v1/wallets/transfer";
 
                     var requestText = JsonConvert.SerializeObject(request, _serializerSettings);
@@ -101,15 +100,12 @@ namespace Sibintek.BeerMachine.BlockchainClient
 
         public async Task<Wallet> GetWallet(long walletId)
         {
-            var node = GetNodeIndex();
             return await Policy
                 .Handle<Exception>()
-                .RetryAsync(4, (ex, i) =>
-                {
-                    node = GetNodeIndex();
-                })
+                .RetryAsync(4)
                 .ExecuteAsync(async () =>
                 {
+                    var node = new Random().Next(0, _options.NodeUrls.Length);
                     var url = $"{_options.NodeUrls[node]}/api/services/beercoin/v1/wallet?id={walletId}";
 
                     using (var response = await _httpClientFactory.CreateClient().GetAsync(url))
@@ -129,15 +125,12 @@ namespace Sibintek.BeerMachine.BlockchainClient
 
         public async Task<BlockchainReportResponse> Report(int count = 10)
         {
-            var node = GetNodeIndex();
             return await Policy
                 .Handle<Exception>()
-                .RetryAsync(4, (ex, i) =>
-                {
-                    node = GetNodeIndex();
-                })
+                .RetryAsync(4)
                 .ExecuteAsync(async () =>
                 {
+                    var node = new Random().Next(0, _options.NodeUrls.Length);
                     var url = $"{_options.NodeUrls[node]}/api/services/beercoin/v1/report?top={count}&tx_count={count}";
 
                     using (var response = await _httpClientFactory.CreateClient().GetAsync(url))
@@ -151,8 +144,5 @@ namespace Sibintek.BeerMachine.BlockchainClient
                     }
                 });
         }
-
-        private int GetNodeIndex() 
-            => new Random().Next(0, _options.NodeUrls.Length);
     }
 }
