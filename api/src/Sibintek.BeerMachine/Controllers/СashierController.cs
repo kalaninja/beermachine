@@ -30,6 +30,12 @@ namespace Sibintek.BeerMachine.Controllers
             }
 
             var transactionResponse = await _blockсhainClient.Pay(wallet, amount);
+            if (transactionResponse == null)
+            {
+                return View(
+                    model:
+                    $"Статус транзакции неизвестен. Кошелек: {wallet}\nCумма: {amount}");
+            }
 
             const int max = 10;
             for (var i = 0; i < max; i++)
