@@ -53,9 +53,8 @@ namespace Sibintek.BeerMachine.Controllers
             _logger.LogDebug($"Pay: {account.Id}");
 
             var now = DateTime.Now;
-            if (AccessTimes.TryGetValue(account.Id, out var accessTime) && now.Subtract(accessTime).TotalMinutes < 3)
+            if (AccessTimes.TryGetValue(account.Id, out var accessTime) && now.Subtract(accessTime).TotalSeconds < 10)
             {
-                AccessTimes.AddOrUpdate(account.Id, now, (_, value) => value);
                 return Ok();
             }
 
